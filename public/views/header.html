@@ -1,8 +1,7 @@
 <div class="navbar-inner" data-ng-controller="HeaderController">
     <ul class="nav">
-        <li>
-            <a class="brand" href="/">MEAN - A Modern Stack</a>
-        </li>
+        <li><a href="#/sessions">Sessions</a></li>
+        
         <li data-ng-repeat="item in menu" data-ng-show="global.user" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
             <a href="#!/{{item.link}}">{{item.title}}</a>
         </li>
@@ -26,3 +25,13 @@
         </li>
     </ul>
 </div>
+
+<!-- 
+    <p>{{message}}</p>
+    <p>
+    </p>
+    <p><a href="#/calendar">Calendar</a></p>
+    <p><a href="#/speaker">Speakers</a></p>
+
+    <div ng-view></div>
+ -->
