@@ -1,6 +1,10 @@
 'use strict';
 
 module.exports = function(app, passport, auth) {
+    var talks = require('../app/controllers/talks');
+    app.get('/talks', talks.all);
+
+
     //User Routes
     var users = require('../app/controllers/users');
     app.get('/signin', users.signin);
