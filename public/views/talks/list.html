@@ -1,0 +1,34 @@
+<section data-ng-controller="TalksController">
+	<!-- <div style="border: 1px solid black; margin: 20px; padding: 15px" ng-repeat="session in sessions">
+		<h3>{{session.Title}}</h3>
+		<p>{{session.Abstract}}</p>
+		<p><a href="{{session.SpeakerURI}}">{{session.SpeakerName}}</a></p>
+		<p>{{session.Technology}}</p>
+		<p>{{session.Difficulty}}</p>
+		<p>{{session.Start}}</p>
+	</div> -->
+
+	<table id="sessionTable" class="table table-bordered table-responsive">
+		<tr>
+			<th>Title</th>
+			<th>Abstract</th>
+			<th>Speaker</th>
+			<th>Technology</th>
+			<th>Difficulty</th>
+			<th>EventType</th>
+			<th>Start</th>
+			<th>End</th>
+		</tr>
+
+		<tr ng-repeat="session in talks | orderBy:'Start'">
+			<td>{{session.Title}}</td>
+			<td>{{session.Abstract}}</td>
+			<td><a href="#!/speakers/{{session.SpeakerName.split(' ').join('-')}}">{{session.SpeakerName}}</a></td>
+			<td>{{session.Technology}}</td>
+			<td>{{session.Difficulty}}</td>
+			<td>{{session.EventType}}</td>
+			<td>{{session.Start}}</td>
+			<td>{{session.End}}</td>
+		</tr>
+	</table>
+</section>
