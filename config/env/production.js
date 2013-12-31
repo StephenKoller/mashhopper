@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    db: "mongodb://pillar:mashhopper@linus.mongohq.com:10013/app20847649",
+    db: process.env.MONGOHQ_URL,
     app: {
         name: "MEAN - A Modern Stack - Production"
     },
