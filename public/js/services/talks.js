@@ -1,6 +1,6 @@
 'use strict';
 
-//Articles service used for articles REST endpoint
+//Articles service used for talk REST endpoint
 angular.module('mean.talks').factory('Talks', ['$resource', function($resource) {
     return $resource('talks/:talkId', {
         talkId: '@_id'
