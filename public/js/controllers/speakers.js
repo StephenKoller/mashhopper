@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.speakers').controller('SpeakersController', ['$scope', '$routeParams', '$location', 'Global', 'Articles', function ($scope, $routeParams, $location, Global, Articles) {
+angular.module('mean.speakers').controller('SpeakersController', ['$scope', '$routeParams', '$location', 'Global', '$http', function ($scope, $routeParams, $location, Global, $http) {
     $scope.global = Global;
 
     if ($routeParams.speakerName) {
