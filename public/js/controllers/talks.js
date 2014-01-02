@@ -3,6 +3,7 @@
 angular.module('mean.talks').controller('TalksController', ['$scope', '$routeParams', '$location', 'Global', 'Talks', 'User', function ($scope, $routeParams, $location, Global, Talks, User) {
     $scope.global = Global;
     $scope.colors =  { '.NET' : 'dot-net', 'Cool Stuff' :'cool-stuff', 'Testing' : 'testing'};
+    $scope.radioModel = 'Left';
 
     $scope.style = function(talk) {
         console.log(talk);

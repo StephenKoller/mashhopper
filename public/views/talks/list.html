@@ -1,19 +1,29 @@
 <section data-ng-controller="TalksController" >
-	<ul class="nav nav-pills">
-	  <li class="active"><a href="" class="btn" ng-click="order = 'Technology'">Technology</a></li>
-	  <li><a href="" ng-click="order = 'Title'">Title</a></li>
-	  <li><a href="" ng-click="order = 'Speaker'">Speaker</a></li>
-	</ul>
+	<h1>Talks</h1>
 
-	<ul class="grid" masonry="true">
-        <li ng-repeat="talk in talks | orderBy:order" class="talk-brick" data-ng-class="style(talk)">
-            <h4>{{talk.Title}}</h5>
-            <span class="label label-default">{{talk.Technology}}</span><br />
-            <span ng-if="Start">
-            	<span class="label label-default">{{Start | date:['EEEE ha']}}</span>
-            	<br />
-            </span>
-            <button data-ng-click="update(talk)" class="btn btn-default btn-sm" data-ng-class="{ 'btn-success' : setStyle(talk) }">Attending</button>
-        </li>
-    </ul>
+	<div class="row bottom-margin">
+		<div class="col-md-12">
+			<div class="btn-group">
+				<button class="btn btn-default" ng-click="order = 'Title'" ng-model="radioModel" btn-radio="'Left'">Title</button>
+				<button class="btn btn-default" ng-click="order = 'Technology'" ng-model="radioModel" btn-radio="'Middle'">Technology</button>
+				<button class="btn btn-default" ng-click="order = 'Speaker'" ng-model="radioModel" btn-radio="'Right'">Speaker</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="grid" masonry="true">
+		        <li ng-repeat="talk in talks | orderBy:order" class="talk-brick" data-ng-class="style(talk)">
+		            <h4>{{talk.Title}}</h4>
+		            <span class="label label-default">{{talk.Technology}}</span><br />
+		            <span ng-if="Start">
+		            	<span class="label label-default">{{Start | date:['EEEE ha']}}</span>
+		            	<br />
+		            </span>
+		            <button data-ng-click="update(talk)" class="btn btn-default btn-sm" data-ng-class="{ 'btn-success' : setStyle(talk) }">Attending</button>
+		        </li>
+		    </ul>
+		</div>
+	</div>
 </section>

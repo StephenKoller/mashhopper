@@ -3,6 +3,10 @@
     margin-left:0
 }
 
+.bottom-margin{
+    margin-bottom:20px;
+}
+
 .content {
     margin-top:50px;
     width:100%
