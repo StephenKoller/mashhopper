@@ -13,33 +13,7 @@
             	<span class="label label-default">{{Start | date:['EEEE ha']}}</span>
             	<br />
             </span>
-            <button data-ng-click="update($index)" class="btn btn-default btn-sm" data-ng-class="{ 'btn-success' : setStyle($index) }">Attending</button>
+            <button data-ng-click="update(talk)" class="btn btn-default btn-sm" data-ng-class="{ 'btn-success' : setStyle(talk) }">Attending</button>
         </li>
     </ul>
-
-
-<!-- 
-	<table id="sessionTable" class="table table-bordered table-responsive">
-		<tr>
-			<th>Title</th>
-			<th>Abstract</th>
-			<th>Speaker</th>
-			<th>Technology</th>
-			<th>Difficulty</th>
-			<th>EventType</th>
-			<th>Start</th>
-			<th>End</th>
-		</tr>
-
-		<tr ng-repeat="talk in talker.talks | orderBy:'Start'">
-			<td>{{talk.Title}}</td>
-			<td>{{talk.Abstract}}</td>
-			<td><a href="#!/speakers/{{talk.SpeakerName.split(' ').join('-')}}">{{talk.SpeakerName}}</a></td>
-			<td>{{talk.Technology}}</td>
-			<td>{{talk.Difficulty}}</td>
-			<td>{{talk.EventType}}</td>
-			<td>{{talk.Start}}</td>
-			<td>{{talk.End}}</td>
-		</tr>
-	</table> -->
 </section>
