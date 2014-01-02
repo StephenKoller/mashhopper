@@ -6,9 +6,9 @@
 	</ul>
 
 	<ul class="grid" masonry="true">
-        <li ng-repeat="talk in talks | orderBy:order" class="talk-brick" data-ng-class="style($index)">
+        <li ng-repeat="talk in talks | orderBy:order" class="talk-brick" data-ng-class="style(talk)">
             <h4>{{talk.Title}}</h5>
-            <span class="label label-default">{{Technology}}</span><br />
+            <span class="label label-default">{{talk.Technology}}</span><br />
             <span ng-if="Start">
             	<span class="label label-default">{{Start | date:['EEEE ha']}}</span>
             	<br />
