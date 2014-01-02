@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('mean.talks').controller('TalksController', ['$routeParams', '$location', 'Global', 'CodemashTalks', function ($routeParams, $location, Global, CodemashTalks) {
+angular.module('mean.talks').controller('TalksController', ['$routeParams', '$location', 'Global', 'Talks', function ($routeParams, $location, Global, Talks) {
 	var vm = this;
     vm.global = Global;
-    vm.talks = CodemashTalks.getTalksAsync().then(function(d) {
-    	vm.talks = d;
+    Talks.query(function(data) {
+    	vm.talks = data;
   	});
   	return vm;
 }]);
