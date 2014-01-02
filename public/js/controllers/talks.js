@@ -16,6 +16,13 @@ angular.module('mean.talks').controller('TalksController', ['$routeParams', '$lo
     	User.save(user);
     };
 
+    vm.setStyle = function(index){
+        var talk = vm.talks[index];
+        var user = vm.global.user;
+
+        return _.contains(user.talks, talk.Id);
+    };
+
     Talks.query(function(data) {
     	vm.talks = data;
   	});
