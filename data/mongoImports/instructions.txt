@@ -1,2 +1,0 @@
-In a terminal window, from the data/mongoImports folder, run this command to import the talks collection:
-	mongoimport --db mean-dev --collection talks --jsonArray < talks.json
