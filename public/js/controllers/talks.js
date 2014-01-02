@@ -4,6 +4,17 @@ angular.module('mean.talks').controller('TalksController', ['$routeParams', '$lo
 	var vm = this;
     vm.global = Global;
 
+    vm.colors =  { '.NET' : 'dot-net', 'Cool Stuff' :'cool-stuff', 'Testing' : 'testing'};
+
+    //talk.Technology
+
+    vm.style = function(index) {
+        var talk = vm.talks[index];
+        console.log(talk);
+        console.log(vm.colors[talk.Technology]);
+        return vm.colors[talk.Technology];
+    };
+
     vm.update = function(index){
     	var talk = vm.talks[index];
     	var user = vm.global.user;

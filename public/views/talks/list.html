@@ -6,7 +6,7 @@
 	</ul>
 
 	<ul class="grid" masonry="true">
-        <li ng-repeat="talk in talker.talks | orderBy:order" class="talk-brick">
+        <li ng-repeat="talk in talker.talks | orderBy:order" class="talk-brick" data-ng-class="talker.style($index)">
             <h4>{{talk.Title}}</h5>
             <span class="label label-default">{{talk.Technology}}</span><br />
             <span ng-if="talk.Start">
@@ -18,7 +18,7 @@
     </ul>
 
 
-
+<!-- 
 	<table id="sessionTable" class="table table-bordered table-responsive">
 		<tr>
 			<th>Title</th>
@@ -41,5 +41,5 @@
 			<td>{{talk.Start}}</td>
 			<td>{{talk.End}}</td>
 		</tr>
-	</table>
+	</table> -->
 </section>

@@ -24,7 +24,15 @@ footer p {
     padding:5px 0 12px 10px
 }
 
+.dot-net {
+    background-color: #C1D786;
+    /*//, '#BF3978', '#15A0C6', '#9A2BC3'*/
+}
 
+.testing {
+    background-color: #BF3978;
+    /*//, '#BF3978', '#15A0C6', '#9A2BC3'*/
+}
 
 
 
@@ -38,7 +46,6 @@ footer p {
     border: solid 1px #ccc;
     /*margin: 0 0 10px 10px;*/
     margin-bottom:10px;
-    background: #eee;
 }
 
 .grid li h4{
