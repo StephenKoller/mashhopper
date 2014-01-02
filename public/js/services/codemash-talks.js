@@ -5,10 +5,11 @@ angular.module('codemash.talks').factory('CodemashTalks', function($http){
 				// The then function here is an opportunity to modify the response
 				console.log(response);
 				// The return value gets picked up by the then in the controller.
+				console.log(response.data);
 				return response.data;
 			});
 			// Return the promise to the controller
 			return promise;
 		}
-	}
+	};
 });
