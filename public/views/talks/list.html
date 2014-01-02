@@ -1,12 +1,16 @@
-<section data-ng-controller="TalksController">
-	<!-- <div style="border: 1px solid black; margin: 20px; padding: 15px" ng-repeat="session in sessions">
-		<h3>{{session.Title}}</h3>
-		<p>{{session.Abstract}}</p>
-		<p><a href="{{session.SpeakerURI}}">{{session.SpeakerName}}</a></p>
-		<p>{{session.Technology}}</p>
-		<p>{{session.Difficulty}}</p>
-		<p>{{session.Start}}</p>
-	</div> -->
+<section data-ng-controller="TalksController as talker">
+	<button class="btn" ng-click="order = 'Technology'">Order by tech</button>
+	<button class="btn" ng-click="order = 'Title'">Order by title</button>
+
+	<ul class="grid" masonry="true">
+        <li ng-repeat="item in talker.talks | orderBy:order">
+            <span>{{item.Title}}</span>
+            <br /> <span>Technology: {{item.Technology}}</span>
+            <br /> <span>Start: {{item.Start}}</span>
+        </li>
+    </ul>
+
+
 
 	<table id="sessionTable" class="table table-bordered table-responsive">
 		<tr>
@@ -20,7 +24,7 @@
 			<th>End</th>
 		</tr>
 
-		<tr ng-repeat="session in talks | orderBy:'Start'">
+		<tr ng-repeat="session in talker.talks | orderBy:'Start'">
 			<td>{{session.Title}}</td>
 			<td>{{session.Abstract}}</td>
 			<td><a href="#!/speakers/{{session.SpeakerName.split(' ').join('-')}}">{{session.SpeakerName}}</a></td>

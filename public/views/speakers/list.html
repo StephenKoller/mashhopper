@@ -1,3 +1,19 @@
 <section data-ng-controller="SpeakersController">
-	
+	<table class="table table-bordered table-responsive">
+		<tr>
+			<th>SpeakerURI</th>
+			<th>Name</th>
+			<th>TwitterHandle</th>
+			<th>Sessions</th>
+			<th>LookupId</th>
+		</tr>
+
+		<tr ng-repeat="speaker in speakers | orderBy:'Name'">
+			<td>{{speaker.SpeakerURI}}</td>
+			<td>{{speaker.Name}}</td>
+			<td><a href="#!/speakers/{{session.SpeakerName.split(' ').join('-')}}">{{session.TwitterHandle}}</a></td>
+			<td>{{speaker.Sessions}}</td>
+			<td>{{speaker.LookupId}}</td>
+		</tr>
+	</table>
 </section>
