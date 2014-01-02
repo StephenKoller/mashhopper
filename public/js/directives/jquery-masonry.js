@@ -17,6 +17,8 @@ angular.module('jquery.masonry', []).directive("masonry", function () {
             
             return function (scope, element, attrs) {
                 var options = angular.extend({
+                    columnWidth: 30,
+                    gutter: 10,
                     itemSelector: itemSelector
                 }, scope.$eval(attrs.masonry));
                 

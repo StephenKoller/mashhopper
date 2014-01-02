@@ -1,13 +1,19 @@
-<section data-ng-controller="TalksController as talker">
-	<button class="btn" ng-click="order = 'Technology'">Order by tech</button>
-	<button class="btn" ng-click="order = 'Title'">Order by title</button>
+<section data-ng-controller="TalksController as talker" >
+	<ul class="nav nav-pills">
+	  <li class="active"><a href="" class="btn" ng-click="order = 'Technology'">Technology</a></li>
+	  <li><a href="" ng-click="order = 'Title'">Title</a></li>
+	  <li><a href="" ng-click="order = 'Speaker'">Speaker</a></li>
+	</ul>
 
 	<ul class="grid" masonry="true">
-        <li ng-repeat="item in talker.talks | orderBy:order">
-            <span>{{item.Title}}</span>
-            <br /> <span>Technology: {{item.Technology}}</span>
-            <br /> <span>Start: {{item.Start}}</span>
-            <button data-ng-click="talker.update($index)" data-ng-class="{ selected : talker.setStyle($index) }">Attending</button>
+        <li ng-repeat="talk in talker.talks | orderBy:order" class="talk-brick">
+            <h4>{{talk.Title}}</h5>
+            <span class="label label-default">{{talk.Technology}}</span><br />
+            <span ng-if="talk.Start">
+            	<span class="label label-default">{{talk.Start | date:['EEEE ha']}}</span>
+            	<br />
+            </span>
+            <button data-ng-click="talker.update($index)" class="btn btn-default btn-sm" data-ng-class="{ selected : talker.setStyle($index) }">Attending</button>
         </li>
     </ul>
 
@@ -25,15 +31,15 @@
 			<th>End</th>
 		</tr>
 
-		<tr ng-repeat="session in talker.talks | orderBy:'Start'">
-			<td>{{session.Title}}</td>
-			<td>{{session.Abstract}}</td>
-			<td><a href="#!/speakers/{{session.SpeakerName.split(' ').join('-')}}">{{session.SpeakerName}}</a></td>
-			<td>{{session.Technology}}</td>
-			<td>{{session.Difficulty}}</td>
-			<td>{{session.EventType}}</td>
-			<td>{{session.Start}}</td>
-			<td>{{session.End}}</td>
+		<tr ng-repeat="talk in talker.talks | orderBy:'Start'">
+			<td>{{talk.Title}}</td>
+			<td>{{talk.Abstract}}</td>
+			<td><a href="#!/speakers/{{talk.SpeakerName.split(' ').join('-')}}">{{talk.SpeakerName}}</a></td>
+			<td>{{talk.Technology}}</td>
+			<td>{{talk.Difficulty}}</td>
+			<td>{{talk.EventType}}</td>
+			<td>{{talk.Start}}</td>
+			<td>{{talk.End}}</td>
 		</tr>
 	</table>
 </section>
