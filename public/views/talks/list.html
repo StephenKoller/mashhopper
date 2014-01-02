@@ -1,39 +1,29 @@
-<section data-ng-controller="TalksController as talker">
-	<button class="btn" ng-click="order = 'Technology'">Order by tech</button>
-	<button class="btn" ng-click="order = 'Title'">Order by title</button>
+<section data-ng-controller="TalksController" >
+	<h1>Talks</h1>
 
-	<ul class="grid" masonry="true">
-        <li ng-repeat="item in talker.talks | orderBy:order">
-            <span>{{item.Title}}</span>
-            <br /> <span>Technology: {{item.Technology}}</span>
-            <br /> <span>Start: {{item.Start}}</span>
-            <button data-ng-click="talker.update($index)">Attending</button>
-        </li>
-    </ul>
+	<div class="row bottom-margin">
+		<div class="col-md-12">
+			<div class="btn-group">
+				<button class="btn btn-default" ng-click="order = 'Title'" ng-model="radioModel" btn-radio="'Left'">Title</button>
+				<button class="btn btn-default" ng-click="order = 'Technology'" ng-model="radioModel" btn-radio="'Middle'">Technology</button>
+				<button class="btn btn-default" ng-click="order = 'Speaker'" ng-model="radioModel" btn-radio="'Right'">Speaker</button>
+			</div>
+		</div>
+	</div>
 
-
-
-	<table id="sessionTable" class="table table-bordered table-responsive">
-		<tr>
-			<th>Title</th>
-			<th>Abstract</th>
-			<th>Speaker</th>
-			<th>Technology</th>
-			<th>Difficulty</th>
-			<th>EventType</th>
-			<th>Start</th>
-			<th>End</th>
-		</tr>
-
-		<tr ng-repeat="session in talker.talks | orderBy:'Start'">
-			<td>{{session.Title}}</td>
-			<td>{{session.Abstract}}</td>
-			<td><a href="#!/speakers/{{session.SpeakerName.split(' ').join('-')}}">{{session.SpeakerName}}</a></td>
-			<td>{{session.Technology}}</td>
-			<td>{{session.Difficulty}}</td>
-			<td>{{session.EventType}}</td>
-			<td>{{session.Start}}</td>
-			<td>{{session.End}}</td>
-		</tr>
-	</table>
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="grid" masonry="true">
+		        <li ng-repeat="talk in talks | orderBy:order" class="talk-brick" data-ng-class="style(talk)">
+		            <h4>{{talk.Title}}</h4>
+		            <span class="label label-default">{{talk.Technology}}</span><br />
+		            <span ng-if="Start">
+		            	<span class="label label-default">{{Start | date:['EEEE ha']}}</span>
+		            	<br />
+		            </span>
+		            <button data-ng-click="update(talk)" class="btn btn-default btn-sm" data-ng-class="{ 'btn-success' : setStyle(talk) }">Attending</button>
+		        </li>
+		    </ul>
+		</div>
+	</div>
 </section>
