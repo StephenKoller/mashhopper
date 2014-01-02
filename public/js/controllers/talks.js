@@ -16,6 +16,11 @@ angular.module('mean.talks').controller('TalksController', ['$routeParams', '$lo
     	User.save(user);
     };
 
+    // Generate color for Technology label based on its first letter
+    vm.style = function(value) {
+        return { "background-color": value };
+    };
+
     Talks.query(function(data) {
     	vm.talks = data;
   	});
