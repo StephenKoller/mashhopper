@@ -13,7 +13,7 @@
             	<span class="label label-default">{{talk.Start | date:['EEEE ha']}}</span>
             	<br />
             </span>
-            <button data-ng-click="talker.update($index)" class="btn btn-default btn-sm" data-ng-class="{ selected : talker.setStyle($index) }">Attending</button>
+            <button data-ng-click="talker.update($index)" class="btn btn-default btn-sm" data-ng-class="{ 'btn-success' : talker.setStyle($index) }">Attending</button>
         </li>
     </ul>
 

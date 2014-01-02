@@ -14,12 +14,12 @@ angular.module('mean.talks').controller('TalksController', ['$routeParams', '$lo
     		user.talks.push(talk.Id);
 
     	User.save(user);
+        vm.setStyle();
     };
 
     vm.setStyle = function(index){
         var talk = vm.talks[index];
         var user = vm.global.user;
-
         return _.contains(user.talks, talk.Id);
     };
 
