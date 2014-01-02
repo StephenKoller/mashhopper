@@ -8,6 +8,10 @@
     width:100%
 }
 
+.container{
+    width:100%;
+}
+
 footer {
     position:fixed;
     left:0px;
@@ -41,11 +45,12 @@ footer p {
 }
 .grid li {
     display: inline-block;
-    width: 15%;
+    width: 27%;
 /*    height: 100px;*/
     border: solid 1px #ccc;
     /*margin: 0 0 10px 10px;*/
     margin-bottom:10px;
+    padding:5px;
 }
 
 .grid li h4{
