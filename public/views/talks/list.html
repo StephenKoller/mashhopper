@@ -1,4 +1,4 @@
-<section data-ng-controller="TalksController as talker" >
+<section data-ng-controller="TalksController" >
 	<ul class="nav nav-pills">
 	  <li class="active"><a href="" class="btn" ng-click="order = 'Technology'">Technology</a></li>
 	  <li><a href="" ng-click="order = 'Title'">Title</a></li>
@@ -6,14 +6,14 @@
 	</ul>
 
 	<ul class="grid" masonry="true">
-        <li ng-repeat="talk in talker.talks | orderBy:order" class="talk-brick" data-ng-class="talker.style($index)">
+        <li ng-repeat="talk in talks | orderBy:order" class="talk-brick" data-ng-class="style($index)">
             <h4>{{talk.Title}}</h5>
-            <span class="label label-default">{{talk.Technology}}</span><br />
-            <span ng-if="talk.Start">
-            	<span class="label label-default">{{talk.Start | date:['EEEE ha']}}</span>
+            <span class="label label-default">{{Technology}}</span><br />
+            <span ng-if="Start">
+            	<span class="label label-default">{{Start | date:['EEEE ha']}}</span>
             	<br />
             </span>
-            <button data-ng-click="talker.update($index)" class="btn btn-default btn-sm" data-ng-class="{ 'btn-success' : talker.setStyle($index) }">Attending</button>
+            <button data-ng-click="update($index)" class="btn btn-default btn-sm" data-ng-class="{ 'btn-success' : setStyle($index) }">Attending</button>
         </li>
     </ul>
 
