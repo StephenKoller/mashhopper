@@ -1,6 +1,6 @@
 <div class="navbar-inner" data-ng-controller="HeaderController">
     <ul class="nav">
-        <li><a href="#/sessions">Sessions</a></li>
+        <li><a href="#!/talks">Sessions</a></li>
         
         <li data-ng-repeat="item in menu" data-ng-show="global.user" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
             <a href="#!/{{item.link}}">{{item.title}}</a>
