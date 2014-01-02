@@ -7,7 +7,7 @@
             <span>{{item.Title}}</span>
             <br /> <span>Technology: {{item.Technology}}</span>
             <br /> <span>Start: {{item.Start}}</span>
-            <button data-ng-click="talker.update()">Attending</button>
+            <button data-ng-click="talker.update($index)">Attending</button>
         </li>
     </ul>
 
