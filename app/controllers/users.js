@@ -89,6 +89,7 @@ exports.me = function(req, res) {
 
 exports.update = function(req, res) {
     var user = req.user;
+     console.log(user);
     user = _.extend(user, req.body);
     console.log(user);
     
@@ -113,3 +114,4 @@ exports.user = function(req, res, next, id) {
             next();
         });
 };
+

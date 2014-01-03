@@ -27,15 +27,13 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
     $scope.radioModel = 'Left';
 
     $scope.style = function(talk) {
-        // console.log(talk);
-        // console.log($scope.colors[talk.Technology]);
         return $scope.colors[talk.Technology];
     };
 
     $scope.update = function(talk){
     	var user = $scope.global.user;
     	if(_.contains(user.talks, talk.Id))
-    		_.without(user.talks, talk.Id);
+    		user.talks = _.without(user.talks, talk.Id);
     	else
     		user.talks.push(talk.Id);
 
@@ -50,5 +48,4 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
     Talks.query(function(data) {
     	$scope.talks = data;
   	});
-  	//return vm;
 }]);

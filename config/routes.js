@@ -32,6 +32,9 @@ module.exports = function(app, passport, auth) {
     //Finish with setting up the userId param
     app.param('userId', users.user);
 
+    var graphs = require('../app/controllers/graphs');
+    app.get('/graphs', graphs.all);
+
     //Article Routes
     var articles = require('../app/controllers/articles');
     app.get('/articles', articles.all);

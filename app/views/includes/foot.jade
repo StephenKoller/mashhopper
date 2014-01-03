@@ -16,6 +16,7 @@ script(type='text/javascript', src='/lib/angular-bootstrap/ui-bootstrap.js')
 script(type='text/javascript', src='/lib/angular-bootstrap/ui-bootstrap-tpls.js')
 script(type='text/javascript', src='/lib/angular-ui-utils/modules/route/route.js')
 
+
 //Application Init
 script(type='text/javascript', src='/js/app.js')
 script(type='text/javascript', src='/js/config.js')
@@ -27,10 +28,13 @@ script(type='text/javascript', src='/js/services/global.js')
 script(type='text/javascript', src='/js/services/user.js')
 script(type='text/javascript', src='/js/services/articles.js')
 script(type='text/javascript', src='/js/services/talks.js')
-script(type='text/javascript', src='/js/services/codemash-talks.js')
+script(type='text/javascript', src='/js/services/graphs.js')
+
 
 //Application Directives
 script(type='text/javascript', src='/js/directives/jquery-masonry.js')
+//Not sure why but this needs be down here.
+script(type='text/javascript', src='/lib/angular-google-chart/ng-google-chart.js')
 
 //Application Controllers
 script(type='text/javascript', src='/js/controllers/articles.js')
@@ -38,6 +42,8 @@ script(type='text/javascript', src='/js/controllers/index.js')
 script(type='text/javascript', src='/js/controllers/header.js')
 script(type='text/javascript', src='/js/controllers/talks.js')
 script(type='text/javascript', src='/js/controllers/speakers.js')
+script(type='text/javascript', src='/js/controllers/graphs.js')
+
 script(type='text/javascript', src='/js/init.js')
 
 if (process.env.NODE_ENV == 'development')
