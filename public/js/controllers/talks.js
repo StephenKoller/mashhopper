@@ -30,7 +30,7 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
         return $scope.colors[talk.Technology];
     };
 
-    $scope.update = function(talk){
+    $scope.update = function(talk) {
     	var user = $scope.global.user;
     	if(_.contains(user.talks, talk.Id))
     		user.talks = _.without(user.talks, talk.Id);
@@ -40,7 +40,7 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
     	User.save(user);
     };
 
-    $scope.isAttending = function(talk){
+    $scope.isAttending = function(talk) {
         var user = $scope.global.user;
         return _.contains(user.talks, talk.Id);
     };
@@ -52,4 +52,13 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
     Talks.query(function(data) {
     	$scope.talks = data;
   	});
+
+    $scope.$watch('searchTerm', function (search_string) {
+        setTimeout(function() {
+            if (search_string === $scope.searchTerm) {
+                $scope.searchTermWithDelay = search_string;
+                $scope.$apply();
+            }
+        }, 500);
+    });
 }]);
