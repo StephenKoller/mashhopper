@@ -52,25 +52,55 @@ exports.all = function(req, res) {
         ]}
     ]};*/
 
-    var found = {
-        "cols": [
-            {id: "month", label: "Month", type: "string"},
-            {id: "laptop-id", label: "Laptop", type: "number"}
-        ],
-        "rows": [
-        {c: [
-            {v: "January"},
-            {v: 19}
-        ]},
-        {c: [
-            {v: "February"},
-            {v: 13}
-        ]},
-        {c: [
-            {v: "March"},
-            {v: 24}
-        ]}
-    ]};
+    Talks.find().exec(function(err, talks){
+        if (err) throw err;
 
-    res.jsonp(found);
+
+        var grouped = _.groupBy(talks, function(talk){ return talk.Technology; })
+        // console.log(JSON.stringify(grouped, null, 2));
+
+        //console.log(grouped.undefined.length, talks.length);
+/*
+        for (var key in grouped) {
+            console.log(key);
+        }*/
+        /*for (var i = 0; i < grouped.length; i++) {
+            var group = grouped[i];
+            console.log(group);
+        }*/
+
+        var mapped = {};
+        for (var i = 0; i < talks.length; i++) {
+            var talk = talks[i];
+            console.log(talk.Technology);
+            if (mapped[talk.Technology]) {
+                mapped[talk.Technology].push(talk);
+            } else {
+                mapped[talk.Technology] = [talk];
+            }
+        }
+
+        var rows = [];
+        for (var key in mapped) {
+            var group = mapped[key];
+            var sum = 0;
+            for (var i = 0; i < group.length; i++) {
+                sum += group[i].Users.length;
+            }
+            console.log(sum);
+            var row = {c: [{v: key}, {v: sum}]};
+            rows.push(row);
+        }
+
+        
+        var found = {
+            "cols": [
+                {id: "group", label: "Groups", type: "string"},
+                {id: "people", label: "people", type: "number"}
+            ],
+            "rows": rows};
+
+        res.jsonp(found);
+    });
+
 };
