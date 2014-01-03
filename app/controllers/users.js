@@ -95,10 +95,12 @@ exports.update = function(req, res) {
 
     //this should be in a node service.
     Talks.find().exec(function(talks){
-        talks.forEach(function(talk) {
-            //remove user from all talks.
-            talk.users = _.without(talks.users, user.Id);
-        });
+        if (talks) {
+            talks.forEach(function(talk) {
+                //remove user from all talks.
+                talk.users = _.without(talks.users, user.Id);
+            }); 
+        }
     });
     
     user.save(function(err){
