@@ -4,7 +4,6 @@ module.exports = function(app, passport, auth) {
     var talks = require('../app/controllers/talks');
     app.get('/talks', talks.all);
 
-
     //User Routes
     var users = require('../app/controllers/users');
     app.get('/signin', users.signin);
@@ -14,6 +13,7 @@ module.exports = function(app, passport, auth) {
 
     //Setting up the users api
     app.post('/users', users.create);
+    app.post('/users/toggle',  users.toggle)
     app.post('/users/:userId', auth.requiresLogin, auth.user.hasAuthorization, users.update);
 
     //Setting the google oauth routes

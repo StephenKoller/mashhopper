@@ -15,21 +15,11 @@ var mongoose = require('mongoose'),
  */
 exports.all = function(req, res) {
     var found = [];
-    Users.find().exec(function(err, users){
+    Talks.find().exec(function(err, users){
         found = users;
     });
     console.log(found);
      res.jsonp(found);
-
-             // Article.find().sort('-created').populate('user', 'name username').exec(function(err, articles) {
-             //        if (err) {
-             //            res.render('error', {
-             //                status: 500
-             //            });
-             //        } else {
-             //            res.jsonp(articles);
-             //        }
-             //    });
              // chart1.data = {"cols": [
             //     {id: "month", label: "Month", type: "string"},
             //     {id: "laptop-id", label: "Laptop", type: "number"},
