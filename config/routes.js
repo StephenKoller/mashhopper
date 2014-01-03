@@ -3,6 +3,7 @@
 module.exports = function(app, passport, auth) {
     var talks = require('../app/controllers/talks');
     app.get('/talks', talks.all);
+    app.get('/schedule', talks.all);
 
     //User Routes
     var users = require('../app/controllers/users');
