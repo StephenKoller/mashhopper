@@ -74,6 +74,10 @@ footer p {
     color:#FFF;
 }
 
+.date-label{
+    margin-left:10px;
+}
+
 .dot-net {
     background-color: #68217a;
     /*//, '#BF3978', '#15A0C6', '#9A2BC3'*/

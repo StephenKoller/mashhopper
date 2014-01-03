@@ -36,7 +36,7 @@
 	        		<div class="row">
 	        			<div class="col-md-12">
 				            <span ng-if="talk.Start">
-				            	<span class="">{{talk.Start | date:['EEEE ha']}}</span>
+				            	<span class="label label-default date-label">{{talk.Start | date:['EEEE ha']}}</span>
 				            	<br />
 				            </span>
 				            <button data-ng-click="update(talk)" class="btn btn-default btn-labeled btn-xs" data-ng-class="{ 'btn-success' : setStyle(talk) }">
