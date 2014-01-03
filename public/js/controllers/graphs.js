@@ -6,10 +6,10 @@ angular.module('mean.graphs').controller('GraphsController', ['$scope', '$routeP
         $scope.chart = MashhopperGraphs.getChart();
 
         $scope.chartReady = function() {
-            fixGoogleChartsBarsBootstrap();
-        }
+            $scope.fixGoogleChartsBarsBootstrap();
+        };
 
-        function fixGoogleChartsBarsBootstrap() {
+        $scope.fixGoogleChartsBarsBootstrap = function() {
             // Google charts uses <img height="12px">, which is incompatible with Twitter
             // * bootstrap in responsive mode, which inserts a css rule for: img { height: auto; }.
             // *
