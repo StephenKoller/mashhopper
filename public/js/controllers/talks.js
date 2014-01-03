@@ -2,12 +2,33 @@
 
 angular.module('mean.talks').controller('TalksController', ['$scope', '$routeParams', '$location', 'Global', 'Talks', 'User', function ($scope, $routeParams, $location, Global, Talks, User) {
     $scope.global = Global;
-    $scope.colors =  { '.NET' : 'dot-net', 'Cool Stuff' :'cool-stuff', 'Testing' : 'testing'};
+    $scope.colors =  { 
+        '.NET' : 'dot-net',
+        'Design/UX' : 'design',
+        'Design (HTML, CSS, etc)' : 'design',
+        'Cool Stuff' :'cool-stuff',
+        'Testing' : 'testing',
+        'Languages' : 'languages',
+        'Java' : 'java',
+        'Mobile' : 'mobile',
+        'Mobile (Android, iOS, Windows Mobile, etc)' : 'mobile',
+        'Ruby / Rails' : 'ruby',
+        'JavaScript' : 'javascript',
+        'Windows / .NET' : 'microsoft',
+        'Hardware ( Raspberry Pi, Arduino, etc)' : 'hardware',
+        'Development Methodologies' : 'methodologies',
+        'Other' : 'other',
+        'Soft Skills' : 'soft-skills',
+        'Python' : 'python',
+        'Cloud' : 'cloud',
+        'Continuous Deployment' : 'deployment',
+        'Mac/iPhone' : 'mac'
+    };
     $scope.radioModel = 'Left';
 
     $scope.style = function(talk) {
-        console.log(talk);
-        console.log($scope.colors[talk.Technology]);
+        // console.log(talk);
+        // console.log($scope.colors[talk.Technology]);
         return $scope.colors[talk.Technology];
     };
 
