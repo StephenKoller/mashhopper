@@ -11,11 +11,10 @@ module.exports = function(app, passport, auth) {
     app.get('/signup', users.signup);
     app.get('/signout', users.signout);
     app.get('/users/me', users.me);
-    
-    app.post('/addTalk', users.addTalk);
 
     //Setting up the users api
     app.post('/users', users.create);
+    app.post('/users/:userId', auth.requiresLogin, auth.user.hasAuthorization, users.update);
 
     //Setting the google oauth routes
     app.get('/auth/google', passport.authenticate('google', {
@@ -32,6 +31,9 @@ module.exports = function(app, passport, auth) {
 
     //Finish with setting up the userId param
     app.param('userId', users.user);
+
+    var graphs = require('../app/controllers/graphs');
+    app.get('/graphs', graphs.all);
 
     //Article Routes
     var articles = require('../app/controllers/articles');

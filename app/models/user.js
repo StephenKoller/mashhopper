@@ -26,7 +26,7 @@ var UserSchema = new Schema({
     twitter: {},
     github: {},
     google: {},
-    talks: [{}]
+    talks: [String]
 });
 
 /**
