@@ -1,5 +1,5 @@
 <section data-ng-controller="TalksController" >
-	<h1>Talks</h1>
+	<h1 class="oleo">Talks</h1>
 
 	<div class="row bottom-margin">
 		<div class="col-md-12">
@@ -21,7 +21,9 @@
 		            	<span class="label label-default">{{Start | date:['EEEE ha']}}</span>
 		            	<br />
 		            </span>
-		            <button data-ng-click="update(talk)" class="btn btn-default btn-sm" data-ng-class="{ 'btn-success' : setStyle(talk) }">Attending</button>
+		            <button data-ng-click="update(talk)" class="btn btn-default btn-labeled" data-ng-class="{ 'btn-success' : setStyle(talk) }">
+		            	<span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span></span> Attending
+		            </button>
 		        </li>
 		    </ul>
 		</div>

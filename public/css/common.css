@@ -1,3 +1,10 @@
+.btn-label {position: relative;left: -12px;display: inline-block;padding: 6px 12px;background: rgba(0,0,0,0.15);border-radius: 3px 0 0 3px;}
+.btn-labeled {padding-top: 0;padding-bottom: 0;}
+
+.oleo{
+    font-family: 'Oleo Script', cursive;
+}
+
 .navbar .nav>li>a.brand {
     padding-left:20px;
     margin-left:0
@@ -8,7 +15,6 @@
 }
 
 .content {
-    margin-top:50px;
     width:100%
 }
 
@@ -42,6 +48,25 @@ footer p {
     /*//, '#BF3978', '#15A0C6', '#9A2BC3'*/
 }
 
+.mobile {
+    background-color: #15A0C6;
+}
+
+.cool-stuff {
+    background-color: #9A2BC3;
+}
+
+.javascript {
+    background-color: #FF9933;
+}
+
+.ruby {
+    background-color: #FF5050;
+}
+
+.ux {
+    background-color: #4DB8DB;
+}
 
 
 .grid {
