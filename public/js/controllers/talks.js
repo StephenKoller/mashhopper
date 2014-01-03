@@ -44,6 +44,11 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
         var user = $scope.global.user;
         return _.contains(user.talks, talk.Id);
     };
+    $scope.sortByAttending = function(talk){
+        var user = $scope.global.user;
+        return _.contains(user.talks, talk.Id) == false;
+    };
+    
 
     Talks.query(function(data) {
     	$scope.talks = data;
