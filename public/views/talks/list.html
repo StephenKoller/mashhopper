@@ -41,8 +41,18 @@
 				            	<span class="label label-default date-label">{{talk.Start | date:['EEEE h:mm a']}}</span>
 				            	<br />
 				            </span>
-				            <button data-ng-click="update(talk)" class="btn btn-default btn-labeled btn-xs" data-ng-class="{ 'btn-success' : setStyle(talk) }">
-				            	<span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span></span> Attending
+				            <button data-ng-click="update(talk)" class="btn btn-default btn-labeled btn-xs" data-ng-class="{ 'btn-success' : isAttending(talk) }">
+				            	<span class="btn-label">
+				            		<i class="glyphicon glyphicon-ok" data-ng-class="{ 'glyphicon-ok' : isAttending(talk), 'glyphicon-remove' : !isAttending(talk) }"></i>
+			            		</span>
+			            		<span ng-switch on="isAttending(talk)">
+			            			<span ng-switch-when="true">
+			            				Attending
+			            			</span>
+			            			<span ng-switch-when="false">
+			            				Not Attending
+			            			</span>
+			            		</span>
 				            </button>
 			            </div>
 		            </div>
