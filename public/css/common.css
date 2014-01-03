@@ -156,11 +156,17 @@ footer p {
     padding:0;
 }
 
+.talk-brick {
+    margin-bottom: 30px!important;
+    overflow: hidden;
+    display: block!important;
+}
+
 .grid li {
     background-color:#FFF;
     display: inline-block;
     width: 280px;
-/*    height: 100px;*/
+    /*height: 100px;*/
     /*border: solid 1px #ccc;*/
     /*margin: 0 0 10px 10px;*/
     /*margin-bottom:50px;*/
@@ -171,6 +177,7 @@ footer p {
     font-size:14px;
     font-weight:600;
     margin:16px 10px;
+    height:30px;
 }
 
 .grid li label{
