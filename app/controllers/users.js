@@ -93,7 +93,6 @@ exports.update = function(req, res) {
     
     user = _.extend(user, req.body);
 
-    });
     
     user.save(function(err){
         if(err)
