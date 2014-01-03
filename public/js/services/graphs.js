@@ -10,7 +10,7 @@ angular.module('mashhopper.graphs').factory('MashhopperGraphs', function($http){
 		    chart1.data = $http.get('/graphs', { cache: true}).then(function (value) { 
                 console.log(value);
                 chart1.data = value.data; 
-            });;
+            });
             chart1.formatters = {};
             return chart1;
 		}

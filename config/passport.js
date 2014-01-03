@@ -30,11 +30,12 @@ module.exports = function(passport) {
             User.findOne({
                 'google.id': profile.id
             }, function(err, user) {
+                console.log(profile);
                 if (!user) {
                     user = new User({
                         name: profile.displayName,
                         email: profile.emails[0].value,
-                        username: profile.username,
+                        username: profile.emails[0].value,
                         provider: 'google',
                         google: profile._json
                     });
