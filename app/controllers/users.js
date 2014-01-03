@@ -109,13 +109,13 @@ exports.toggle = function(req, res) {
             return next(err);
         }
         if (options.adding) {
-            if (!talk.users) {
-                 talk.users = [];
+            if (!talk.Users) {
+                 talk.Users = [];
             }
-            talk.users.push(user._id);
+            talk.Users.push(user._id);
             user.talks.push(talk.Id);
         } else {
-            talk.users = _.without(talk.users, user._id);
+            talk.Users = _.without(talk.Users, user._id);
             user.talks = _.without(user.talks, talk.Id);
         }
         user.save();
