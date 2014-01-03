@@ -1,2 +1,6 @@
 In a terminal window, from the data/mongoImports folder, run this command to import the talks collection:
 	mongoimport --db mean-dev --collection talks --jsonArray < talks.json
+
+	mongoimport -h linus.mongohq.com:10013 -u pillar -p agileLIVE! --db app20847649 --collection talks --jsonArray < talks.json
+
+	mongo linus.mongohq.com:10013/app20847649 -u <user> -p<password>

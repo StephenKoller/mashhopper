@@ -4,7 +4,8 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    User = mongoose.model('User');
+    User = mongoose.model('User'),
+    _ = require('lodash');
 
 /**
  * Auth callback
@@ -86,16 +87,14 @@ exports.me = function(req, res) {
     res.jsonp(req.user || null);
 };
 
-exports.addTalk = function(req, res){
-    var talkId = req.body.id;
+exports.update = function(req, res) {
     var user = req.user;
-    if(talkId && user){
-        if(user.talks.indexOf(talkId) < 0){
-            user.talks.push(talkId);
-            user.save();
-        }
-    }
-    res.jsonp({incoming:'incoming!!', user: req.user});
+    user = _.extend(user, req.body);
+    
+    user.save(function(err){
+        if(err)
+            console.log(err);
+    });
 };
     
 /**
@@ -113,3 +112,4 @@ exports.user = function(req, res, next, id) {
             next();
         });
 };
+
