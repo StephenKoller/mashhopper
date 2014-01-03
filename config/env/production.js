@@ -23,6 +23,6 @@ module.exports = {
     google: {
         clientID: "1090053842878-stj45vgra7imlc5dut73dkoo1auekid2.apps.googleusercontent.com",
         clientSecret: "yMHWQF7MFNLK9CtauLiyucgf",
-        callbackURL: "http://obscure-citadel-2994.herokuapp.com/auth/google/callback"
+        callbackURL: "http://mashhopper.herokuapp.com/auth/google/callback"
     }
 }
