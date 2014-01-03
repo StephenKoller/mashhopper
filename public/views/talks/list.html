@@ -2,7 +2,7 @@
 	<h1 class="oleo text-left">Talks</h1>
 
 	<div class="row bottom-margin left-margin">
-		<div class="col-md-12">
+		<div class="col-md-9">
 			<div class="btn-group">
 		        <button class="btn btn-default active view-control" rel="tooltip" data-original-title="Grid view">
 		            <i class="glyphicon glyphicon-th"></i>
@@ -19,12 +19,24 @@
 				<button class="btn btn-default btn-sm" ng-click="order = sortByAttending" ng-model="radioModel" btn-radio="'FarRight'">Attending</button>
 			</div>
 		</div>
+		<div class="col-md-3">
+           <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="search-query form-control" placeholder="Search" ng-model="searchTerm"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger" type="button">
+                            <span class=" glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-md-12">
 			<ul class="grid" masonry="true">
-		        <li ng-repeat="talk in talks | orderBy:order" class="talk-brick">
+		        <li ng-repeat="talk in talks | filter:searchTermWithDelay | orderBy:order" class="talk-brick">
 		        	<div class="row">
 		        		<div class="col-md-12">
 		        		   	<div data-ng-class="style(talk)" class="technology">{{talk.Technology}}</div>
