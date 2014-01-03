@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
     User = mongoose.model('User'),
+    Talks = mongoose.model('Talk'),
     _ = require('lodash');
 
 /**
@@ -89,9 +90,16 @@ exports.me = function(req, res) {
 
 exports.update = function(req, res) {
     var user = req.user;
-     console.log(user);
+    
     user = _.extend(user, req.body);
-    console.log(user);
+
+    //this should be in a node service.
+    Talks.find().exec(function(talks){
+        talks.forEach(function(talk) {
+            //remove user from all talks.
+            talk.users = _.without(talks.users, user.Id);
+        });
+    });
     
     user.save(function(err){
         if(err)
