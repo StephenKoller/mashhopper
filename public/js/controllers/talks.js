@@ -40,7 +40,7 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
     	User.save(user);
     };
 
-    $scope.setStyle = function(talk){
+    $scope.isAttending = function(talk){
         var user = $scope.global.user;
         return _.contains(user.talks, talk.Id);
     };
@@ -49,7 +49,6 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
         return _.contains(user.talks, talk.Id) == false;
     };
     
-
     Talks.query(function(data) {
     	$scope.talks = data;
   	});
