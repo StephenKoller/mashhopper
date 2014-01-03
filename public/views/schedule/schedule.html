@@ -1,0 +1,43 @@
+<section data-ng-controller="ScheduleController">
+	<h1 class="oleo text-left">Schedule</h1>
+
+	<div class="row well"
+>		<div class="col-md-12">
+			<ul>
+		        <li ng-repeat="talk in talks | orderBy:order" class="talk-list-item">
+	        		<div class="row">
+	        			<div class="col-md-12">
+			            	<h4>{{talk.Title}}</h4>
+			            </div>
+		            </div>
+    	        	<div class="row">
+    	        		<div class="col-md-12">
+    	        		   	<span class="label" data-ng-class="style(talk)">{{talk.Technology}}</div>
+            		   	</div>
+            		</div>
+	        		<div class="row">
+	        			<div class="col-md-12">
+				            <span ng-if="talk.Start">
+				            	<span class="label label-default date-label">{{talk.Start | date:['EEEE h:mm a']}}</span>
+				            	<br />
+				            </span>
+				            <button data-ng-click="update(talk)" class="btn btn-default btn-labeled btn-xs" data-ng-class="{ 'btn-success' : isAttending(talk) }">
+				            	<span class="btn-label">
+				            		<i class="glyphicon glyphicon-ok" data-ng-class="{ 'glyphicon-ok' : isAttending(talk), 'glyphicon-remove' : !isAttending(talk) }"></i>
+			            		</span>
+			            		<span ng-switch on="isAttending(talk)">
+			            			<span ng-switch-when="true">
+			            				Attending
+			            			</span>
+			            			<span ng-switch-when="false">
+			            				Not Attending
+			            			</span>
+			            		</span>
+				            </button>
+			            </div>
+		            </div>
+		        </li>
+		    </ul>
+		</div>
+	</div>
+</section>
