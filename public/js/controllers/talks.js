@@ -30,14 +30,15 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
         return $scope.colors[talk.Technology];
     };
 
-    $scope.update = function(talk) {
-    	var user = $scope.global.user;
-    	if(_.contains(user.talks, talk.Id))
-    		user.talks = _.without(user.talks, talk.Id);
-    	else
-    		user.talks.push(talk.Id);
+    $scope.update = function(talk){
+        var adding = !_.contains(user.talks, talk.Id);
+        if(_.contains(user.talks, talk.Id))
+            user.talks = _.without(user.talks, talk.Id);
+        else
+            user.talks.push(talk.Id);
 
-    	User.save(user);
+
+    	User.toggleAttending(adding, talk._id);
     };
 
     $scope.isAttending = function(talk) {
