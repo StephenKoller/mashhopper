@@ -29,6 +29,17 @@ angular.module('mean.schedule').controller('ScheduleController', ['$scope', '$ro
         return $scope.colors[talk.Technology];
     };
 
+    $scope.update = function(talk){
+        var adding = !_.contains(user.talks, talk.Id);
+        if(_.contains(user.talks, talk.Id))
+            user.talks = _.without(user.talks, talk.Id);
+        else
+            user.talks.push(talk.Id);
+
+
+        User.toggleAttending(adding, talk._id);
+    };
+
     Talks.query(function(data) {
         $scope.talks = data;
     });
