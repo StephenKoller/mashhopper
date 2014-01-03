@@ -1,11 +1,9 @@
 'use strict';
 
-angular.module('mean.articles').factory('User', ['$resource', function($resource) {
-    return $resource('users/:userId', {
-        userId: '@_id'
-    }, {
-        update: {
-            method: 'PUT'
-        }
-    });
-}]);
+angular.module('mean.articles').factory('User', function($http){
+	return {
+		toggleAttending: function(attending, talkId){
+		    $http.post('/users/toggle', {adding: attending, talkId: talkId});
+		}
+	};
+});
