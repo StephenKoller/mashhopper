@@ -90,6 +90,7 @@ exports.me = function(req, res) {
 
 exports.update = function(req, res) {
     var user = req.user;
+<<<<<<< HEAD
     
     user = _.extend(user, req.body);
 
@@ -100,6 +101,9 @@ exports.update = function(req, res) {
             talk.users = _.without(talks.users, user.Id);
         });
     });
+=======
+    user = _.extend(user, req.body);
+>>>>>>> e1d91d7cf7f9d9cc6e2eb2aa7f2157c3af77fe06
     
     user.save(function(err){
         if(err)
