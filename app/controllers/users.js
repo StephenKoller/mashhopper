@@ -94,16 +94,49 @@ exports.update = function(req, res) {
     user = _.extend(user, req.body);
 
     //this should be in a node service.
+    // if addin
+    
     Talks.find().exec(function(talks){
+        //we need to update the talk schema to have a user id array
+
         talks.forEach(function(talk) {
             //remove user from all talks.
+            if (!talk.users) {
+                talk.users = [];
+            }
+
             talk.users = _.without(talks.users, user.Id);
+
         });
     });
     
     user.save(function(err){
         if(err)
             console.log(err);
+    });
+};
+
+exports.toggle = function(req, res) {
+    var user = req.user;
+    var options = req.body;
+    Talks.load(options.talkId, function(err, talk){
+        if (err) {
+            console.log(err);
+            return next(err);
+        }
+        if (options.adding) {
+            if (!talk.users) {
+                 talk.users = [];
+            }
+            talk.users.push(user._id);
+            user.talks.push(talk.Id);
+        } else {
+            talk.users = _.without(talk.users, user._id);
+            user.talks = _.without(user.talks, talk.Id);
+        }
+        user.save();
+        talk.save();
+        res.send(true);
     });
 };
     

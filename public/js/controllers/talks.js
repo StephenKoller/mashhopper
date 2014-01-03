@@ -31,13 +31,14 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
     };
 
     $scope.update = function(talk){
-    	var user = $scope.global.user;
-    	if(_.contains(user.talks, talk.Id))
-    		user.talks = _.without(user.talks, talk.Id);
-    	else
-    		user.talks.push(talk.Id);
+        var adding = !_.contains(user.talks, talk.Id);
+        if(_.contains(user.talks, talk.Id))
+            user.talks = _.without(user.talks, talk.Id);
+        else
+            user.talks.push(talk.Id);
 
-    	User.save(user);
+
+    	User.toggleAttending(adding, talk._id);
     };
 
     $scope.setStyle = function(talk){
