@@ -28,6 +28,9 @@ angular.module('mean').config(['$routeProvider',
         when('/talks', {
             templateUrl: 'views/talks/list.html'
         }).
+        when('/schedule', {
+            templateUrl: 'views/schedule/schedule.html'
+        }).
         otherwise({
             redirectTo: '/talks'
         });
