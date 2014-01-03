@@ -18,8 +18,12 @@ h1 {
     margin: 0 0 10px 10px
 }
 
+.btn-labeled:focus{
+    outline:none;
+}
+
 .oleo{
-    font-family: 'Oleo Script', cursive;
+    font-family: 'Oleo Script', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
 }
 
 .navbar {
