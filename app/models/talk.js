@@ -7,7 +7,8 @@ var mongoose = require('mongoose'),
 var TalkSchema = new Schema({
     title: String,
     Id: String,
-    Users: [String]
+    Users: [String],
+    Technology: String
 });
 
 
