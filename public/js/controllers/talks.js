@@ -25,6 +25,7 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
         'Mac/iPhone' : 'mac'
     };
     $scope.radioModel = 'Left';
+    $scope.order = 'Start';
 
     $scope.style = function(talk) {
         return $scope.colors[talk.Technology];
