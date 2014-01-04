@@ -115,7 +115,6 @@ exports.toggle = function(req, res) {
             talk.Users.push(user._id);
             user.talks.push(talk.Id);
         } else {
-            //_.without uses === (we needed toString the mongo ObjectId)
             talk.Users = _.without(talk.Users, user._id.toString());
             user.talks = _.without(user.talks, talk.Id);
         }
