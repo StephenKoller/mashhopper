@@ -232,6 +232,10 @@ footer p {
     font-size:12px;
 }
 
+.clickable {
+    cursor: pointer;
+}
+
 /**** Transitions ****/
 
 /* center container with CSS */
