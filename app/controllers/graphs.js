@@ -22,7 +22,6 @@ exports.all = function(req, res) {
         var mapped = {};
         for (var i = 0; i < talks.length; i++) {
             var talk = talks[i];
-            console.log(talk.Technology);
             if (mapped[talk.Technology]) {
                 mapped[talk.Technology].push(talk);
             } else {
@@ -37,7 +36,6 @@ exports.all = function(req, res) {
             for (var i = 0; i < group.length; i++) {
                 sum += group[i].Users.length;
             }
-            console.log(sum);
             var row = {c: [{v: key}, {v: sum}]};
             rows.push(row);
         }

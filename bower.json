@@ -8,7 +8,7 @@
         "angular-mocks": "latest",
         "angular-route": "latest",
         "bootstrap": "latest",
-        "angular-bootstrap": "0.7.0",
+        "angular-bootstrap": "latest",
         "angular-ui-utils": "0.0.4",
         "underscore": "latest",
         "angular-google-chart" :"latest",

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.talks').controller('TalksController', ['$scope', '$routeParams', '$location', 'Global', 'Talks', 'User', function ($scope, $routeParams, $location, Global, Talks, User) {
+angular.module('mean.talks').controller('TalksController', ['$scope', '$routeParams', '$location', '$modal', 'Global', 'Talks', 'User', function ($scope, $routeParams, $location, $modal, Global, Talks, User) {
     $scope.global = Global;
     $scope.colors =  { 
         '.NET' : 'dot-net',
@@ -53,6 +53,14 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
     Talks.query(function(data) {
     	$scope.talks = data;
   	});
+
+    $scope.openDescription = function(talk){
+        $scope.modalTalk = talk;
+        $modal.open({
+            scope: $scope,
+            templateUrl: 'views/talks/infoModal.html'
+      });
+    };
 
     $scope.$watch('searchTerm', function (search_string) {
         setTimeout(function() {
