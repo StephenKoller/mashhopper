@@ -48,11 +48,17 @@
 			            </div>
 		            </div>
 	        		<div class="row">
-	        			<div class="col-md-12">
+	        			<div class="col-md-6">
 				            <span ng-if="talk.Start">
 				            	<span class="label label-default date-label">{{talk.Start | date:['EEEE h:mm a']}}</span>
 				            	<br />
 				            </span>
+				              <span ng-if="talk.Room">
+				            	<span class="label label-default date-label">{{talk.Room}}</span>
+				            	<br />
+				            </span>
+				        </div>
+				        <div class="col-md-6">
 				            <button data-ng-click="update(talk)" class="btn btn-default btn-labeled btn-xs" data-ng-class="{ 'btn-success' : isAttending(talk) }">
 				            	<span class="btn-label">
 				            		<i class="glyphicon glyphicon-ok" data-ng-class="{ 'glyphicon-ok' : isAttending(talk), 'glyphicon-remove' : !isAttending(talk) }"></i>
