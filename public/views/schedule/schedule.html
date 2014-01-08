@@ -1,26 +1,23 @@
 <section data-ng-controller="ScheduleController">
 	<h1 class="oleo text-left">Schedule</h1>
+	
+		<div class="col-md-12">
+			<div ng-repeat="block in blocks" class="well">
+				<div class="talk-block-title-bar">
+					<h4>{{block.time | date:['EEEE h:mm a']}}</h4>
+				</div>
 
-	<div class="row well"
->		<div class="col-md-12">
-			<ul>
-		        <li ng-repeat="talk in talks | orderBy:order" class="talk-list-item">
-	        		<div class="row">
-	        			<div class="col-md-12">
-			            	<h4>{{talk.Title}}</h4>
-			            </div>
+		        <div ng-repeat="talk in block.talks" class="talk-div-item">
+		        	<div class="row">
+		        		<div class="col-md-12">
+		        		   	<div data-ng-class="style(talk)" class="technology">{{talk.Technology}}</div>
+		     			</div>
+	        		</div>
+	        		<div class="talk-div-item-title">
+		            	<h4>{{talk.Title}}</h4>
 		            </div>
-    	        	<div class="row">
-    	        		<div class="col-md-12">
-    	        		   	<span class="label" data-ng-class="style(talk)">{{talk.Technology}}</div>
-            		   	</div>
-            		</div>
-	        		<div class="row">
+		            <div class="row">
 	        			<div class="col-md-12">
-				            <span ng-if="talk.Start">
-				            	<span class="label label-default date-label">{{talk.Start | date:['EEEE h:mm a']}}</span>
-				            	<br />
-				            </span>
 				            <button data-ng-click="update(talk)" class="btn btn-default btn-labeled btn-xs" data-ng-class="{ 'btn-success' : isAttending(talk) }">
 				            	<span class="btn-label">
 				            		<i class="glyphicon glyphicon-ok" data-ng-class="{ 'glyphicon-ok' : isAttending(talk), 'glyphicon-remove' : !isAttending(talk) }"></i>
@@ -36,8 +33,10 @@
 				            </button>
 			            </div>
 		            </div>
-		        </li>
-		    </ul>
+        		</div>
+
+        		<div class="clearfix">
+	            </div>
+			</div>
 		</div>
-	</div>
 </section>

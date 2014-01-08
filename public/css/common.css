@@ -3,6 +3,33 @@ h1 {
     font-size: 42px; 
 }
 
+.talk-div-item {
+    width: 280px;
+    height: 120px;
+    margin: 10px 0px 0px 10px;
+    float: left;
+    background: white;
+}
+
+.talk-div-item-title {
+    padding: 0px 10px 0px 10px;
+    height: 55px;
+}
+
+.talk-div-item-title h4 {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.talk-block-item {
+    margin: 5px;
+}
+
+.talk-block-title-bar {
+    height: 20px;
+    margin-bottom: 10px;
+}
+
 .btn-label {
     position: relative;
     left: -6px;

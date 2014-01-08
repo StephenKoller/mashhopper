@@ -24,6 +24,7 @@ angular.module('mean.schedule').controller('ScheduleController', ['$scope', '$ro
         'Continuous Deployment' : 'deployment',
         'Mac/iPhone' : 'mac'
     };
+    $scope.blocks = [];
 
     $scope.style = function(talk) {
         return $scope.colors[talk.Technology];
@@ -40,7 +41,32 @@ angular.module('mean.schedule').controller('ScheduleController', ['$scope', '$ro
         User.toggleAttending(adding, talk._id);
     };
 
+    $scope.isAttending = function(talk) {
+        var user = $scope.global.user;
+        return _.contains(user.talks, talk.Id);
+    };
+
     Talks.query(function(data) {
         $scope.talks = data;
+        var timeslots = [];
+
+        for (var i = data.length - 1; i >= 0; i--) {
+            if (!_.contains(timeslots, data[i].Start)) {
+                timeslots.push(data[i].Start);
+            }
+        };
+
+        timeslots.sort();
+
+        for (var i = 0; i < timeslots.length; i++) {
+            $scope.blocks.push({time: timeslots[i], talks: []});
+        };
+
+        console.log($scope.blocks);
+
+        for (var i = data.length - 1; i >= 0; i--) {
+            var timeslot = _.find($scope.blocks, function(block) {return block.time == data[i].Start});
+            timeslot.talks.push(data[i]);
+        };
     });
 }]);
