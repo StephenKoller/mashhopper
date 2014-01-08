@@ -4,11 +4,16 @@ h1 {
 }
 
 .talk-div-item {
-    width: 280px;
+    width: 300px;
     height: 120px;
     margin: 10px 0px 0px 10px;
     float: left;
     background: white;
+    box-shadow: 0 0 5px 1px rgba(0,0,0,0.1);
+}
+
+.talk-attending {
+    box-shadow: 0 0 5px 2px rgba(71, 164, 71, 1);
 }
 
 .talk-div-item-title {
@@ -230,6 +235,7 @@ footer p {
     margin-bottom: 30px!important;
     overflow: hidden;
     display: block!important;
+    box-shadow: 0 0 5px 1px rgba(0,0,0,0.1);
 }
 
 .grid li {

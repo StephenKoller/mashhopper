@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.schedule').controller('ScheduleController', ['$scope', '$routeParams', '$location', 'Global', 'Talks', 'User', function ($scope, $routeParams, $location, Global, Talks, User) {
+angular.module('mean.schedule').controller('ScheduleController', ['$scope', '$routeParams', '$location', '$modal', 'Global', 'Talks', 'User', function ($scope, $routeParams, $location, $modal, Global, Talks, User) {
     $scope.global = Global;
     $scope.colors =  { 
         '.NET' : 'dot-net',
@@ -25,6 +25,8 @@ angular.module('mean.schedule').controller('ScheduleController', ['$scope', '$ro
         'Mac/iPhone' : 'mac'
     };
     $scope.blocks = [];
+    $scope.hideUnattending = false;
+    
 
     $scope.style = function(talk) {
         return $scope.colors[talk.Technology];
@@ -45,6 +47,10 @@ angular.module('mean.schedule').controller('ScheduleController', ['$scope', '$ro
         var user = $scope.global.user;
         return _.contains(user.talks, talk.Id);
     };
+
+    $scope.showTalk = function(talk) {
+        return !$scope.hideUnattending || $scope.isAttending(talk);
+    }
 
     Talks.query(function(data) {
         $scope.talks = data;
@@ -69,4 +75,12 @@ angular.module('mean.schedule').controller('ScheduleController', ['$scope', '$ro
             timeslot.talks.push(data[i]);
         };
     });
+
+    $scope.openDescription = function(talk){
+        $scope.modalTalk = talk;
+        $modal.open({
+            scope: $scope,
+            templateUrl: 'views/talks/infoModal.html'
+      });
+    };
 }]);
