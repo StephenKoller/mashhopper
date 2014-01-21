@@ -1,0 +1,43 @@
+<section data-ng-controller="ScheduleController">
+	<h1 class="oleo text-left">Schedule</h1>
+	
+		<input type="checkbox" ng-model="hideUnattending">Hide Unattended Conferences</input>
+		<div class="col-md-12">
+			<div ng-repeat="block in blocks" class="well">
+				<div class="talk-block-title-bar">
+					<h4>{{block.time | date:['EEEE h:mm a']}}</h4>
+				</div>
+
+		        <div ng-repeat="talk in block.talks" class="talk-div-item" data-ng-class="{ 'talk-attending' : isAttending(talk) }" ng-show="showTalk(talk)">
+		        	<div class="row">
+		        		<div class="col-md-12">
+		        		   	<div data-ng-class="style(talk)" class="technology">{{talk.Technology}}</div>
+		     			</div>
+	        		</div>
+	        		<div class="talk-div-item-title clickable" data-ng-click="openDescription(talk)">
+		            	<h4>{{talk.Title}}</h4>
+		            </div>
+		            <div class="row">
+	        			<div class="col-md-12">
+				            <button data-ng-click="update(talk)" class="btn btn-default btn-labeled btn-xs" data-ng-class="{ 'btn-success' : isAttending(talk) }">
+				            	<span class="btn-label">
+				            		<i class="glyphicon glyphicon-ok" data-ng-class="{ 'glyphicon-ok' : isAttending(talk), 'glyphicon-remove' : !isAttending(talk) }"></i>
+			            		</span>
+			            		<span ng-switch on="isAttending(talk)">
+			            			<span ng-switch-when="true">
+			            				Attending
+			            			</span>
+			            			<span ng-switch-when="false">
+			            				Not Attending
+			            			</span>
+			            		</span>
+				            </button>
+			            </div>
+		            </div>
+        		</div>
+
+        		<div class="clearfix">
+	            </div>
+			</div>
+		</div>
+</section>

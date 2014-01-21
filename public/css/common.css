@@ -1,0 +1,307 @@
+h1 {
+    margin-left: 60px;
+    font-size: 42px; 
+}
+
+.talk-div-item {
+    width: 300px;
+    height: 120px;
+    margin: 10px 0px 0px 10px;
+    float: left;
+    background: white;
+    box-shadow: 0 0 5px 1px rgba(0,0,0,0.1);
+}
+
+.talk-attending {
+    box-shadow: 0 0 5px 2px rgba(71, 164, 71, 1);
+}
+
+.talk-div-item-title {
+    padding: 0px 10px 0px 10px;
+    height: 55px;
+}
+
+.talk-div-item-title h4 {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.talk-block-item {
+    margin: 5px;
+}
+
+.talk-block-title-bar {
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+.btn-label {
+    position: relative;
+    left: -6px;
+    display: inline-block;
+    padding: 1px 6px;
+    background: rgba(0,0,0,0.15);
+    border-radius: 3px 0 0 3px;
+}
+
+.btn-labeled {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0 0 10px 10px
+}
+
+.btn-labeled:focus{
+    outline:none;
+}
+
+.oleo{
+    font-family: 'Oleo Script', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+}
+
+.navbar {
+    -webkit-border-radius: 0;
+            border-radius: 0;
+    margin-bottom: 0;
+}
+.navbar .nav>li>a.brand {
+    padding-left:20px;
+    margin-left:0
+}
+
+.bottom-margin {
+    margin-bottom:20px;
+}
+
+.left-margin {
+    margin-left: 40px;
+}
+
+.content {
+    width:100%
+}
+
+.container {
+    width:100%;
+    background-color: #EEE;
+}
+
+footer {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
+    background:#ddd;
+    -webkit-box-shadow:0 8px 6px 6px black;
+    -moz-box-shadow:0 8px 6px 6px black;
+    box-shadow:0 8px 6px 6px black
+}
+
+footer p {
+    padding:5px 0 12px 10px
+}
+
+.technology {
+    padding:4px 10px;
+    width:100%;
+    height:26px;
+    font-size:13px;
+    font-weight:bold;
+    color:#FFF;
+}
+
+#custom-search-input {
+        margin:0;
+        margin-top: 10px;
+        padding: 0;
+    }
+ 
+    #custom-search-input .search-query {
+        padding-right: 3px;
+        padding-right: 4px \9;
+        padding-left: 3px;
+        padding-left: 4px \9;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+ 
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+ 
+    #custom-search-input button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color:black;
+    }
+ 
+    .search-query:focus + button {
+        z-index: 3;   
+    }
+
+.date-label{
+    margin-left:10px;
+}
+
+.dot-net {
+    background-color: #68217a;
+    /*//, '#BF3978', '#15A0C6', '#9A2BC3'*/
+}
+
+.testing {
+    background-color: #BF3978;
+    /*//, '#BF3978', '#15A0C6', '#9A2BC3'*/
+}
+
+.mobile {
+    background-color: #5458BD;
+}
+
+.python {
+    background-color: #376A94;
+}
+
+.cool-stuff {
+    background-color: #9A2BC3;
+}
+
+.java {
+    background-color: #FF66CC;
+}
+
+.javascript {
+    background-color: #FF9933;
+}
+
+.ruby {
+    background-color: #CC342D;
+}
+
+.languages {
+    background-color: #EC6060;
+}
+
+.microsoft {
+    background-color: #00AAEB;
+}
+
+.design {
+    background-color: #808CFF;
+}
+
+.cloud {
+    background-color: #507405;
+}
+
+.deployment {
+    background-color: #16CCAF;
+}
+
+.mac {
+    background-color: #F1B720;
+}
+
+.hardware {
+    background-color: #FF6F42;
+}
+
+.methodologies {
+    background-color: #79AC14;
+}
+
+.other {
+    background-color: #E2386E;
+}
+
+.soft-skills {
+    background-color: #42832E;
+}
+
+.grid {
+    padding:0;
+}
+
+.talk-brick {
+    margin-bottom: 30px!important;
+    overflow: hidden;
+    display: block!important;
+    box-shadow: 0 0 5px 1px rgba(0,0,0,0.1);
+}
+
+.grid li {
+    background-color:#FFF;
+    display: inline-block;
+    width: 280px;
+    /*height: 100px;*/
+    /*border: solid 1px #ccc;*/
+    /*margin: 0 0 10px 10px;*/
+    /*margin-bottom:50px;*/
+    padding:0;
+}
+
+.grid li h4{
+    font-size:14px;
+    font-weight:600;
+    margin:16px 10px;
+    height:30px;
+}
+
+.grid li label{
+    font-size:12px;
+    font-weight:normal;
+}
+
+.view-control {
+    font-size:12px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+/**** Transitions ****/
+
+/* center container with CSS */
+.masonry {
+    margin: 0 auto;
+}
+
+.masonry,
+.masonry li { /* apply before masonry add class */
+    position: absolute; /* important to add it before enter animation start */
+    
+    -webkit-transition-duration: .7s;
+    transition-duration: .7s;
+    
+    -webkit-transition-property: all;
+    transition-property: all;    
+}
+
+.masonry .masonry-enter { /* limit animated properties for entering elements */
+    -webkit-transition-property: -webkit-transform, opacity;
+    transition-property: transform, opacity;
+}
+
+.masonry-enter,
+.masonry-leave.masonry-leave-active {
+    opacity: 0;
+    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
+}
+
+.masonry-leave,
+.masonry-enter.masonry-enter-active {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
