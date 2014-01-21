@@ -4,24 +4,18 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    Users = mongoose.model('User'),
-    Talks = mongoose.model('Talk'),
-    _ = require('lodash');
-
-
-
+    Talks = mongoose.model('Talk');
+    
 /**
  * Graph Data.
  */
 exports.all = function(req, res) {
-    Talks.find().exec(function(err, talks){
+    Talks.find().exec(function(err, talks) {
         if (err) throw err;
 
-        var grouped = _.groupBy(talks, function(talk){ return talk.Technology; })
-
         var mapped = {};
-        for (var i = 0; i < talks.length; i++) {
-            var talk = talks[i];
+        for (var t = 0; t < talks.length; t++) {
+            var talk = talks[t];
             if (mapped[talk.Technology]) {
                 mapped[talk.Technology].push(talk);
             } else {
@@ -36,19 +30,30 @@ exports.all = function(req, res) {
             for (var i = 0; i < group.length; i++) {
                 sum += group[i].Users.length;
             }
-            var row = {c: [{v: key}, {v: sum}]};
+            var row = {
+                c: [{
+                    v: key
+                }, {
+                    v: sum
+                }]
+            };
             rows.push(row);
         }
 
-        
+
         var found = {
-            "cols": [
-                {id: "group", label: "Groups", type: "string"},
-                {id: "people", label: "people", type: "number"}
-            ],
-            "rows": rows};
+            'cols': [{
+                id: 'group',
+                label: 'Groups',
+                type: 'string'
+            }, {
+                id: 'people',
+                label: 'people',
+                type: 'number'
+            }],
+            'rows': rows
+        };
 
         res.jsonp(found);
     });
-
 };

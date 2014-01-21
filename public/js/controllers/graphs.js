@@ -20,8 +20,8 @@ angular.module('mean.graphs').controller('GraphsController', ['$scope', '$routeP
             // * Instead, this function can be called after a Google charts render to "fix" the
             // * issue by setting the style attributes dynamically.
 
-            $(".google-visualization-table-table img[width]").each(function(index, img) {
-                $(img).css("width", $(img).attr("width")).css("height", $(img).attr("height"));
+            $('.google-visualization-table-table img[width]').each(function(index, img) {
+                $(img).css('width', $(img).attr('width')).css('height', $(img).attr('height'));
             });
         };
 

@@ -1,6 +1,22 @@
 'use strict';
 
-angular.module('mean', ['ngCookies', 'ngResource', 'ngRoute', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.articles', 'mean.talks', 'mean.speakers', 'mean.schedule', 'codemash.talks', 'jquery.masonry', 'googlechart', 'mean.graphs', 'mashhopper.graphs']);
+angular.module('mean', ['ngCookies',
+	'ngResource',
+	'ngRoute',
+	'ui.bootstrap',
+	'ui.route',
+	'mean.system',
+	'mean.articles',
+	'mean.talks',
+	'mean.speakers',
+	'mean.schedule',
+	'codemash.talks',
+	'jquery.masonry',
+	'googlechart',
+	'mean.graphs',
+	'mashhopper.graphs',
+	'underscore'
+]);
 
 angular.module('mean.system', []);
 angular.module('mean.articles', []);

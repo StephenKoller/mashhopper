@@ -1,14 +1,13 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    crypto = require('crypto');
+	Schema = mongoose.Schema;
 
 var TalkSchema = new Schema({
-    title: String,
-    Id: String,
-    Users: [String],
-    Technology: String
+	title: String,
+	Id: String,
+	Users: [String],
+	Technology: String
 });
 
 
@@ -16,9 +15,9 @@ var TalkSchema = new Schema({
  * Statics
  */
 TalkSchema.statics.load = function(id, cb) {
-    this.findOne({
-        _id: id
-    }).exec(cb);
+	this.findOne({
+		_id: id
+	}).exec(cb);
 };
 
 

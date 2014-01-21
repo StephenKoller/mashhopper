@@ -88,29 +88,29 @@ exports.me = function(req, res) {
     res.jsonp(req.user || null);
 };
 
-exports.update = function(req, res) {
+exports.update = function(req) {
     var user = req.user;
-    
+
     user = _.extend(user, req.body);
 
-    
-    user.save(function(err){
-        if(err)
+
+    user.save(function(err) {
+        if (err)
             console.log(err);
     });
 };
 
-exports.toggle = function(req, res) {
+exports.toggle = function(req, res, next) {
     var user = req.user;
     var options = req.body;
-    Talks.load(options.talkId, function(err, talk){
+    Talks.load(options.talkId, function(err, talk) {
         if (err) {
             console.log(err);
             return next(err);
         }
         if (options.adding) {
             if (!talk.Users) {
-                 talk.Users = [];
+                talk.Users = [];
             }
             talk.Users.push(user._id);
             user.talks.push(talk.Id);
@@ -123,7 +123,7 @@ exports.toggle = function(req, res) {
         res.send(true);
     });
 };
-    
+
 /**
  * Find user by id
  */
@@ -139,4 +139,3 @@ exports.user = function(req, res, next, id) {
             next();
         });
 };
-
