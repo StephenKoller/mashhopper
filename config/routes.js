@@ -30,6 +30,39 @@ module.exports = function(app, passport, auth) {
         failureRedirect: '/signin'
     }), users.authCallback);
 
+    //Setting the linkedin oauth routes
+    app.get('/auth/linkedin', passport.authenticate('linkedin', {
+        failureRedirect: '/signin',
+        scope: ['r_basicprofile'],
+        state:"dev4myappUpunk",
+    }), users.signin);
+
+    app.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
+        failureRedirect: '/signin',
+        state:"dev4myappUpunk"
+    }), users.authCallback);
+
+    //Setting the twitter oauth routes
+    app.get('/auth/twitter', passport.authenticate('twitter'), users.signin);
+
+    app.get('/auth/twitter/callback', passport.authenticate('twitter', {
+        failureRedirect: '/signin'
+    }), users.authCallback);
+
+    //Setting the facebook oauth routes
+    app.get('/auth/facebook', passport.authenticate('facebook'), users.signin);
+
+    app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+        failureRedirect: '/signin'
+    }), users.authCallback);
+
+    //Setting the github oauth routes
+    app.get('/auth/github', passport.authenticate('github'), users.signin);
+
+    app.get('/auth/github/callback', passport.authenticate('github', {
+        failureRedirect: '/signin'
+    }), users.authCallback);
+
     //Finish with setting up the userId param
     app.param('userId', users.user);
 

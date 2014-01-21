@@ -30,6 +30,7 @@
         "passport-twitter": "latest",
         "passport-github": "latest",
         "passport-google-oauth": "latest",
+        "passport-linkedin-oauth2":"latest",
         "lodash": "latest",
         "view-helpers": "latest",
         "mean-logger": "latest",
