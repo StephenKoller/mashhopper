@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.talks').controller('TalksController', ['$scope', '$routeParams', '$location', '$modal', 'Global', 'Talks', 'User',
+angular.module('mean.talks').controller('TalksController', ['$scope', '$routeParams', '$location', '$modal', 'Global', 'Talks', 'User', '_',
     function($scope, $routeParams, $location, $modal, Global, Talks, User, _) {
         $scope.global = Global;
         $scope.colors = {
@@ -34,6 +34,7 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
 
         $scope.update = function(talk) {
             var user = $scope.global.user;
+            
             var adding = !_.contains(user.talks, talk.Id);
             if (_.contains(user.talks, talk.Id))
                 user.talks = _.without(user.talks, talk.Id);

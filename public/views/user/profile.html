@@ -1,0 +1,34 @@
+<section data-ng-controller="UserProfileController" >
+	<h1 class="oleo text-left">Profile</h1>
+
+	<table class="row bottom-margin left-margin">
+        <tr>
+            <td>Display Name:</td>
+            <td><input ng-model="user.name"></td>
+        </tr>
+        <tr>
+            <td>User Name:</td>
+            <td><input ng-model="user.username"></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input ng-model="user.email"></td>
+        </tr>
+    </table>
+    <h1 class="oleo text-left">Accounts</h1>
+    <table class="row bottom-margin left-margin">
+        <tr>
+            <td>Currently Linked</td>
+            <td>
+                <span ng-repeat="provider in providers | filter:isLinked"><img ng-src="{{provider.icon}}" /></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Not yet linked</td>
+            <td>
+                <span ng-repeat="provider in providers | filter:isNotLinked"><img ng-src="{{provider.icon}}" /></span>
+            </td>
+        </tr>
+	</table>
+
+</section>
