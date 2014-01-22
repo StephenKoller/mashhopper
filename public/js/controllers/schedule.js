@@ -74,11 +74,11 @@ angular.module('mean.schedule').controller('ScheduleController', ['$scope', '$ro
             }
 
             console.log($scope.blocks);
-
+            var filterFunction = function(block) {
+                return block.time === data[t].Start;
+            };
             for (var t = data.length - 1; t >= 0; t--) {
-                var timeslot = _.find($scope.blocks, function(block) {
-                    return block.time === data[t].Start;
-                });
+                var timeslot = _.find($scope.blocks, filterFunction);
                 timeslot.talks.push(data[t]);
             }
         });
