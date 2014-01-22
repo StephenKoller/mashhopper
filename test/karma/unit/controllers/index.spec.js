@@ -21,6 +21,14 @@
                 expect(scope.global).toBeTruthy();
 
             });
+
+            it('should log to the console', function() {
+                expect(1).toBe(3);
+            });
+
+            it('is going to be silly.', function(){
+                expect('this').toBeTruthy();
+            });
         });
     });
 })();

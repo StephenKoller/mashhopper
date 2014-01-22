@@ -29,6 +29,10 @@ module.exports = function(grunt) {
                 options: {
                     livereload: true
                 }
+            },
+            karma: {
+                files: ['public/js/**/*.js', 'test/karma/unit/**/*.js'],
+                tasks: ['karma:unit:run'] //NOTE the :run flag
             }
         },
         jshint: {

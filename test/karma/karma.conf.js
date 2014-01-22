@@ -16,6 +16,7 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
+            'public/lib/underscore/underscore.js',
             'public/lib/angular/angular.js',
             'public/lib/angular-mocks/angular-mocks.js',
             'public/lib/angular-cookies/angular-cookies.js',
@@ -26,8 +27,7 @@ module.exports = function(config) {
             'public/lib/angular-ui-utils/modules/route/route.js',
             'public/js/app.js',
             'public/js/config.js',
-            'public/js/directives.js',
-            'public/js/filters.js',
+            'public/js/factories/underscore.js',
             'public/js/services/global.js',
             'public/js/services/articles.js',
             'public/js/controllers/articles.js',
@@ -97,6 +97,6 @@ module.exports = function(config) {
 
         // Continuous Integration mode
         // if true, it capture browsers, run tests and exit
-        singleRun: true
+        //singleRun: true
     });
 };
