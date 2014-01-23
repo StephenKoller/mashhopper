@@ -67,7 +67,7 @@ exports.handleGithubAuthentication = function(accessToken, refreshToken, profile
                 github: profile._json
             });
             user.save(function(err) {
-            if (err) console.log(err);
+                if (err) console.log(err);
                 return done(err, user);
             });
         } else {
@@ -100,7 +100,6 @@ exports.handleGoogleAuthentication = function(accessToken, refreshToken, profile
 };
 
 exports.handleLinkedinAuthentication = function(accessToken, refreshToken, profile, done) {
-    console.log("profile.id is "+profile);
     User.findOne({
         'linkedin.id': profile.id
     }, function(err, user) {
