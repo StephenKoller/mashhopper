@@ -3,8 +3,8 @@
 /**
  * Module dependencies.
  */
-var should = require('should'),
-    events = require('../../../app/services/events.js');
+var expect = require('chai').expect,
+    events = require('../../../../app/services/events.js');
 
 var eventObject;
 //The tests
@@ -20,19 +20,18 @@ describe('<Unit Test>', function() {
         });
 
         it('should not be null', function(done) {
-            events.should.not.be.null;
+            expect(events).to.exist;
             done();
         });
 
 
         it('should have a method to log an event', function(done) {
-            events.logEvent.should.be.ok;
+            expect(events.logEvent).to.be.ok;
             done();
         });
 
         it('should take in an eventObject', function(done) {
             events.logEvent(eventObject);
-            (1).should.be.ok;
             done();
         });
 

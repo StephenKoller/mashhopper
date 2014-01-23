@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-var should = require('should'),
+var expect = require('chai').expect,
     mongoose = require('mongoose'),
     User = mongoose.model('User'),
     Article = mongoose.model('Article');
@@ -37,7 +37,7 @@ describe('<Unit Test>', function() {
         describe('Method Save', function() {
             it('should be able to save without problems', function(done) {
                 return article.save(function(err) {
-                    should.not.exist(err);
+                    expect(err).to.not.exist;
                     done();
                 });
             });
@@ -46,7 +46,7 @@ describe('<Unit Test>', function() {
                 article.title = '';
 
                 return article.save(function(err) {
-                    should.exist(err);
+                    expect(err).to.exist;
                     done();
                 });
             });

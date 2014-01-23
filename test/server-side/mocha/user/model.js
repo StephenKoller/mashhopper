@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-var should = require('should'),
+var expect = require('chai').expect,
     mongoose = require('mongoose'),
     User = mongoose.model('User');
 
@@ -33,7 +33,7 @@ describe('<Unit Test>', function() {
         describe('Method Save', function() {
             it('should begin with no users', function(done) {
                 User.find({}, function(err, users) {
-                    users.should.have.length(0);
+                    expect(users).to.have.length(0);
                     done();
                 });
             });
@@ -45,7 +45,7 @@ describe('<Unit Test>', function() {
             it('should fail to save an existing user again', function(done) {
                 user.save();
                 return user2.save(function(err) {
-                    should.exist(err);
+                    expect(err).to.exist;
                     done();
                 });
             });
@@ -53,7 +53,7 @@ describe('<Unit Test>', function() {
             it('should be able to show an error when try to save without name', function(done) {
                 user.name = '';
                 return user.save(function(err) {
-                    should.exist(err);
+                    expect(err).to.exist;
                     done();
                 });
             });
