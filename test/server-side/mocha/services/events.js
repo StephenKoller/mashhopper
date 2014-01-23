@@ -3,19 +3,27 @@
 /**
  * Module dependencies.
  */
-var expect = require('chai').expect,
-    events = require('../../../../app/services/events.js');
 
-var eventObject;
+var fakeGameService = {
+    hello : function() { 
+        console.log('I am a game service. I update your XP');
+    }
+};
+
+var expect = require('chai').expect,
+    mongoose = require('mongoose'),
+    User = mongoose.model('User'),
+    sinon = require('sinon'),
+    rewire = require("rewire"),
+    proxyquire = require('proxyquire').noCallThru(),
+    events = proxyquire('../../../../app/services/events.js', {
+        './game.js': fakeGameService
+    });
+
 //The tests
 describe('<Unit Test>', function() {
     describe('Service Events:', function() {
         before(function(done) {
-            eventObject = {
-                user: {},
-                type: 'facebook',
-                details: 'session name'
-            };
             done();
         });
 
@@ -30,10 +38,42 @@ describe('<Unit Test>', function() {
             done();
         });
 
-        it('should take in an eventObject', function(done) {
-            events.logEvent(eventObject);
+        it('should save a logged event to the database', function(done) {
+            var fakeUser = {
+                save: function() {}
+            };
+            var mockUser = sinon.mock(fakeUser).expects("save").once();
+            var eventObject = {
+                type: 'facebook',
+                details: 'session name'
+            };
+            events.logEvent(eventObject, fakeUser);
+
+            mockUser.verify();
+            done();
+        
+        });
+
+        
+        it('should call the game service', function(done) {
+            var fakeUser = {
+                save: function() {}
+            };
+            var mockUser = sinon.mock(fakeUser).expects("save").once();
+            var eventObject = {
+                type: 'facebook',
+                details: 'session name'
+            };
+            var mockGameService = sinon.mock(fakeGameService).expects('hello').once();
+            events.logEvent(eventObject, fakeUser);
+            mockGameService.verify();
             done();
         });
+
+        /*it('should return a list of events for a user', function(done) {
+            events.logEvent(eventObject);
+            done();
+        });*/
 
 
         // before(function(done) {

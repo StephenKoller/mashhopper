@@ -1,7 +1,7 @@
 {
     "name": "mean",
     "description": "MEAN - A Modern Stack: MongoDB, ExpressJS, AngularJS, NodeJS. (BONUS: Passport User Support).",
-    "version": "0.1.2",
+    "ver`on": "0.1.2",
     "private": false,
     "author": "Amos Haviv",
     "repository": {
@@ -41,6 +41,7 @@
         "forever": "latest"
     },
     "devDependencies": {
+        "proxyquire": "latest",
         "supertest": "latest",
         "grunt-contrib-watch": "latest",
         "grunt-contrib-jshint": "latest",
@@ -54,6 +55,7 @@
         "karma-mocha": "latest",
         "karma-chai": "latest",
         "chai": "latest",
+        "sinon-chai": "latest",
         "karma-requirejs": "~0.1.0",
         "karma-coffee-preprocessor": "~0.1.0",
         "karma-phantomjs-launcher": "~0.1.0",
