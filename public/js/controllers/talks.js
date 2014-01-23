@@ -27,6 +27,12 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
         };
         $scope.radioModel = 'Left';
         $scope.order = 'Start';
+        $scope.displayFormat = 'grid';
+        $scope.displayFormatStyle=function(format){
+            if(format === $scope.displayFormat){
+                return ['active'];
+            }
+        };
 
         $scope.style = function(talk) {
             return $scope.colors[talk.Technology];

@@ -109,6 +109,10 @@ footer p {
     font-weight:bold;
     color:#FFF;
 }
+td.technology {
+    width:auto;
+}
+
 
 #custom-search-input {
         margin:0;
@@ -154,77 +158,77 @@ footer p {
 }
 
 .dot-net {
-    background-color: #68217a;
+    background-color: #68217a !important;
     /*//, '#BF3978', '#15A0C6', '#9A2BC3'*/
 }
 
 .testing {
-    background-color: #BF3978;
+    background-color: #BF3978 !important;
     /*//, '#BF3978', '#15A0C6', '#9A2BC3'*/
 }
 
 .mobile {
-    background-color: #5458BD;
+    background-color: #5458BD !important;
 }
 
 .python {
-    background-color: #376A94;
+    background-color: #376A94 !important;
 }
 
 .cool-stuff {
-    background-color: #9A2BC3;
+    background-color: #9A2BC3 !important;
 }
 
 .java {
-    background-color: #FF66CC;
+    background-color: #FF66CC !important;
 }
 
 .javascript {
-    background-color: #FF9933;
+    background-color: #FF9933 !important;
 }
 
 .ruby {
-    background-color: #CC342D;
+    background-color: #CC342D !important;
 }
 
 .languages {
-    background-color: #EC6060;
+    background-color: #EC6060 !important;
 }
 
 .microsoft {
-    background-color: #00AAEB;
+    background-color: #00AAEB !important;
 }
 
 .design {
-    background-color: #808CFF;
+    background-color: #808CFF !important;
 }
 
 .cloud {
-    background-color: #507405;
+    background-color: #507405 !important;
 }
 
 .deployment {
-    background-color: #16CCAF;
+    background-color: #16CCAF !important;
 }
 
 .mac {
-    background-color: #F1B720;
+    background-color: #F1B720 !important;
 }
 
 .hardware {
-    background-color: #FF6F42;
+    background-color: #FF6F42 !important;
 }
 
 .methodologies {
-    background-color: #79AC14;
+    background-color: #79AC14 !important;
 }
 
 .other {
-    background-color: #E2386E;
+    background-color: #E2386E !important;
 }
 
 .soft-skills {
-    background-color: #42832E;
+    background-color: #42832E !important;
 }
 
 .grid {

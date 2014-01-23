@@ -4,10 +4,10 @@
 	<div class="row bottom-margin left-margin">
 		<div class="col-md-9">
 			<div class="btn-group">
-		        <button class="btn btn-default active view-control" rel="tooltip" data-original-title="Grid view">
+		        <button class="btn btn-default active view-control" rel="tooltip" data-original-title="Grid view" ng-model="displayFormat" ng-class="displayFormatStyle('grid')" ng-click="displayFormat = 'grid'">
 		            <i class="glyphicon glyphicon-th"></i>
 		        </button>
-		        <button class="btn btn-default view-control" rel="tooltip" data-original-title="List view">
+		        <button class="btn btn-default view-control" rel="tooltip" data-original-title="List view" ng-model="displayFormat" ng-class="displayFormatStyle('list')" ng-click="displayFormat = 'list'">
                 	<i class="glyphicon glyphicon-th-list"></i>
 				</button>
 	        </div>
@@ -35,7 +35,7 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<ul class="grid" masonry="true">
+			<ul class="grid" masonry="true" ng-show="displayFormat == 'grid'">
 		        <li ng-repeat="talk in talks | filter:searchTermWithDelay | orderBy:order" class="talk-brick">
 		        	<div class="row">
 		        		<div class="col-md-12">
@@ -76,6 +76,49 @@
 		            </div>
 		        </li>
 		    </ul>
+            <div class="table-responsive" ng-show="displayFormat == 'list'">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Technology</th>
+                            <th>Title</th>
+                            <td>Attending</th>
+                            <th>Room</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="talk in talks | filter:searchTermWithDelay | orderBy:order">
+                            <td>
+                                <span ng-if="talk.Start">
+                                    <span class="label label-default date-label">{{talk.Start | date:['EEEE h:mm a']}}</span>
+                                </span>
+                            </td>
+                            <td data-ng-class="style(talk)" class="technology">{{talk.Technology}}</td>
+                            <td class="clickable" data-ng-click="openDescription(talk)">
+                                <h4>{{talk.Title}}</h4>
+                            </td>
+                            <td>
+                                <button data-ng-click="update(talk)" class="btn btn-default btn-labeled btn-xs" data-ng-class="{ 'btn-success' : isAttending(talk) }">
+                                    <span class="btn-label">
+                                        <i class="glyphicon glyphicon-ok" data-ng-class="{ 'glyphicon-ok' : isAttending(talk), 'glyphicon-remove' : !isAttending(talk) }"></i>
+                                    </span>
+                                    <span ng-switch on="isAttending(talk)">
+                                        <span ng-switch-when="true">
+                                            Attending
+                                        </span>
+                                        <span ng-switch-when="false">
+                                            Not Attending
+                                        </span>
+                                    </span>
+                                </button>
+                            </td>
+
+                            <td><span ng-if="talk.Room">
+                                <span class="label label-default date-label">{{talk.Room}}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
 		</div>
 	</div>
 </section>
