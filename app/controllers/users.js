@@ -88,7 +88,7 @@ exports.me = function(req, res) {
     res.jsonp(req.user || null);
 };
 
-exports.update = function(req) {
+exports.update = function(req, res) {
     var user = req.user;
 
     user = _.extend(user, req.body);
@@ -98,6 +98,7 @@ exports.update = function(req) {
         if (err)
             console.log(err);
     });
+    res.send({status:200});
 };
 
 exports.toggle = function(req, res, next) {
@@ -138,4 +139,12 @@ exports.user = function(req, res, next, id) {
             req.profile = user;
             next();
         });
+};
+
+exports.linkAccount = function(){
+
+};
+
+exports.linkAccountCallback = function(){
+
 };

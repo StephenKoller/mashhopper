@@ -63,6 +63,13 @@ module.exports = function(app, passport, auth) {
         failureRedirect: '/signin'
     }), users.authCallback);
 
+    //Setting the github oauth routes for linking to existing account
+    app.get('/users/link/github', passport.authenticate('github'), users.linkAccount);
+
+    app.get('/auth/github/callback', passport.authenticate('github', {
+        failureRedirect: '/#!/profile'
+    }), users.linkAccountCallback);
+
     //Finish with setting up the userId param
     app.param('userId', users.user);
 

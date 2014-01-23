@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean.users').controller('UserProfileController', ['$scope', '$routeParams', '$location', '$modal', 'Global',
-    function($scope, $routeParams, $location, $modal, Global) {
+angular.module('mean.users').controller('UserProfileController', ['$scope', '$routeParams', '$location', '$modal', '$http', 'Global',
+    function($scope, $routeParams, $location, $modal, $http, Global) {
         $scope.global = Global;
         $scope.providers = [{
             key: 'google',
@@ -25,6 +25,15 @@ angular.module('mean.users').controller('UserProfileController', ['$scope', '$ro
         };
         $scope.isNotLinked = function(provider) {
             return !$scope.isLinked(provider);
+        };
+        $scope.updateProfile = function(){
+            $http.post('/users/'+$scope.user._id, $scope.user).success($scope.showSuccessMessage).error($scope.showFailureMessage);
+        };
+        $scope.showSuccessMessage = function(){
+            console.log('woopy');
+        };
+        $scope.showFailureMessage = function(){
+            console.log('bogus');
         };
     }
 ]);
