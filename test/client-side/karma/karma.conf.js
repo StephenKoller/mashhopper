@@ -7,15 +7,16 @@ module.exports = function(config) {
     config.set({
 
         // base path, that will be used to resolve files and exclude
-        basePath: '../../',
+        basePath: '../../../',
 
 
         // frameworks to use
-        frameworks: ['jasmine'],
+        frameworks: ['mocha', 'chai'],
 
 
         // list of files / patterns to load in the browser
         files: [
+            //3rd Party Code
             'public/lib/underscore/underscore.js',
             'public/lib/angular/angular.js',
             'public/lib/angular-mocks/angular-mocks.js',
@@ -25,6 +26,8 @@ module.exports = function(config) {
             'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
             'public/lib/angular-bootstrap/ui-bootstrap.js',
             'public/lib/angular-ui-utils/modules/route/route.js',
+
+            //App-specific Code
             'public/js/app.js',
             'public/js/config.js',
             'public/js/factories/underscore.js',
@@ -34,7 +37,9 @@ module.exports = function(config) {
             'public/js/controllers/index.js',
             'public/js/controllers/header.js',
             'public/js/init.js',
-            'test/karma/unit/**/*.js'
+
+            //Test-Specific Code
+            'test/client-side/karma/unit/**/*.js'
         ],
 
 

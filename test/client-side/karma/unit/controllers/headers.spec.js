@@ -17,9 +17,7 @@
             }));
 
             it('should expose some global scope', function() {
-
-                expect(scope.global).toBeTruthy();
-
+                expect(scope.global).to.be.ok;
             });
         });
     });

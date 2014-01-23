@@ -31,7 +31,7 @@ module.exports = function(grunt) {
                 }
             },
             karma: {
-                files: ['public/js/**/*.js', 'test/karma/unit/**/*.js'],
+                files: ['public/js/**/*.js', 'test/client-side/karma/unit/**/*.js'],
                 tasks: ['karma:unit:run'] //NOTE the :run flag
             }
         },
@@ -71,7 +71,7 @@ module.exports = function(grunt) {
                 reporter: 'spec',
                 require: 'server.js'
             },
-            src: ['test/mocha/**/*.js']
+            src: ['test/server-side/mocha/**/*.js']
         },
         env: {
             test: {
@@ -80,7 +80,7 @@ module.exports = function(grunt) {
         },
         karma: {
             unit: {
-                configFile: 'test/karma/karma.conf.js'
+                configFile: 'test/client-side/karma/karma.conf.js'
             }
         }
     });
@@ -104,4 +104,10 @@ module.exports = function(grunt) {
 
     //Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
+
+    //client side tests
+    grunt.registerTask('test-client', ['env:test', 'karma:unit']);
+
+    //server side tests
+    grunt.registerTask('test-server', ['env:test', 'mochaTest']);
 };

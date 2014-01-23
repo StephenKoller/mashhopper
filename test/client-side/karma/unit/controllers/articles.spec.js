@@ -1,6 +1,6 @@
 'use strict';
 
-(function() {
+//(function() {
     // Articles Controller Spec
     describe('MEAN controllers', function() {
         describe('ArticlesController', function() {
@@ -9,13 +9,13 @@
             // the responses exactly. To solve the problem, we use a newly-defined toEqualData Jasmine matcher.
             // When the toEqualData matcher compares two objects, it takes only object properties into
             // account and ignores methods.
-            beforeEach(function() {
-                this.addMatchers({
-                    toEqualData: function(expected) {
-                        return angular.equals(this.actual, expected);
-                    }
-                });
-            });
+            // beforeEach(function() {
+            //     this.addMatchers({
+            //         toEqualData: function(expected) {
+            //             return angular.equals(this.actual, expected);
+            //         }
+            //     });
+            // });
 
             // Load the controllers module
             beforeEach(module('mean'));
@@ -60,10 +60,14 @@
                     $httpBackend.flush();
 
                     // test scope value
-                    expect(scope.articles).toEqualData([{
-                        title: 'An Article about MEAN',
-                        content: 'MEAN rocks!'
-                    }]);
+                    // expect(scope.articles).toEqualData([{
+                    //     title: 'An Article about MEAN',
+                    //     content: 'MEAN rocks!'
+                    // }]);
+
+                    expect(scope.articles[0].title).to.equal('An Article about MEAN');
+                    expect(scope.articles[0].content).to.equal('MEAN rocks!');
+
 
                 });
 
@@ -88,7 +92,9 @@
                     $httpBackend.flush();
 
                     // test scope value
-                    expect(scope.article).toEqualData(testArticleData());
+                    //expect(scope.article).toEqualData(testArticleData());
+                    expect(scope.article.title).to.equal('An Article about MEAN');
+                    expect(scope.article.content).to.equal('MEAN rocks!');
 
                 });
 
@@ -125,12 +131,14 @@
                     $httpBackend.flush();
 
                     // test form input(s) are reset
-                    expect(scope.title).toEqual('');
-                    expect(scope.content).toEqual('');
+                    expect(scope.title).to.equal('');
+                    expect(scope.content).to.equal('');
 
                     // test URL location to new object
-                    expect($location.path()).toBe('/articles/' + responseArticleData()._id);
+                    //expect($location.path()).toBe('/articles/' + responseArticleData()._id);
+                    expect($location.path()).to.equal('/articles/' + responseArticleData()._id);
                 });
+
 
             it('$scope.update() should update a valid article', inject(function(Articles) {
 
@@ -165,7 +173,8 @@
                 $httpBackend.flush();
 
                 // test URL location to new object
-                expect($location.path()).toBe('/articles/' + putArticleData()._id);
+                //expect($location.path()).toBe('/articles/' + putArticleData()._id);
+                expect($location.path()).to.equal('/articles/' + putArticleData()._id);
 
             }));
 
@@ -190,9 +199,8 @@
 
                     // test after successful delete URL location articles lis
                     //expect($location.path()).toBe('/articles');
-                    expect(scope.articles.length).toBe(0);
-
+                    expect(scope.articles.length).to.equal(0);
                 }));
         });
     });
-}());
+//}());
