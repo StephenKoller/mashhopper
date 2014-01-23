@@ -53,6 +53,7 @@
         "karma-html2js-preprocessor": "~0.1.0",
         "karma-mocha": "latest",
         "karma-chai": "latest",
+        "chai": "latest",
         "karma-requirejs": "~0.1.0",
         "karma-coffee-preprocessor": "~0.1.0",
         "karma-phantomjs-launcher": "~0.1.0",
