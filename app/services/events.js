@@ -2,7 +2,8 @@
 
 var mongoose = require('mongoose'),
 	User = mongoose.model('User'),
-	gameService = require('./game.js');
+	gameService = require('./game.js'),
+	socketService = require('./sockets.js');
 
 exports.logEvent = function(event, user) {
 	if (!user.events) {
@@ -15,7 +16,8 @@ exports.logEvent = function(event, user) {
 
 	user.events.push(event);
 	user.save();
-	gameService.hello();
 	
-	//return event;
+	gameService.notify(event, user);
+	socketService.notify(event, user);
+	return event;
 };
