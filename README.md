@@ -1,8 +1,21 @@
 # Running Tests
 
 ```
-$ grunt karma:unit watch
+$ grunt test-server
+$ grunt test-server-live
+
+$ grunt test-client
+$ grunt test-client-live
+
 ```
+
+
+# Running auto lint
+
+```
+$ grunt jshint watch:js
+```
+
 
 
 ## Quick Install

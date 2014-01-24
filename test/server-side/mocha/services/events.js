@@ -1,26 +1,30 @@
 'use strict';
+/* jshint -W024 */
+/* jshint expr:true */
 
 /**
  * Module dependencies.
  */
 
 var fakeGameService = {
-    hello : function() { 
+    hello: function() {
         console.log('I am a game service. I update your XP');
     }
 };
 
-var expect = require('chai').expect,
+var chai = require('chai'),
+    expect = chai.expect,
     mongoose = require('mongoose'),
     User = mongoose.model('User'),
     sinon = require('sinon'),
-    rewire = require("rewire"),
     proxyquire = require('proxyquire').noCallThru(),
     events = proxyquire('../../../../app/services/events.js', {
         './game.js': fakeGameService
     });
 
-//The tests
+
+
+//The tests are cool.
 describe('<Unit Test>', function() {
     describe('Service Events:', function() {
         before(function(done) {
@@ -28,6 +32,9 @@ describe('<Unit Test>', function() {
         });
 
         it('should not be null', function(done) {
+            if(User){
+                throw('why do we have the User here?');
+            }
             expect(events).to.exist;
             done();
         });
@@ -42,7 +49,7 @@ describe('<Unit Test>', function() {
             var fakeUser = {
                 save: function() {}
             };
-            var mockUser = sinon.mock(fakeUser).expects("save").once();
+            var mockUser = sinon.mock(fakeUser).expects('save').once();
             var eventObject = {
                 type: 'facebook',
                 details: 'session name'
@@ -51,15 +58,15 @@ describe('<Unit Test>', function() {
 
             mockUser.verify();
             done();
-        
+
         });
 
-        
+
         it('should call the game service', function(done) {
             var fakeUser = {
                 save: function() {}
             };
-            var mockUser = sinon.mock(fakeUser).expects("save").once();
+           // var mockUser = sinon.mock(fakeUser).expects('save').once();
             var eventObject = {
                 type: 'facebook',
                 details: 'session name'

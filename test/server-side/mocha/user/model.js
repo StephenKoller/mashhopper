@@ -1,5 +1,5 @@
 'use strict';
-
+/*jshint expr: true*/
 /**
  * Module dependencies.
  */

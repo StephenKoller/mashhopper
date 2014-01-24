@@ -1,9 +1,10 @@
 'use strict';
+/*jshint shadow: true*/
+/*jshint expr: true*/
 
-/**
- * Module dependencies.
- */
-var expect = require('chai').expect,
+
+var chai = require('chai'),
+    expect = chai.expect,
     mongoose = require('mongoose'),
     User = mongoose.model('User'),
     Article = mongoose.model('Article');
