@@ -1,9 +1,9 @@
 'use strict';
-
+/*jshint expr: true*/
 /**
  * Module dependencies.
  */
-var expect = require('chai').expect,
+var expect = require('expect.js'),
     mongoose = require('mongoose'),
     User = mongoose.model('User');
 

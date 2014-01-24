@@ -1,9 +1,9 @@
 'use strict';
+/*jshint shadow: true*/
+/*jshint expr: true*/
 
-/**
- * Module dependencies.
- */
-var expect = require('chai').expect,
+
+var expect = require('expect.js'),
     mongoose = require('mongoose'),
     User = mongoose.model('User'),
     Article = mongoose.model('Article');
@@ -37,7 +37,7 @@ describe('<Unit Test>', function() {
         describe('Method Save', function() {
             it('should be able to save without problems', function(done) {
                 return article.save(function(err) {
-                    expect(err).to.not.exist;
+                    expect(err).to.be(null);
                     done();
                 });
             });
@@ -46,7 +46,7 @@ describe('<Unit Test>', function() {
                 article.title = '';
 
                 return article.save(function(err) {
-                    expect(err).to.exist;
+                    expect(err).to.not.be(null);
                     done();
                 });
             });

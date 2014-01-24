@@ -1,4 +1,5 @@
 'use strict';
+/*jshint expr: true*/
 
 describe('MEAN controllers', function() {
     describe('IndexController', function() {
@@ -21,7 +22,7 @@ describe('MEAN controllers', function() {
 
 
         it('is going to be silly.', function() {
-            expect("true").to.be.ok;
+            expect('true').to.be.ok;
             expect(1).to.be.ok;
             expect(true).to.be.ok;
             expect({}).to.be.ok;

@@ -12,7 +12,13 @@ module.exports = function(grunt) {
                 },
             },
             js: {
-                files: ['gruntfile.js', 'server.js', 'app/**/*.js', 'public/js/**', 'test/**/*.js'],
+                files: ['gruntfile.js',
+                    'server.js',
+                    '<%= filePaths.serverSourceFiles %>',
+                    '<%= filePaths.clientSourceFiles %>',
+                    '<%= filePaths.clientTestFiles %>',
+                    '<%= filePaths.serverTestFiles %>'
+                ],
                 tasks: ['jshint'],
                 options: {
                     livereload: true,
@@ -30,14 +36,39 @@ module.exports = function(grunt) {
                     livereload: true
                 }
             },
-            karma: {
-                files: ['public/js/**/*.js', 'test/client-side/karma/unit/**/*.js'],
-                tasks: ['karma:unit:run'] //NOTE the :run flag
+            serverTests: {
+                files: ['<%= filePaths.serverSourceFiles %>', '<%= filePaths.serverTestFiles %>'],
+                tasks: ['jshint', 'mochaTest']
+            },
+            clientTests: {
+                files: ['<%= filePaths.clientSourceFiles %>', '<%= filePaths.clientTestFiles %>'],
+                tasks: ['jshint', 'karma:unit:run']
+            },
+            tests: {
+                files: ['<%= filePaths.clientSourceFiles %>',
+                    '<%= filePaths.clientTestFiles %>',
+                    '<%= filePaths.serverSourceFiles %>',
+                    '<%= filePaths.serverTestFiles %>'
+                ],
+                tasks: ['jshint', 'karma:unit:run', 'mochaTest']
             }
         },
+        filePaths: {
+            serverTestFiles: 'test/server-side/mocha/**/*.js',
+            clientTestFiles: 'test/client-side/karma/unit/**/*.js',
+            serverSourceFiles: 'app/**/*.js',
+            clientSourceFiles: 'public/js/**/*.js',
+        },
+
         jshint: {
             all: {
-                src: ['gruntfile.js', 'server.js', 'app/**/*.js', 'public/js/**', 'test/karma/*.js', 'test/mocha/**/*.js'],
+                src: ['gruntfile.js',
+                    'server.js',
+                    '<%= filePaths.serverSourceFiles %>',
+                    '<%= filePaths.clientSourceFiles %>',
+                    '<%= filePaths.clientTestFiles %>',
+                    '<%= filePaths.serverTestFiles %>'
+                ],
                 options: {
                     jshintrc: true,
                 }
@@ -71,7 +102,7 @@ module.exports = function(grunt) {
                 reporter: 'spec',
                 require: 'server.js'
             },
-            src: ['test/server-side/mocha/**/*.js']
+            src: ['<%= filePaths.serverTestFiles %>']
         },
         env: {
             test: {
@@ -102,12 +133,23 @@ module.exports = function(grunt) {
 
     grunt.registerTask('server', ['concurrent']);
 
-    //Test task.
-    grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
+    //Lint task.
+    grunt.registerTask('lint', ['env:test', 'jshint', 'watch:js']);
+
+   
+
+
 
     //client side tests
     grunt.registerTask('test-client', ['env:test', 'karma:unit']);
+    grunt.registerTask('test-client-live', ['env:test', 'watch:clientTests']);
 
     //server side tests
     grunt.registerTask('test-server', ['env:test', 'mochaTest']);
+    grunt.registerTask('test-server-live', ['test-server', 'watch:serverTests']);
+
+
+ //Test task.
+    grunt.registerTask('test', ['env:test', 'test-client', 'test-server']);
+    grunt.registerTask('test-live', ['test-server', 'test-client', 'watch:tests']);
 };
