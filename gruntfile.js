@@ -43,6 +43,14 @@ module.exports = function(grunt) {
             clientTests: {
                 files: ['<%= filePaths.clientSourceFiles %>', '<%= filePaths.clientTestFiles %>'],
                 tasks: ['jshint', 'karma:unit:run']
+            },
+            tests: {
+                files: ['<%= filePaths.clientSourceFiles %>',
+                    '<%= filePaths.clientTestFiles %>',
+                    '<%= filePaths.serverSourceFiles %>',
+                    '<%= filePaths.serverTestFiles %>'
+                ],
+                tasks: ['jshint', 'karma:unit:run', 'mochaTest']
             }
         },
         filePaths: {
@@ -128,15 +136,20 @@ module.exports = function(grunt) {
     //Lint task.
     grunt.registerTask('lint', ['env:test', 'jshint', 'watch:js']);
 
-    //Test task.
-    grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
+   
 
 
 
     //client side tests
     grunt.registerTask('test-client', ['env:test', 'karma:unit']);
+    grunt.registerTask('test-client-live', ['env:test', 'watch:clientTests']);
 
     //server side tests
-    grunt.registerTask('test-server', ['env:test', 'jshint', 'mochaTest']);
+    grunt.registerTask('test-server', ['env:test', 'mochaTest']);
     grunt.registerTask('test-server-live', ['test-server', 'watch:serverTests']);
+
+
+ //Test task.
+    grunt.registerTask('test', ['env:test', 'test-client', 'test-server']);
+    grunt.registerTask('test-live', ['test-server', 'test-client', 'watch:tests']);
 };

@@ -8,6 +8,7 @@ exports.logEvent = function(event, user) {
 	if (!user.events) {
 		user.events = [];
 	}
+
 	if(User){
 		throw('what do we do with the user object here');
 	}

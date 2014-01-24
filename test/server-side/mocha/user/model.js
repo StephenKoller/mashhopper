@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-var expect = require('chai').expect,
+var expect = require('expect.js'),
     mongoose = require('mongoose'),
     User = mongoose.model('User');
 
