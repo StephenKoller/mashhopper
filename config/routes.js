@@ -14,7 +14,7 @@ module.exports = function(app, passport, auth) {
 
     //Setting up the users api
     app.post('/users', users.create);
-    app.post('/users/toggle',  users.toggle)
+    app.post('/users/toggle', users.toggle)
     app.post('/users/:userId', auth.requiresLogin, auth.user.hasAuthorization, users.update);
 
     //Setting the google oauth routes
@@ -34,12 +34,12 @@ module.exports = function(app, passport, auth) {
     app.get('/auth/linkedin', passport.authenticate('linkedin', {
         failureRedirect: '/signin',
         scope: ['r_basicprofile'],
-        state:"dev4myappUpunk",
+        state: "dev4myappUpunk",
     }), users.signin);
 
     app.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
         failureRedirect: '/signin',
-        state:"dev4myappUpunk"
+        state: "dev4myappUpunk"
     }), users.authCallback);
 
     //Setting the twitter oauth routes
