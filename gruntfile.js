@@ -45,8 +45,8 @@ module.exports = function(grunt) {
                 tasks: ['jshint', 'karma:unit:run']
             },
             integrationTests: {
-                files: ['<%= filePaths.integrationTestFiles %>'],
-                tasks: ['jshint', 'doIntegrationTests']
+                files: ['<%= filePaths.serverSourceFiles %>','<%= filePaths.serverConfgs %>','<%= filePaths.integrationTestFiles %>'],
+                tasks: ['jshint', 'mochaTest:integration']
             },
             tests: {
                 files: ['<%= filePaths.clientSourceFiles %>',
@@ -59,11 +59,13 @@ module.exports = function(grunt) {
             }
         },
         filePaths: {
+            serverConfgs: 'config/**/*.js',
             serverTestFiles: 'test/server-side/mocha/**/*.js',
             serverSourceFiles: 'app/**/*.js',
             clientTestFiles: 'test/client-side/karma/unit/**/*.js',
             clientSourceFiles: 'public/js/**/*.js',
-            integrationTestFiles: 'test/integration/**/*.js',
+            integrationTestFiles: 'test/integration/**/*.js'
+
         },
 
         jshint: {

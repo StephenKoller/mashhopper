@@ -7,12 +7,12 @@
  */
 
 var fakeGameService = {
-    notify : function() { 
+    notify: function() {
         //console.log('I am a game service. I update your XP');
     }
 };
 var fakeSocketsService = {
-    notify : function() { 
+    notify: function() {
         //console.log('I am a socket service. I update your livefeed');
     }
 };
@@ -49,7 +49,7 @@ describe('<Unit Test>', function() {
             done();
         });
 
-        it('should not require user', function(done){
+        it('should not require user', function(done) {
             expect(User).to.be(null);
         });
 
@@ -65,7 +65,7 @@ describe('<Unit Test>', function() {
         });
 
         it('should save a logged event to the database', function(done) {
-            mockUser.expects("save").once();
+            mockUser.expects('save').once();
 
             events.logEvent(eventObject, fakeUser);
 
@@ -73,7 +73,7 @@ describe('<Unit Test>', function() {
             done();
         });
 
-        
+
         it('should call the game service', function(done) {
             var mockGameService = sinon.mock(fakeGameService);
             mockGameService.expects('notify').once();
@@ -83,7 +83,7 @@ describe('<Unit Test>', function() {
             done();
         });
 
-        
+
         it('should call the sockets service', function(done) {
             var mockSocketsService = sinon.mock(fakeSocketsService);
             mockSocketsService.expects('notify').once();

@@ -25,10 +25,10 @@ var config = require('./config/config'),
 
 //'localhost', 'dbname'
 //Bootstrap db connection
-var db = mongoose.connect("localhost", "mean-test");
+var db = mongoose.connect(config.db);
 
 mongoose.connection.on('error', function() {
-  console.error('connection error', arguments);
+    console.error('connection error', arguments);
 });
 
 
