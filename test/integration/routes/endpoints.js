@@ -1,5 +1,5 @@
 var 
-  //utils = require('./utils'),
+  utils = require('../../utils'),
   app = require('../../../server.js'),
   request = require('supertest') ;
 

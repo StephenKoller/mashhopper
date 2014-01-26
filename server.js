@@ -23,8 +23,14 @@ var config = require('./config/config'),
     mongoose = require('mongoose');
 
 
+//'localhost', 'dbname'
 //Bootstrap db connection
-var db = mongoose.connect(config.db);
+var db = mongoose.connect("localhost", "mean-test");
+
+mongoose.connection.on('error', function() {
+  console.error('connection error', arguments);
+});
+
 
 //Bootstrap models
 var models_path = __dirname + '/app/models';
