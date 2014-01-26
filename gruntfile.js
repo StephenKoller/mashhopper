@@ -122,6 +122,7 @@ module.exports = function(grunt) {
                 NODE_ENV: 'test'
             }
         },
+
         karma: {
             unit: {
                 configFile: 'test/client-side/karma/karma.conf.js'

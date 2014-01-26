@@ -22,6 +22,7 @@ var config = require('./config/config'),
     auth = require('./config/middlewares/authorization'),
     mongoose = require('mongoose');
 
+
 //Bootstrap db connection
 var db = mongoose.connect(config.db);
 
