@@ -29,7 +29,7 @@
         <tr>
             <td>Not yet linked</td>
             <td>
-                <span ng-repeat="provider in providers | filter:isNotLinked"><img ng-src="{{provider.icon}}" /></span>
+                <span ng-repeat="provider in providers | filter:isNotLinked"><a href="/auth/{{ provider.key }}"><img ng-src="{{provider.icon}}" /></a></span>
             </td>
         </tr>
 	</table>

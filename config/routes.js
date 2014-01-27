@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = function(app, passport, auth) {
+    var authService = require('../app/services/authentication');
     var talks = require('../app/controllers/talks');
     app.get('/talks', talks.all);
     app.get('/schedule', talks.all);
@@ -28,9 +29,9 @@ module.exports = function(app, passport, auth) {
         ]
     }), users.signin);
 
-    app.get('/auth/google/callback', passport.authenticate('google', {
+    app.get('/auth/google/callback', authService.authenticate(passport.authenticate('google', {
         failureRedirect: '/signin'
-    }), users.authCallback);
+    })), users.authCallback);
 
     //Setting the linkedin oauth routes
     app.get('/auth/linkedin', passport.authenticate('linkedin', {
@@ -39,38 +40,29 @@ module.exports = function(app, passport, auth) {
         state:"dev4myappUpunk",
     }), users.signin);
 
-    app.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
+    app.get('/auth/linkedin/callback', authService.authenticate(passport.authenticate('linkedin', {
         failureRedirect: '/signin',
         state:"dev4myappUpunk"
-    }), users.authCallback);
+    })), users.authCallback);
 
     //Setting the twitter oauth routes
     app.get('/auth/twitter', passport.authenticate('twitter'), users.signin);
 
-    app.get('/auth/twitter/callback', passport.authenticate('twitter', {
+    app.get('/auth/twitter/callback', authService.authenticate(passport.authenticate('twitter', {
         failureRedirect: '/signin'
-    }), users.authCallback);
+    })), users.authCallback);
 
     //Setting the facebook oauth routes
     app.get('/auth/facebook', passport.authenticate('facebook'), users.signin);
 
-    app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+    app.get('/auth/facebook/callback', authService.authenticate(passport.authenticate('facebook', {
         failureRedirect: '/signin'
-    }), users.authCallback);
+    })), users.authCallback);
 
     //Setting the github oauth routes
     app.get('/auth/github', passport.authenticate('github'), users.signin);
 
-    app.get('/auth/github/callback', passport.authenticate('github', {
-        failureRedirect: '/signin'
-    }), users.authCallback);
-
-    //Setting the github oauth routes for linking to existing account
-    app.get('/users/link/github', passport.authenticate('github'), users.linkAccount);
-
-    app.get('/auth/github/callback', passport.authenticate('github', {
-        failureRedirect: '/#!/profile'
-    }), users.linkAccountCallback);
+    app.get('/auth/github/callback', authService.authenticate(passport.authenticate('github', {failureRedirect: '/signin'})), users.authCallback);
 
     //Finish with setting up the userId param
     app.param('userId', users.user);
