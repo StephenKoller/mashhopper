@@ -6,3 +6,4 @@ public/lib
 test/coverage/
 config/env/secrets.js
 *.log
+*.orig

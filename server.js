@@ -22,8 +22,15 @@ var config = require('./config/config'),
     auth = require('./config/middlewares/authorization'),
     mongoose = require('mongoose');
 
+
+//'localhost', 'dbname'
 //Bootstrap db connection
 var db = mongoose.connect(config.db);
+
+mongoose.connection.on('error', function() {
+    console.error('connection error', arguments);
+});
+
 
 //Bootstrap models
 var models_path = __dirname + '/app/models';

@@ -37,24 +37,25 @@
 		<div class="col-md-12">
 			<ul class="grid" masonry="true" ng-show="displayFormat == 'grid'">
 		        <li ng-repeat="talk in talks | filter:searchTermWithDelay | orderBy:order" class="talk-brick">
-		        	<div class="row">
-		        		<div class="col-md-12">
-		        		   	<div data-ng-class="style(talk)" class="technology">{{talk.Technology}}</div>
+		        	
+	        		<div class="row">
+	        			<div class="col-md-12 clickable" data-ng-click="openDescription(talk)">
+			            	<h4>{{talk.title}}</h4>
+			            </div>
+		            </div>
+		            <div class="row">
+		        		<div class="col-md-12" data-ng-class="style(talk)" data-ng-repeat="speaker in talk.speakers">
+							<p class="label label-success">{{speaker.fullName}}<p/>
 	        		   	</div>
 	        		</div>
 	        		<div class="row">
-	        			<div class="col-md-12 clickable" data-ng-click="openDescription(talk)">
-			            	<h4>{{talk.Title}}</h4>
-			            </div>
-		            </div>
-	        		<div class="row">
 	        			<div class="col-md-6">
-				            <span ng-if="talk.Start">
-				            	<span class="label label-default date-label">{{talk.Start | date:['EEEE h:mm a']}}</span>
+				            <span ng-if="talk.start">
+				            	<span class="label label-default date-label">{{talk.start | date:['EEEE h:mm a']}}</span>
 				            	<br />
 				            </span>
-				              <span ng-if="talk.Room">
-				            	<span class="label label-default date-label">{{talk.Room}}</span>
+				              <span ng-if="talk.room">
+				            	<span class="label label-default date-label">{{talk.room}}</span>
 				            	<br />
 				            </span>
 				        </div>
@@ -76,29 +77,47 @@
 		            </div>
 		        </li>
 		    </ul>
-            <div class="table-responsive" ng-show="displayFormat == 'list'">
+            <div ng-show="displayFormat == 'list'">
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th>Time</th>
-                            <th>Technology</th>
-                            <th>Title</th>
+                            <th class="hidden-sm hidden-xs">Title</th>
+                            <th class="hidden-sm hidden-xs">Room</th>
+                            <th class="hidden-sm hidden-xs">Speakers</th>
                             <td>Attending</th>
-                            <th>Room</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="talk in talks | filter:searchTermWithDelay | orderBy:order">
-                            <td>
-                                <span ng-if="talk.Start">
-                                    <span class="label label-default date-label">{{talk.Start | date:['EEEE h:mm a']}}</span>
+                        <tr ng-repeat-start="talk in talks | filter:searchTermWithDelay | orderBy:order">
+                            <td class="talk-time">
+                                <span ng-if="talk.start">
+                                    <span class="label label-default date-label">{{talk.start | date:['EEEE h:mm a']}}</span>
                                 </span>
                             </td>
-                            <td data-ng-class="style(talk)" class="technology">{{talk.Technology}}</td>
-                            <td class="clickable" data-ng-click="openDescription(talk)">
-                                <h4>{{talk.Title}}</h4>
+
+
+                            <td class="talk-title clickable hidden-sm hidden-xs" data-ng-click="openDescription(talk)">
+                                <h4>{{talk.title}}</h4>
                             </td>
-                            <td>
+
+                            
+
+                            <td class="talk-room hidden-sm hidden-xs">
+                            	<span ng-if="talk.room">
+                                	<span class="label label-default date-label">{{talk.room}}</span>
+                            	</span>
+                            </td>
+
+                            <td class="talk-spearkers hidden-sm hidden-xs">
+                            	<span ng-if="talk.speakers" data-ng-repeat="speaker in talk.speakers">
+                                	<span class="label label-default date-label">{{speaker.fullName}}</span>
+                                </span>
+                            </td>
+
+
+
+                            <td class="talk-attending">
                                 <button data-ng-click="update(talk)" class="btn btn-default btn-labeled btn-xs" data-ng-class="{ 'btn-success' : isAttending(talk) }">
                                     <span class="btn-label">
                                         <i class="glyphicon glyphicon-ok" data-ng-class="{ 'glyphicon-ok' : isAttending(talk), 'glyphicon-remove' : !isAttending(talk) }"></i>
@@ -113,9 +132,23 @@
                                     </span>
                                 </button>
                             </td>
+                        </tr>
+                        <tr ng-repeat-end>
+                        	<td colspan="5" class="hidden-md hidden-lg">
+                        		<dl>
+								  <dt>Title</dt>
+								  <dd>{{talk.title}}</dd>
+								  <dt>Room</dt>
+                                    <dd><h4>{{talk.room}}</h4></dd>
+                                    <dt>Spearkers</dt>
+                                    <dd>
+                                        <div ng-if="talk.speakers" data-ng-repeat="speaker in talk.speakers">
+                                            <div class="label label-default date-label">{{speaker.fullName}}</div>
+                                        </div>
+                                    </dd>
+								</dl>
 
-                            <td><span ng-if="talk.Room">
-                                <span class="label label-default date-label">{{talk.Room}}</span></td>
+                        	</td>
                         </tr>
                     </tbody>
                 </table>

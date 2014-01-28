@@ -44,17 +44,21 @@ module.exports = function(app, passport, db) {
         app.use(express.json());
         app.use(express.methodOverride());
 
-        //express/mongo session storage
-        app.use(express.session({
-            secret: 'MEAN',
-            store: new mongoStore({
-                db: db.connection.db,
-                collection: 'sessions'
-            })
-        }));
 
-        //connect flash for flash messages
-        app.use(flash());
+        //express/mongo session storage
+        //TODO: something here is causing the integration tests to have a race condition...or something...connection issue.
+        if (process.env.NODE_ENV != 'test') {
+            app.use(express.session({
+                secret: 'MEAN',
+                store: new mongoStore({
+                    db: db.connection.db,
+                    collection: 'sessions'
+                })
+            }));
+
+            //connect flash for flash messages
+            app.use(flash());
+        }
 
         //dynamic helpers
         app.use(helpers(config.app.name));
@@ -65,7 +69,7 @@ module.exports = function(app, passport, db) {
 
         //routes should be at the last
         app.use(app.router);
-        
+
         //Setting the fav icon and static folder
         app.use(express.favicon());
         app.use(express.static(config.root + '/public'));

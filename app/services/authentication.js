@@ -4,6 +4,40 @@ var mongoose = require('mongoose'),
     User = mongoose.model('User');
 
 
+exports.authenticate = function(authenticationStrategy){
+    return function(req,res,next){
+        req.passUser = req.user;
+        return authenticationStrategy(req,res,next);
+    };
+};
+
+exports.authenticationCallBack = function(authenticationType){
+    var strategyHandler;
+    if(authenticationType === 'twitter'){
+        strategyHandler = exports.handleTwitterAuthentication;
+    }else if(authenticationType === 'facebook'){
+        strategyHandler = exports.handleFacebookAuthentication;
+    }else if(authenticationType === 'linkedin'){
+        strategyHandler = exports.handleLinkedinAuthentication;
+    }else if(authenticationType === 'github'){
+        strategyHandler = exports.handleGithubAuthentication;
+    }else{
+        strategyHandler = exports.handleGoogleAuthentication;
+    }
+    return function(req, accessToken, refreshToken, profile, done){
+        if(req.passUser){
+            req.passUser[authenticationType]=profile._json;
+            req.user = req.passUser;
+            req.user.save(function(err){
+                if (err) console.log(err);
+            });
+            return done(null, req.user);
+        }else{
+            strategyHandler(accessToken, refreshToken, profile, done);
+        }
+    };
+};
+
 exports.handleTwitterAuthentication = function(token, tokenSecret, profile, done) {
     User.findOne({
         'twitter.id_str': profile.id

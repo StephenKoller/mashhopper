@@ -44,20 +44,28 @@ module.exports = function(grunt) {
                 files: ['<%= filePaths.clientSourceFiles %>', '<%= filePaths.clientTestFiles %>'],
                 tasks: ['jshint', 'karma:unit:run']
             },
+            integrationTests: {
+                files: ['<%= filePaths.serverSourceFiles %>','<%= filePaths.serverConfgs %>','<%= filePaths.integrationTestFiles %>'],
+                tasks: ['jshint', 'mochaTest:integration']
+            },
             tests: {
                 files: ['<%= filePaths.clientSourceFiles %>',
                     '<%= filePaths.clientTestFiles %>',
                     '<%= filePaths.serverSourceFiles %>',
-                    '<%= filePaths.serverTestFiles %>'
+                    '<%= filePaths.serverTestFiles %>',
+                    '<%= filePaths.integrationTestFiles %>'
                 ],
                 tasks: ['jshint', 'karma:unit:run', 'mochaTest']
             }
         },
         filePaths: {
+            serverConfgs: 'config/**/*.js',
             serverTestFiles: 'test/server-side/mocha/**/*.js',
-            clientTestFiles: 'test/client-side/karma/unit/**/*.js',
             serverSourceFiles: 'app/**/*.js',
+            clientTestFiles: 'test/client-side/karma/unit/**/*.js',
             clientSourceFiles: 'public/js/**/*.js',
+            integrationTestFiles: 'test/integration/**/*.js'
+
         },
 
         jshint: {
@@ -102,13 +110,21 @@ module.exports = function(grunt) {
                 reporter: 'spec',
                 require: 'server.js'
             },
-            src: ['<%= filePaths.serverTestFiles %>']
+            src: ['<%= filePaths.serverTestFiles %>'],
+            integration: {
+                options: {
+                    reporter: 'spec',
+                    require: 'server.js'
+                },
+                src: ['<%= filePaths.integrationTestFiles %>']
+            }
         },
         env: {
             test: {
                 NODE_ENV: 'test'
             }
         },
+
         karma: {
             unit: {
                 configFile: 'test/client-side/karma/karma.conf.js'
@@ -136,8 +152,6 @@ module.exports = function(grunt) {
     //Lint task.
     grunt.registerTask('lint', ['env:test', 'jshint', 'watch:js']);
 
-   
-
 
 
     //client side tests
@@ -149,7 +163,10 @@ module.exports = function(grunt) {
     grunt.registerTask('test-server-live', ['test-server', 'watch:serverTests']);
 
 
- //Test task.
+    //Test task.
     grunt.registerTask('test', ['env:test', 'test-client', 'test-server']);
     grunt.registerTask('test-live', ['test-server', 'test-client', 'watch:tests']);
+
+    //Integration tests.
+    grunt.registerTask('i', ['env:test', 'mochaTest:integration']);
 };

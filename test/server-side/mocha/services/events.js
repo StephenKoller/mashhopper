@@ -7,12 +7,12 @@
  */
 
 var fakeGameService = {
-    notify : function() {
+    notify: function() {
         //console.log('I am a game service. I update your XP');
     }
 };
 var fakeSocketsService = {
-    notify : function() {
+    notify: function() {
         //console.log('I am a socket service. I update your livefeed');
     }
 };

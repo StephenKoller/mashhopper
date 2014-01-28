@@ -98,7 +98,9 @@ exports.update = function(req, res) {
         if (err)
             console.log(err);
     });
-    res.send({status:200});
+    res.send({
+        status: 200
+    });
 };
 
 exports.toggle = function(req, res, next) {
@@ -129,22 +131,27 @@ exports.toggle = function(req, res, next) {
  * Find user by id
  */
 exports.user = function(req, res, next, id) {
-    User
-        .findOne({
-            _id: id
-        })
-        .exec(function(err, user) {
-            if (err) return next(err);
-            if (!user) return next(new Error('Failed to load User ' + id));
-            req.profile = user;
-            next();
-        });
+    console.log('id needs to be an int:' + id);
+    User.findOne({
+        _id: id
+    }).exec(function(err, user) {
+        if (err) return next(err);
+        if (!user) return next(new Error('Failed to load User ' + id));
+        req.profile = user;
+        next();
+    });
 };
 
-exports.linkAccount = function(){
+exports.linkAccount = function() {
 
 };
 
-exports.linkAccountCallback = function(){
+exports.linkAccountCallback = function() {
 
+};
+
+
+exports.contact = function(req, res) {
+    //log event using event service (add event to user object)
+    res.send(true);
 };
