@@ -27,7 +27,9 @@ var UserSchema = new Schema({
     github: {},
     google: {},
     linkedin: {},
-    talks: [String]
+    talks: [String],
+    xp: Number,
+    events: [{}]
 });
 
 /**

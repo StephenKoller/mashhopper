@@ -145,7 +145,7 @@ module.exports = function(grunt) {
     grunt.registerTask('test-client-live', ['env:test', 'watch:clientTests']);
 
     //server side tests
-    grunt.registerTask('test-server', ['env:test', 'mochaTest']);
+    grunt.registerTask('test-server', ['env:test', 'mochaTest', 'jshint']);
     grunt.registerTask('test-server-live', ['test-server', 'watch:serverTests']);
 
 
