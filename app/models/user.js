@@ -29,7 +29,8 @@ var UserSchema = new Schema({
     linkedin: {},
     talks: [String],
     xp: Number,
-    events: [{}]
+    events: [{}],
+    level: Number
 });
 
 /**

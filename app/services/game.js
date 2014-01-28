@@ -8,14 +8,28 @@ exports.eventTypeXpValues = {
 	booth: 10
 };
 
+exports.xpLevelThresholds = [
+	{level: 1, xp: 0},
+	{level: 2, xp: 20},
+	{level: 3, xp: 60}
+];
+
 exports.notify = function(eventObj, user) {
 	if (!user.xp) {
 		user.xp = 0;
 	}
 
 	if (!exports.eventExists(eventObj, user)) {
-		user.xp += 5;
-		user.save();
+		var xp = exports.eventTypeXpValues[eventObj.type];
+		if (xp) {
+			user.xp += xp;
+			var possibleThresholds = exports.xpLevelThresholds.filter(function(threshold) {
+				return threshold.xp <= user.xp;
+			});
+			var expectedLevel = possibleThresholds[possibleThresholds.length-1].level;
+			user.level = expectedLevel;
+			user.save();
+		}
 	}
 };
 

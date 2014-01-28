@@ -13,6 +13,7 @@
         "underscore": "latest",
         "angular-google-chart" :"latest",
         "jquery" : "latest",
-        "jquery-masonry" : "v2.1.08"
+        "jquery-masonry" : "v2.1.08",
+        "socket.io-client" : "latest"
     }
 }

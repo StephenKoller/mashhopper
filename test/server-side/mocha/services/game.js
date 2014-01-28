@@ -6,12 +6,13 @@ var gameService = require('../../../../app/services/game.js'),
 var eventObj, user;
 
 describe('Game service', function() {
-	before(function() {
+	beforeEach(function() {
 		eventObj = {type: 'tweet', sessionId: 'abc123'};
 		user = {
 			xp: 1,
 			save: function(){},
-			events: []
+			events: [],
+			level: 1
 		};
 	});
 
@@ -35,4 +36,25 @@ describe('Game service', function() {
 		gameService.notify(eventObj, user);
 		expect(user.xp).to.be(xp);
 	});
+
+	it('should add xp to a user without any xp', function(){
+		gameService.notify(eventObj, user);
+		expect(user.xp).to.be(2);
+	});
+
+	it('should level up a user when they reach the designated xp threshold', function() {
+		// level 2 at 20 xp?
+		eventObj.type = 'booth';
+		gameService.notify(eventObj, user);
+		gameService.notify(eventObj, user);
+		expect(user.xp).to.be(21);
+		expect(user.level).to.be(2);
+		gameService.notify(eventObj, user);
+		gameService.notify(eventObj, user);
+		gameService.notify(eventObj, user);
+		gameService.notify(eventObj, user);
+		expect(user.xp).to.be(61);
+		expect(user.level).to.be(3);
+	});
+
 });

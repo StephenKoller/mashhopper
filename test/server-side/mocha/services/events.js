@@ -14,6 +14,14 @@ var fakeGameService = {
 var fakeSocketsService = {
     notify: function() {
         //console.log('I am a socket service. I update your livefeed');
+        //how do we run socket.io and express? (google it. [timebox to 10min.])
+
+        //call ourself.
+
+        //do this with another app. (this feels very node.)
+        //make a request to a socket.io server
+        //send it some data so it can be pushed to all the connected clients.
+
     }
 };
 
@@ -68,7 +76,7 @@ describe('<Unit Test>', function() {
             done();
         });
 
-        it('should call the game service and sockets service before adding event to user', function(done) {
+        it('should call the game service before adding event to user', function(done) {
             var stubNotify = sinon.stub(fakeGameService, 'notify');
             var notifyWithUser = stubNotify.withArgs(eventObject, sinon.match({events: []}));
             events.logEvent(eventObject, fakeUser);
@@ -77,7 +85,7 @@ describe('<Unit Test>', function() {
             done();
         });
         
-        it('should call the sockets service', function(done) {
+        it('should call the sockets service before adding event to user', function(done) {
             var stubNotify = sinon.stub(fakeSocketsService, 'notify');
             var notifyWithUser = stubNotify.withArgs(eventObject, sinon.match({events: []}));
             events.logEvent(eventObject, fakeUser);
