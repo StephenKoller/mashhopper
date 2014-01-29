@@ -62,9 +62,9 @@ angular.module('mashhopper.leaderboard').controller('LeaderboardController', ['$
         };
 
         $scope.populateMockEvents = function() {
-            /*for (var i = 0; i < 10; i++) {
+            for (var i = 0; i < 10; i++) {
                 $scope.createEvent();
-            }*/
+            }
         };
 
         $scope.createEvent = function() {
