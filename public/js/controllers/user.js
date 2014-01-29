@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean.users').controller('UserProfileController', ['$scope', '$routeParams', '$location', '$modal', '$http', 'Global',
-    function($scope, $routeParams, $location, $modal, $http, Global) {
+angular.module('mean.users').controller('UserProfileController', ['$scope', '$routeParams', '$location', '$modal', '$http', 'Global', '_',
+    function($scope, $routeParams, $location, $modal, $http, Global, _) {
         $scope.global = Global;
         $scope.providers = [{
             key: 'google',
@@ -37,10 +37,20 @@ angular.module('mean.users').controller('UserProfileController', ['$scope', '$ro
         };
         $scope.removeProvider = function(provider){
             console.log('going to remove provider '+provider.key);
-            $modal.open({
+            $scope.providerStatus = _.countBy($scope.providers, function(prov){if($scope.isLinked(prov)){return 'linked';}else{return 'notLinked';}});
+            $scope.currentProvider=provider;
+            $scope.myModal = $modal.open({
                 scope: $scope,
-                templateUrl: 'views/talks/infoModal.html'
+                templateUrl: 'views/user/infoModal.html'
             });
+        };
+        $scope.cancelRemove = function(){
+            $scope.myModal.close('cancel');
+        };
+        $scope.performRemove = function(){
+            $scope.user[$scope.currentProvider.key] = null;
+            $scope.myModal.close('remove');
+            $scope.updateProfile();
         };
     }
 ]);

@@ -3,5 +3,9 @@
         <h5>Remove Linked account information</h5>
     </div>
     <div class="modal-body">
-        <p>Are you sure you want to remove {{ provider.key }} from your account?</p>
+        <p ng-show="{{ providerStatus.linked == 1 }}">{{ currentProvider.key }} is your only log in accout, if you remove it you will no longer be able to log in.</p>
+        <p>Are you sure you want to remove {{ currentProvider.key }} from your account?</p>
+        <div>
+        <button type="button" class="btn btn-primary" style="float:left" ng-click="performRemove()">Remove</button>&nbsp;<button type="button" style="float:right" class="btn btn-primary" ng-click="cancelUnlink()">Cancel</button>
+        </div>
     </div>
