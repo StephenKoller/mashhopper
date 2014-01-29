@@ -35,5 +35,12 @@ angular.module('mean.users').controller('UserProfileController', ['$scope', '$ro
         $scope.showFailureMessage = function(){
             console.log('bogus');
         };
+        $scope.removeProvider = function(provider){
+            console.log('going to remove provider '+provider.key);
+            $modal.open({
+                scope: $scope,
+                templateUrl: 'views/talks/infoModal.html'
+            });
+        };
     }
 ]);

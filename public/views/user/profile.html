@@ -23,7 +23,7 @@
         <tr>
             <td>Currently Linked</td>
             <td>
-                <span ng-repeat="provider in providers | filter:isLinked"><img ng-src="{{provider.icon}}" /></span>
+                <a ng-repeat="provider in providers | filter:isLinked" ng-click="removeProvider(provider)"><img ng-src="{{provider.icon}}" /></a>
             </td>
         </tr>
         <tr>
