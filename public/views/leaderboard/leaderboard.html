@@ -1,0 +1,6 @@
+<section data-ng-controller="LeaderboardController" data-ng-init="populateMockEvents()">
+	<input type="button" value="do event" data-ng-click="sendEvent()">
+	<ul>
+		<li ng-repeat="event in events">{{event.username}} - {{event.type}} - {{event.session}} +{{event.xp}}</li>
+	</ul>
+</section>

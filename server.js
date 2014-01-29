@@ -65,8 +65,8 @@ require('./config/routes')(app, passport, auth);
 var port = process.env.PORT || config.port;
 // app.listen(port);
 
-var ioServer = io.listen(app.listen(port));
-require('./config/socketio')(ioServer);
+global.io = io.listen(app.listen(port));
+require('./config/socketio')(global.io);
 
 console.log('Express app started on port ' + port);
 

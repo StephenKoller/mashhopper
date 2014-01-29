@@ -17,6 +17,7 @@ angular.module('mean', ['ngCookies',
 	'mean.graphs',
 	'mashhopper.graphs',
 	'mashhopper.chat',
+	'mashhopper.leaderboard',
 	'underscore'
 ]);
 
@@ -32,3 +33,4 @@ angular.module('jquery.masonry', []);
 angular.module('googlechart', []);
 angular.module('mashhopper.graphs', []);
 angular.module('mashhopper.chat', []);
+angular.module('mashhopper.leaderboard', []);

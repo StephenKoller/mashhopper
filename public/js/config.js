@@ -37,6 +37,9 @@ angular.module('mean').config(['$routeProvider',
         when('/chat', {
             templateUrl: 'views/chat/chat.html'
         }).
+        when('/leaderboard', {
+            templateUrl: 'views/leaderboard/leaderboard.html'
+        }).
         otherwise({
             redirectTo: '/talks'
         });

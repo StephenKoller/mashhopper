@@ -3,9 +3,19 @@
 //var mongoose = require('mongoose');
 
 exports.eventTypeXpValues = {
-	tweet: 1,
+	signup: 1,
 	attend: 5,
-	booth: 10
+	like: 1,
+	tweet: 1,
+	facebook: 1,
+	linkedIn: 1,
+	gplus: 1,
+	note: 1,
+	reminder: 1,
+	booth: 10,
+	contactMe: 1,
+	question: 1,
+	answer: 1
 };
 
 exports.xpLevelThresholds = [
@@ -20,9 +30,10 @@ exports.notify = function(eventObj, user) {
 	}
 
 	if (!exports.eventExists(eventObj, user)) {
-		var xp = exports.eventTypeXpValues[eventObj.type];
-		if (xp) {
-			user.xp += xp;
+		var addedXp = exports.eventTypeXpValues[eventObj.type];
+		if (addedXp) {
+			user.xp += addedXp;
+			eventObj.xp = addedXp;
 			var possibleThresholds = exports.xpLevelThresholds.filter(function(threshold) {
 				return threshold.xp <= user.xp;
 			});

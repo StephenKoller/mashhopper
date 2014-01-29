@@ -56,6 +56,9 @@ module.exports = function(grunt) {
                     '<%= filePaths.integrationTestFiles %>'
                 ],
                 tasks: ['jshint', 'karma:unit:run', 'mochaTest']
+            },
+            server: {
+                files: ['serverSourceFiles']
             }
         },
         filePaths: {
@@ -147,7 +150,7 @@ module.exports = function(grunt) {
     //Default task(s).
     grunt.registerTask('default', ['jshint', 'concurrent']);
 
-    grunt.registerTask('server', ['concurrent']);
+    grunt.registerTask('server', ['nodemon', 'watch:server']);
 
     //Lint task.
     grunt.registerTask('lint', ['env:test', 'jshint', 'watch:js']);

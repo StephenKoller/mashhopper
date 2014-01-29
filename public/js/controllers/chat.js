@@ -7,7 +7,7 @@ angular.module('mashhopper.chat').controller('ChatController', ['$scope',
         };
      
         $scope.sendMessage = function(message) {
-            console.log('trying to send message:', message)
+            console.log('trying to send message:', message);
             $scope.socket.emit('send', { message: message });
         };
 
@@ -22,7 +22,7 @@ angular.module('mashhopper.chat').controller('ChatController', ['$scope',
                         $scope.messages.push(data.message);
                     });
                 } else {
-                    console.log("There is a problem:", data);
+                    console.log('There is a problem:', data);
                 }
             });
         };

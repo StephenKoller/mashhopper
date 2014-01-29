@@ -4,16 +4,16 @@ var //mongoose = require('mongoose'),
 	gameService = require('./game.js'),
 	socketService = require('./sockets.js');
 
-exports.logEvent = function(event, user) {
+exports.logEvent = function(eventObj, user) {
 	if (!user.events) {
 		user.events = [];
 	}
 	
-	gameService.notify(event, user);
-	socketService.notify(event, user);
+	gameService.notify(eventObj, user);
+	socketService.notify(eventObj, user);
 
-	user.events.push(event);
+	user.events.push(eventObj);
 	user.save();
 	
-	return event;
+	return eventObj;
 };

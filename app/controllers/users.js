@@ -153,5 +153,5 @@ exports.linkAccountCallback = function() {
 
 exports.contact = function(req, res) {
     //log event using event service (add event to user object)
-    res.send(true);
+    res.send(200);
 };

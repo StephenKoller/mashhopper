@@ -19,8 +19,9 @@
     "smarttabs": false, // Suppresses warnings about mixed tabs and spaces
     "globals": { // Globals variables.
         "angular": true,
-        "$" : true,
-        "expect" :true
+        "$": true,
+        "expect": true,
+        "io": true
     },
     "predef": [ // Extra globals.
         "define",
