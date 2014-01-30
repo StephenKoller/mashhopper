@@ -34,9 +34,9 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
             }
         };
         $scope.getDifficultyClasses = function(level){
-            if(level == 'Beginner'){
+            if(level === 'Beginner'){
                 return ['label label-info'];
-            }else if(level == 'Intermediate'){
+            }else if(level === 'Intermediate'){
                 return ['label', 'label-warning'];
             }else{
                 return ['label', 'label-danger'];
