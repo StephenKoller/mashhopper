@@ -33,6 +33,15 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
                 return ['active'];
             }
         };
+        $scope.getDifficultyClasses = function(level){
+            if(level == 'Beginner'){
+                return ['label label-info'];
+            }else if(level == 'Intermediate'){
+                return ['label', 'label-warning'];
+            }else{
+                return ['label', 'label-danger'];
+            }
+        };
 
         $scope.style = function(talk) {
             return $scope.colors[talk.Technology];
@@ -41,11 +50,11 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
         $scope.update = function(talk) {
             var user = $scope.global.user;
             
-            var adding = !_.contains(user.talks, talk.Id);
+            var adding = !_.contains(user.talks, talk._id);
             if (_.contains(user.talks, talk.Id))
-                user.talks = _.without(user.talks, talk.Id);
+                user.talks = _.without(user.talks, talk._id);
             else
-                user.talks.push(talk.Id);
+                user.talks.push(talk._id);
 
 
             User.toggleAttending(adding, talk._id);
@@ -53,11 +62,11 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
 
         $scope.isAttending = function(talk) {
             var user = $scope.global.user;
-            return _.contains(user.talks, talk.Id);
+            return _.contains(user.talks, talk._id);
         };
         $scope.sortByAttending = function(talk) {
             var user = $scope.global.user;
-            return _.contains(user.talks, talk.Id) === false;
+            return _.contains(user.talks, talk._id) === false;
         };
 
         Talks.query(function(data) {

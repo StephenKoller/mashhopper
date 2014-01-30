@@ -116,10 +116,10 @@ exports.toggle = function(req, res, next) {
                 talk.Users = [];
             }
             talk.Users.push(user._id);
-            user.talks.push(talk.Id);
+            user.talks.push(talk._id);
         } else {
             talk.Users = _.without(talk.Users, user._id.toString());
-            user.talks = _.without(user.talks, talk.Id);
+            user.talks = _.without(user.talks, talk._id.toString());
         }
         user.save();
         talk.save();
