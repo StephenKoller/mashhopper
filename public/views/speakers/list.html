@@ -1,19 +1,18 @@
 <section data-ng-controller="SpeakersController" ng-init="findAll()">
 	<table class="table table-bordered table-responsive">
+        <thead>
 		<tr>
-			<th>SpeakerURI</th>
 			<th>Name</th>
-			<th>TwitterHandle</th>
-			<th>Sessions</th>
-			<th>LookupId</th>
+            <th>Description</th>
+			<th>Profile</th>
 		</tr>
-
-		<tr ng-repeat="speaker in speakers | orderBy:'Name'">
-			<td>{{speaker.SpeakerURI}}</td>
-			<td>{{speaker.Name}}</td>
-			<td><a href="#!/speakers/{{session.SpeakerName.split(' ').join('-')}}">{{session.TwitterHandle}}</a></td>
-			<td>{{speaker.Sessions}}</td>
-			<td>{{speaker.LookupId}}</td>
+    </thead>
+        <tbody>
+		<tr ng-repeat="speaker in speakers | orderBy:'fullName'">
+            <td>{{speaker.fullName}}</td>
+            <td>{{speaker.description}}</td>
+            <td><a href="#!/speakers/{{speaker.slug}}"><img src="/img/icons/default.png" width=96 height=96 /></a></td>
 		</tr>
+        </tbody>
 	</table>
 </section>
