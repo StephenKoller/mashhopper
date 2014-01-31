@@ -19,21 +19,6 @@ describe('how to GET TO THE HOPPER!!!!!', function() {
   });
 });
 
-describe('users controller', function() {
-    it('should have a "contact" me action', function(done) {
-      request(app)
-        .post('/users/contact/')
-        .expect(200)
-        .end(function(err, res) {
-          if (err) {
-            done(err);
-          } else {
-            done();
-          }
-        });
-    });
-  });
-
 // describe('talks controller', function() {
 //   it('should have a "like" action', function(done) {
 //     request(app)

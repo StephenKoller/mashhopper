@@ -8,6 +8,8 @@
         "angular-mocks": "latest",
         "angular-route": "latest",
         "bootstrap": "latest",
+        "font-awesome": "latest",
+        "bootstrap-social-buttons":"latest",
         "angular-bootstrap": "latest",
         "angular-ui-utils": "0.0.4",
         "underscore": "latest",

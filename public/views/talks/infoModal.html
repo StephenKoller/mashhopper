@@ -1,9 +1,17 @@
 
     <div class="modal-header">
-      <h4 class="modal-title">{{modalTalk.Title}}</h4>
-      <h5>Speaker: {{modalTalk.SpeakerName}}</h5>
-      <h5>Room: {{modalTalk.Room}}</h5>
-    </div>
+      <h4 class="modal-title">{{modalTalk.title}}</h4>
+      <h5>Speakers:</h5>
+      <ul>
+        <li ng-repeat="speaker in modalTalk.speakers">{{speaker.fullName}}</li>
+      </ul>
+      <h5>Room: {{modalTalk.room}}</h5>
+      <button class="btn btn-twitter"><i class="fa fa-twitter"></i></button>
+      <button class="btn btn-google-plus"><i class="fa fa-google-plus"></i></button>
+      <button class="btn btn-linkedin"><i class="fa fa-linkedin"></i></button>
+      <button class="btn btn-github"><i class="fa fa-github"></i></button>
+      <button class="btn btn-facebook"><i class="fa fa-facebook"></i></button>
+  </div>
     <div class="modal-body">
-          <p>{{modalTalk.Abstract}}</p>
+          <p>{{modalTalk.description}}</p>
     </div>
