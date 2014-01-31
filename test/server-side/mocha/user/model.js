@@ -60,7 +60,7 @@ describe('<Unit Test>', function() {
         });
 
         after(function(done) {
-            User.remove().exec();
+//            User.remove().exec();
             done();
         });
     });
