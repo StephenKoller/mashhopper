@@ -6,5 +6,6 @@ public/lib
 test/coverage/
 config/env/development.js
 config/env/secrets.js
+config_heroku.bat
 *.log
 *.orig
