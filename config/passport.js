@@ -9,8 +9,6 @@ var mongoose = require('mongoose'),
     User = mongoose.model('User'),
     authentication = require('../app/services/authentication'),
     config = require('./config');
-    config = require('./env/secrets');
-
 
 module.exports = function(passport) {
     //Serialize sessions
