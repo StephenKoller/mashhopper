@@ -7,8 +7,8 @@ module.exports = {
     },
     facebook: {
         clientID: process.env.FACEBOOK_CLIENTID,
-        clientSecret: process.env.FACEBOOK_CLIENTID,
-        callbackURL: process.env.FACEBOOK_CLIENTID
+        clientSecret: process.env.FACEBOOK_CLIENTSECRET,
+        callbackURL: process.env.FACEBOOK_CALLBACKURL
     },
     twitter: {
         clientID: process.env.TWITTER_CLIENTID,

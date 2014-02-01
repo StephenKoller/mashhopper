@@ -44,10 +44,6 @@ module.exports = function(grunt) {
                 files: ['<%= filePaths.clientSourceFiles %>', '<%= filePaths.clientTestFiles %>'],
                 tasks: ['jshint', 'karma:unit:run']
             },
-            integrationTests: {
-                files: ['<%= filePaths.serverSourceFiles %>','<%= filePaths.serverConfgs %>','<%= filePaths.integrationTestFiles %>'],
-                tasks: ['jshint', 'mochaTest:integration']
-            },
             tests: {
                 files: ['<%= filePaths.clientSourceFiles %>',
                     '<%= filePaths.clientTestFiles %>',
@@ -66,8 +62,7 @@ module.exports = function(grunt) {
             serverTestFiles: 'test/server-side/mocha/**/*.js',
             serverSourceFiles: 'app/**/*.js',
             clientTestFiles: 'test/client-side/karma/unit/**/*.js',
-            clientSourceFiles: 'public/js/**/*.js',
-            integrationTestFiles: 'test/integration/**/*.js'
+            clientSourceFiles: 'public/js/**/*.js'
 
         },
 
@@ -170,6 +165,5 @@ module.exports = function(grunt) {
     grunt.registerTask('test', ['env:test', 'test-client', 'test-server']);
     grunt.registerTask('test-live', ['test-server', 'test-client', 'watch:tests']);
 
-    //Integration tests.
-    grunt.registerTask('i', ['env:test', 'mochaTest:integration']);
+    
 };
