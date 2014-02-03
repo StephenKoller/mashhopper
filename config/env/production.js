@@ -3,26 +3,31 @@
 module.exports = {
     db: process.env.MONGOHQ_URL,
     app: {
-        name: "MashHopper - Production"
+        name: "EventHopper"
     },
     facebook: {
-        clientID: "APP_ID",
-        clientSecret: "APP_SECRET",
-        callbackURL: "http://localhost:3000/auth/facebook/callback"
+        clientID: process.env.FACEBOOK_CLIENTID,
+        clientSecret: process.env.FACEBOOK_CLIENTSECRET,
+        callbackURL: process.env.FACEBOOK_CALLBACKURL
     },
     twitter: {
-        clientID: "CONSUMER_KEY",
-        clientSecret: "CONSUMER_SECRET",
-        callbackURL: "http://localhost:3000/auth/twitter/callback"
+        clientID: process.env.TWITTER_CLIENTID,
+        clientSecret: process.env.TWITTER_CLIENTSECRET,
+        callbackURL: process.env.TWITTER_CALLBACKURL
     },
     github: {
-        clientID: "APP_ID",
-        clientSecret: "APP_SECRET",
-        callbackURL: "http://localhost:3000/auth/github/callback"
+        clientID: process.env.GITHUB_CLIENTID,
+        clientSecret: process.env.GITHUB_CLIENTSECRET,
+        callbackURL: process.env.GITHUB_CALLBACKURL
     },
     google: {
-        clientID: "1090053842878-stj45vgra7imlc5dut73dkoo1auekid2.apps.googleusercontent.com",
-        clientSecret: "yMHWQF7MFNLK9CtauLiyucgf",
-        callbackURL: "http://mashhopper.herokuapp.com/auth/google/callback"
+        clientID: process.env.GOOGLE_CLIENTID,
+        clientSecret: process.env.GOOGLE_CLIENTSECRET,
+        callbackURL: process.env.GOOGLE_CALLBACKURL
+    },
+     linkedin: {
+        clientID: process.env.LINKEDIN_CLIENTID,
+        clientSecret: process.env.LINKEDIN_CLIENTSECRET,
+        callbackURL: process.env.LINKEDIN_CALLBACKURL
     }
 }
