@@ -57,7 +57,7 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
             var user = $scope.global.user;
             
             var adding = !_.contains(user.talks, talk._id);
-            if (_.contains(user.talks, talk.Id))
+            if (_.contains(user.talks, talk._id))
                 user.talks = _.without(user.talks, talk._id);
             else
                 user.talks.push(talk._id);
