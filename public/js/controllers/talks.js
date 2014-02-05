@@ -3,59 +3,33 @@
 angular.module('mean.talks').controller('TalksController', ['$scope', '$routeParams', '$location', '$modal', '$http', 'Global', 'Talks', 'User', '_',
     function($scope, $routeParams, $location, $modal, $http, Global, Talks, User, _) {
         $scope.global = Global;
-        $scope.colors = {
-            '.NET': 'dot-net',
-            'Design/UX': 'design',
-            'Design (HTML, CSS, etc)': 'design',
-            'Cool Stuff': 'cool-stuff',
-            'Testing': 'testing',
-            'Languages': 'languages',
-            'Java': 'java',
-            'Mobile': 'mobile',
-            'Mobile (Android, iOS, Windows Mobile, etc)': 'mobile',
-            'Ruby / Rails': 'ruby',
-            'JavaScript': 'javascript',
-            'Windows / .NET': 'microsoft',
-            'Hardware ( Raspberry Pi, Arduino, etc)': 'hardware',
-            'Development Methodologies': 'methodologies',
-            'Other': 'other',
-            'Soft Skills': 'soft-skills',
-            'Python': 'python',
-            'Cloud': 'cloud',
-            'Continuous Deployment': 'deployment',
-            'Mac/iPhone': 'mac'
-        };
         $scope.radioModel = 'Left';
         $scope.order = 'Start';
         $scope.displayFormat = 'grid';
-        $scope.displayFormatStyle=function(format){
-            if(format === $scope.displayFormat){
+        $scope.displayFormatStyle = function(format) {
+            if (format === $scope.displayFormat) {
                 return ['active'];
             }
         };
-        $scope.userHasAccount = function(type){
-            if($scope.global.user[type] && $scope.global.user[type].id){
+        $scope.userHasAccount = function(type) {
+            if ($scope.global.user[type] && $scope.global.user[type].id) {
                 return true;
             }
             return false;
         };
-        $scope.getDifficultyClasses = function(level){
-            if(level === 'Beginner'){
+        $scope.getDifficultyClasses = function(level) {
+            if (level === 'Beginner') {
                 return ['label label-info'];
-            }else if(level === 'Intermediate'){
+            } else if (level === 'Intermediate') {
                 return ['label', 'label-warning'];
-            }else{
+            } else {
                 return ['label', 'label-danger'];
             }
         };
 
-        $scope.style = function(talk) {
-            return $scope.colors[talk.Technology];
-        };
-
         $scope.update = function(talk) {
             var user = $scope.global.user;
-            
+
             var adding = !_.contains(user.talks, talk._id);
             if (_.contains(user.talks, talk.Id))
                 user.talks = _.without(user.talks, talk._id);
@@ -85,25 +59,29 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
                 scope: $scope,
                 templateUrl: 'views/talks/infoModal.html'
             });
-            setTimeout(function(){
+            setTimeout(function() {
                 window.twttr.widgets.createShareButton(
-                  'http://www.agileandbeyond.com/2014/',
-                  document.getElementById('twitterBtn'),
-                    function (el) {
+                    'http://www.agileandbeyond.com/2014/',
+                    document.getElementById('twitterBtn'),
+                    function(el) {
                         console.log(el);
-                    },
-                    {
-                        text: 'I\'m looking forward to the "'+talk.title+'" session at Agile and Beyond 2014.'
+                    }, {
+                        text: 'I\'m looking forward to the "' + talk.title + '" session at Agile and Beyond 2014.'
                     });
 
-                window.gapi.plusone.render(document.getElementById('googleButton'), {onendinteraction:function(data){console.log(data);}, href:'http://perljedi.com'});
+                window.gapi.plusone.render(document.getElementById('googleButton'), {
+                    onendinteraction: function(data) {
+                        console.log(data);
+                    },
+                    href: 'http://perljedi.com'
+                });
                 window.FB.XFBML.parse();
-                window.FB.Event.subscribe('xfbml.render', function(){
-                    window.FB.Event.subscribe('edge.create', function(){
+                window.FB.Event.subscribe('xfbml.render', function() {
+                    window.FB.Event.subscribe('edge.create', function() {
                         console.log('you love me, you really .. like me?');
                     });
                 });
-                
+
             }, 50);
         };
 
@@ -116,8 +94,15 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
                 }
             }, 500);
         });
-        window.twttr.ready(function (twttr) {
-            twttr.events.bind('tweet', function () {
+
+        $scope.viewTalkDetails = function(talk) {
+            console.log(talk);
+            var path = '/talks/' + talk._id;
+            $location.path(path);
+        };
+
+        window.twttr.ready(function(twttr) {
+            twttr.events.bind('tweet', function() {
                 console.log('ack, he tweeted');
             });
         });

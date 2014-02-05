@@ -14,10 +14,10 @@ module.exports = function(app, passport, auth) {
     app.get('/users/me', users.me);
 
     //Setting up the users api
-    app.post('/users/toggle',  users.toggle)
+    app.post('/users/toggle', users.toggle)
     app.post('/users/contact', users.contact);
     app.post('/users/:userId', auth.requiresLogin, auth.user.hasAuthorization, users.update);
-    
+
     app.post('/users', users.create);
 
     //Setting the google oauth routes
@@ -37,12 +37,12 @@ module.exports = function(app, passport, auth) {
     app.get('/auth/linkedin', passport.authenticate('linkedin', {
         failureRedirect: '/signin',
         scope: ['r_basicprofile'],
-        state:"dev4myappUpunk",
+        state: "dev4myappUpunk",
     }), users.signin);
 
     app.get('/auth/linkedin/callback', authService.authenticate(passport.authenticate('linkedin', {
         failureRedirect: '/signin',
-        state:"dev4myappUpunk"
+        state: "dev4myappUpunk"
     })), users.authCallback);
 
     //Setting the twitter oauth routes
@@ -62,7 +62,9 @@ module.exports = function(app, passport, auth) {
     //Setting the github oauth routes
     app.get('/auth/github', passport.authenticate('github'), users.signin);
 
-    app.get('/auth/github/callback', authService.authenticate(passport.authenticate('github', {failureRedirect: '/signin'})), users.authCallback);
+    app.get('/auth/github/callback', authService.authenticate(passport.authenticate('github', {
+        failureRedirect: '/signin'
+    })), users.authCallback);
 
     //Finish with setting up the userId param
     app.param('userId', users.user);
@@ -70,20 +72,18 @@ module.exports = function(app, passport, auth) {
     var graphs = require('../app/controllers/graphs');
     app.get('/graphs', graphs.all);
 
-    //Article Routes
-    var articles = require('../app/controllers/articles');
-    app.get('/articles', articles.all);
-    app.post('/articles', auth.requiresLogin, articles.create);
-    app.get('/articles/:articleId', articles.show);
-    app.put('/articles/:articleId', auth.requiresLogin, auth.article.hasAuthorization, articles.update);
-    app.del('/articles/:articleId', auth.requiresLogin, auth.article.hasAuthorization, articles.destroy);
 
-    //Finish with setting up the articleId param
-    app.param('articleId', articles.article);
 
-    //Home route
+    //public landing page. no auth required.
     var index = require('../app/controllers/index');
-    app.get('/', auth.requiresLogin, index.render);
+    app.get('/', index.render);
+
+    //authenticated users only here on out.
+    var home = require('../app/controllers/home');
+    app.get('/', auth.requiresLogin, home.render);
+
+    //if user falls past auth they get directed to signin.
+    //this seems odd. need to review this.
     app.get('/', users.signin);
 
 };

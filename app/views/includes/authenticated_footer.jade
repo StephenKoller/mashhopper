@@ -1,0 +1,60 @@
+//underscore
+script(type='text/javascript', src='/lib/underscore/underscore-min.js')
+
+//jQuery
+script(type='text/javascript', src="/lib/jquery/jquery.min.js")
+script(type='text/javascript', src="/lib/jquery-masonry/jquery.masonry.min.js")
+
+//socket.io
+script(type='text/javascript', src="/lib/socket.io-client/dist/socket.io.js")
+
+//AngularJS
+script(type='text/javascript', src='/lib/angular/angular.js')
+script(type='text/javascript', src='/lib/angular-cookies/angular-cookies.js')
+script(type='text/javascript', src='/lib/angular-resource/angular-resource.js')
+script(type='text/javascript', src='/lib/angular-route/angular-route.js')
+
+//Angular UI
+script(type='text/javascript', src='/lib/angular-bootstrap/ui-bootstrap.js')
+script(type='text/javascript', src='/lib/angular-bootstrap/ui-bootstrap-tpls.js')
+script(type='text/javascript', src='/lib/angular-ui-utils/modules/route/route.js')
+
+//Application Init
+script(type='text/javascript', src='/js/app.js')
+script(type='text/javascript', src='/js/config.js')
+
+//Application Services
+script(type='text/javascript', src='/js/services/global.js')
+script(type='text/javascript', src='/js/services/user.js')
+script(type='text/javascript', src='/js/services/articles.js')
+script(type='text/javascript', src='/js/services/talks.js')
+script(type='text/javascript', src='/js/services/graphs.js')
+
+
+//Application Directives
+script(type='text/javascript', src='/js/directives/jquery-masonry.js')
+//Not sure why but this needs be down here.
+script(type='text/javascript', src='/lib/angular-google-chart/ng-google-chart.js')
+
+//Application Factories
+script(type='text/javascript', src='/js/factories/underscore.js')
+
+script(type='text/javascript', src='https://apis.google.com/js/plusone.js')
+
+//Application Controllers
+script(type='text/javascript', src='/js/controllers/articles.js')
+script(type='text/javascript', src='/js/controllers/index.js')
+script(type='text/javascript', src='/js/controllers/header.js')
+script(type='text/javascript', src='/js/controllers/talks.js')
+script(type='text/javascript', src='/js/controllers/speakers.js')
+script(type='text/javascript', src='/js/controllers/graphs.js')
+script(type='text/javascript', src='/js/controllers/schedule.js')
+script(type='text/javascript', src='/js/controllers/user.js')
+script(type='text/javascript', src='/js/controllers/chat.js')
+script(type='text/javascript', src='/js/controllers/leaderboard.js')
+
+script(type='text/javascript', src='/js/init.js')
+
+if (process.env.NODE_ENV == 'development')
+    //Livereload script rendered
+    script(type='text/javascript', src='http://' + req.host + ':35729/livereload.js')
