@@ -26,42 +26,42 @@ module.exports = function(passport) {
 
     //Use twitter strategy
     passport.use(new TwitterStrategy({
-            consumerKey: config.twitter.clientID,
-            consumerSecret: config.twitter.clientSecret,
-            callbackURL: config.twitter.callbackURL,
-            passReqToCallback:true
-        },authentication.authenticationCallBack("twitter")));
+        consumerKey: config.twitter.clientID,
+        consumerSecret: config.twitter.clientSecret,
+        callbackURL: config.twitter.callbackURL,
+        passReqToCallback: true
+    }, authentication.authenticationCallBack("twitter")));
 
     //Use facebook strategy
     passport.use(new FacebookStrategy({
-            clientID: config.facebook.clientID,
-            clientSecret: config.facebook.clientSecret,
-            callbackURL: config.facebook.callbackURL,
-            passReqToCallback:true
-        },authentication.authenticationCallBack("facebook")));
+        clientID: config.facebook.clientID,
+        clientSecret: config.facebook.clientSecret,
+        callbackURL: config.facebook.callbackURL,
+        passReqToCallback: true
+    }, authentication.authenticationCallBack("facebook")));
 
     //Use github strategy
     passport.use(new GitHubStrategy({
-            clientID: config.github.clientID,
-            clientSecret: config.github.clientSecret,
-            callbackURL: config.github.callbackURL,
-            passReqToCallback:true
-        },authentication.authenticationCallBack("github")));
+        clientID: config.github.clientID,
+        clientSecret: config.github.clientSecret,
+        callbackURL: config.github.callbackURL,
+        passReqToCallback: true
+    }, authentication.authenticationCallBack("github")));
 
     //Use google strategy
     passport.use(new GoogleStrategy({
-            clientID: config.google.clientID,
-            clientSecret: config.google.clientSecret,
-            callbackURL: config.google.callbackURL,
-            passReqToCallback:true
-        },authentication.authenticationCallBack("google")));
+        clientID: config.google.clientID,
+        clientSecret: config.google.clientSecret,
+        callbackURL: config.google.callbackURL,
+        passReqToCallback: true
+    }, authentication.authenticationCallBack("google")));
 
     //Use linkedin strategy
     passport.use(new LinkedinStrategy({
-            clientID: config.linkedin.clientID,
-            clientSecret: config.linkedin.clientSecret,
-            callbackURL: config.linkedin.callbackURL,
-            scope: ['r_basicprofile'],
-            passReqToCallback:true
-        },authentication.authenticationCallBack("linkedin")));
+        clientID: config.linkedin.clientID,
+        clientSecret: config.linkedin.clientSecret,
+        callbackURL: config.linkedin.callbackURL,
+        scope: ['r_basicprofile'],
+        passReqToCallback: true
+    }, authentication.authenticationCallBack("linkedin")));
 };

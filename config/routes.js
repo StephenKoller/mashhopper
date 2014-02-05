@@ -22,6 +22,7 @@ module.exports = function(app, passport, auth) {
 
     //Setting the google oauth routes
     app.get('/auth/google', passport.authenticate('google', {
+        successRedirect: '/home',
         failureRedirect: '/signin',
         scope: [
             'https://www.googleapis.com/auth/userinfo.profile',
@@ -30,17 +31,20 @@ module.exports = function(app, passport, auth) {
     }), users.signin);
 
     app.get('/auth/google/callback', authService.authenticate(passport.authenticate('google', {
+        successRedirect: '/home',
         failureRedirect: '/signin'
     })), users.authCallback);
 
     //Setting the linkedin oauth routes
     app.get('/auth/linkedin', passport.authenticate('linkedin', {
+        successRedirect: '/home',
         failureRedirect: '/signin',
         scope: ['r_basicprofile'],
         state: "dev4myappUpunk",
     }), users.signin);
 
     app.get('/auth/linkedin/callback', authService.authenticate(passport.authenticate('linkedin', {
+        successRedirect: '/home',
         failureRedirect: '/signin',
         state: "dev4myappUpunk"
     })), users.authCallback);
@@ -49,6 +53,7 @@ module.exports = function(app, passport, auth) {
     app.get('/auth/twitter', passport.authenticate('twitter'), users.signin);
 
     app.get('/auth/twitter/callback', authService.authenticate(passport.authenticate('twitter', {
+        successRedirect: '/home',
         failureRedirect: '/signin'
     })), users.authCallback);
 
@@ -56,6 +61,7 @@ module.exports = function(app, passport, auth) {
     app.get('/auth/facebook', passport.authenticate('facebook'), users.signin);
 
     app.get('/auth/facebook/callback', authService.authenticate(passport.authenticate('facebook', {
+        successRedirect: '/home',
         failureRedirect: '/signin'
     })), users.authCallback);
 
@@ -63,6 +69,7 @@ module.exports = function(app, passport, auth) {
     app.get('/auth/github', passport.authenticate('github'), users.signin);
 
     app.get('/auth/github/callback', authService.authenticate(passport.authenticate('github', {
+        successRedirect: '/home',
         failureRedirect: '/signin'
     })), users.authCallback);
 
@@ -74,16 +81,19 @@ module.exports = function(app, passport, auth) {
 
 
 
+    //authenticated users only here on out.
+    var home = require('../app/controllers/home');
+    app.get('/home', auth.requiresLogin, home.render);
+
+
     //public landing page. no auth required.
     var index = require('../app/controllers/index');
     app.get('/', index.render);
 
-    //authenticated users only here on out.
-    var home = require('../app/controllers/home');
-    app.get('/', auth.requiresLogin, home.render);
+
 
     //if user falls past auth they get directed to signin.
     //this seems odd. need to review this.
-    app.get('/', users.signin);
+    //app.get('/', users.signin);
 
 };
