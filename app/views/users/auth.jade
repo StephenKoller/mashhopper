@@ -1,40 +1,35 @@
 extends ../layouts/public
 
 block content
-  link(href='//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css', rel='stylesheet')
-  .container
-      script#metamorph-1-start(type='text/x-placeholder')
-      script#metamorph-21-start(type='text/x-placeholder')
-      .container.text-center
-        form.form-signin(data-ember-action='2')
-          h2.form-signin-heading Sign in
-          small.text-muted Connect EventHopper with your favorite social network
-          br
-          br
-          p
-            a.btn.btn-primary.social-login-btn.social-facebook(href='/auth/facebook')
-              i.fa.fa-facebook
-            a.btn.btn-primary.social-login-btn.social-twitter(href='/auth/twitter')
-              i.fa.fa-twitter
-          p
-            a.btn.btn-primary.social-login-btn.social-linkedin(href='/auth/linkedin')
-              i.fa.fa-linkedin
-            a.btn.btn-primary.social-login-btn.social-google(href='/auth/google')
-              i.fa.fa-google-plus
-          p
-            a.btn.btn-primary.social-login-btn.social-linkedin(href='/auth/github')
-              i.fa.fa-github
-          small.text-muted Or sign in with EventHopper
-          br
-          br
-          input#ember360.ember-view.ember-text-field.form-control.login-input(placeholder='Email Address', type='text')
-          input#ember361.ember-view.ember-text-field.form-control.login-input-pass(placeholder='Password', type='password')
-          script#metamorph-22-start(type='text/x-placeholder')
-          script#metamorph-22-end(type='text/x-placeholder')
-          button.btn.btn-lg.btn-primary.btn-block.btn-center(type='submit', data-bindattr-3='3') Sign in
-          br
-          small.create-account.text-muted
-            | Dont have a EventHopper or social network account?
-            br
-            br
-            button#ember363.ember-view.btn.btn-sm.btn-default  Sign Up 
+    .container.text-center
+      form.form-signin
+        h2.form-signin-heading.yellowtail Sign in
+        small.text-muted Connect EventHopper with your favorite social network
+        br
+        br
+        p
+          a.btn.btn-primary.social-login-btn.social-facebook(href='/auth/facebook')
+            i.fa.fa-facebook
+          a.btn.btn-primary.social-login-btn.social-twitter(href='/auth/twitter')
+            i.fa.fa-twitter
+          a.btn.btn-primary.social-login-btn.social-linkedin(href='/auth/linkedin')
+            i.fa.fa-linkedin
+        p
+          a.btn.btn-primary.social-login-btn.social-google(href='/auth/google')
+            i.fa.fa-google-plus
+          a.btn.btn-primary.social-login-btn.social-linkedin(href='/auth/github')
+            i.fa.fa-github
+        //-small.text-muted Or sign in with EventHopper
+        //-br
+        //-br
+        //-input#ember360.ember-text-field.form-control.login-input(placeholder='Email Address', type='text')
+        //-input#ember361.ember-text-field.form-control.login-input-pass(placeholder='Password', type='password')
+        //-script#metamorph-22-start(type='text/x-placeholder')
+        //-script#metamorph-22-end(type='text/x-placeholder')
+        //-button.btn.btn-lg.btn-primary.btn-block.btn-center(type='submit', data-bindattr-3='3') Sign in
+        //-br
+        //-small.create-account.text-muted
+        //-  | Dont have a EventHopper or social network account?
+        //-  br
+        //-  br
+        //-  a.btn.btn-default(href='/signup') Sign up
