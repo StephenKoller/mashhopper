@@ -1,7 +1,7 @@
 <section data-ng-controller="TalksController" >
 	<h1 class="yellowtail text-left">Talks</h1>
 
-	<div class="row bottom-margin left-margin">
+	<div class="row view-controls">
 		<div class="col-md-9">
 			<div class="btn-group">
 		        <button class="btn btn-default active view-control" rel="tooltip" data-original-title="Grid view" ng-model="displayFormat" ng-class="displayFormatStyle('grid')" ng-click="displayFormat = 'grid'">
@@ -14,8 +14,8 @@
 			<div class="btn-group">
 				<button class="btn btn-default btn-sm" ng-click="order = 'Start'" ng-model="radioModel" btn-radio="'Left'">Time</button>
 				<button class="btn btn-default btn-sm" ng-click="order = 'title'" ng-model="radioModel" btn-radio="'MiddleLeft'">Title</button>
+                <button class="btn btn-default btn-sm" ng-click="order = 'speakers[0].fullName'" ng-model="radioModel" btn-radio="'Right'">Speaker</button>
 				<button class="btn btn-default btn-sm" ng-click="order = 'difficulty'" ng-model="radioModel" btn-radio="'Middle'">Difficulty</button>
-				<button class="btn btn-default btn-sm" ng-click="order = 'speakers[0].fullName'" ng-model="radioModel" btn-radio="'Right'">Speaker</button>
 				<button class="btn btn-default btn-sm" ng-click="order = sortByAttending" ng-model="radioModel" btn-radio="'FarRight'">Attending</button>
 			</div>
 		</div>
@@ -75,22 +75,26 @@
 		            </div>
 		        </li>
 		    </ul>
+
+<!-- List View -->
+
             <div ng-show="displayFormat == 'list'">
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th>Time</th>
                             <th class="hidden-sm hidden-xs">Title</th>
-                            <th class="hidden-sm hidden-xs">Room</th>
                             <th class="hidden-sm hidden-xs">Speakers</th>
-                            <td>Attending</th>
+                            <th class="hidden-sm hidden-xs">Room</th>
+                            <th class="hidden-sm hidden-xs">Difficulty</th>
+                            <th>Attending</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat-start="talk in talks | filter:searchTermWithDelay | orderBy:order">
                             <td class="talk-time">
                                 <span ng-if="talk.start">
-                                    <span class="label label-default date-label">{{talk.start | date:['EEEE h:mm a']}}</span>
+                                    <span class="list-date">{{talk.start | date:['EEEE h:mm a']}}</span>
                                 </span>
                             </td>
 
@@ -100,21 +104,20 @@
                             </td>
 
                             
-
-                            <td class="talk-room hidden-sm hidden-xs">
-                            	<span ng-if="talk.room">
-                                	<span class="label label-default date-label">{{talk.room}}</span>
-                            	</span>
-                            </td>
-
-                            <td class="talk-spearkers hidden-sm hidden-xs">
-                            	<span ng-if="talk.speakers" data-ng-repeat="speaker in talk.speakers">
-                                	<span class="label label-default date-label">{{speaker.fullName}}</span>
+                            <td class="speaker-name hidden-sm hidden-xs">
+                                <span ng-if="talk.speakers" data-ng-repeat="speaker in talk.speakers">
+                                    <span class="speaker-name">{{speaker.fullName}}</span>
                                 </span>
                             </td>
 
+                            <td class="talk-room hidden-sm hidden-xs">
+                            	<span ng-if="talk.room">{{talk.room}}</span>
+                            </td>
 
-
+                            <td class="talk-difficulty hidden-sm hidden-xs">
+                                <span data-ng-class="getDifficultyClasses(talk.difficulty)">{{talk.difficulty}}</span>
+                            </td>
+                            
                             <td class="talk-attending">
                                 <button data-ng-click="update(talk)" class="btn btn-default btn-labeled btn-xs" data-ng-class="{ 'btn-success' : isAttending(talk) }">
                                     <span class="btn-label">
