@@ -1,5 +1,4 @@
 h1 {
-  margin-left: 60px;
   font-size: 42px; 
 }
 
@@ -15,7 +14,7 @@ h1 {
 
 #one-liner {
   margin-bottom:20px;
-  color:#FFF;
+  color:rgba(255,255,255,0.8);
 }
 
 #sign-in {
@@ -67,19 +66,25 @@ html {
     position: relative;
     left: -6px;
     display: inline-block;
-    padding: 1px 6px;
+    padding: 0 4px;
     background: rgba(0,0,0,0.15);
-    border-radius: 3px 0 0 3px;
 }
 
 .btn-labeled {
-    padding-top: 0;
-    padding-bottom: 0;
-    margin: 0 0 10px 10px
+    padding:0 6px;
 }
 
 .btn-labeled:focus{
     outline:none;
+}
+
+.attending-btn{
+  margin-left:-4px;
+}
+
+.date {
+  padding-top:10px;
+  font-size:0.88em;
 }
 
 .oleo{
@@ -133,15 +138,18 @@ footer p {
     padding:5px 0 12px 10px
 }
 
-.technology {
-    padding:4px 10px;
-    width:100%;
-    height:26px;
-    font-size:13px;
+.talk-title {
+/*    padding:15px 15px 0 0;
+*/    font-size:16px;
     font-weight:bold;
-    color:#FFF;
+    color:#000;
 }
-td.technology {
+
+.talk-title:hover{
+  color:orange;
+}
+
+td.talk-title {
     width:auto;
 }
 
@@ -185,84 +193,6 @@ td.technology {
         z-index: 3;   
     }
 
-.date-label{
-    margin-left:10px;
-}
-
-.dot-net {
-    background-color: #68217a !important;
-    /*//, '#BF3978', '#15A0C6', '#9A2BC3'*/
-}
-
-.testing {
-    background-color: #BF3978 !important;
-    /*//, '#BF3978', '#15A0C6', '#9A2BC3'*/
-}
-
-.mobile {
-    background-color: #5458BD !important;
-}
-
-.python {
-    background-color: #376A94 !important;
-}
-
-.cool-stuff {
-    background-color: #9A2BC3 !important;
-}
-
-.java {
-    background-color: #FF66CC !important;
-}
-
-.javascript {
-    background-color: #FF9933 !important;
-}
-
-.ruby {
-    background-color: #CC342D !important;
-}
-
-.languages {
-    background-color: #EC6060 !important;
-}
-
-.microsoft {
-    background-color: #00AAEB !important;
-}
-
-.design {
-    background-color: #808CFF !important;
-}
-
-.cloud {
-    background-color: #507405 !important;
-}
-
-.deployment {
-    background-color: #16CCAF !important;
-}
-
-.mac {
-    background-color: #F1B720 !important;
-}
-
-.hardware {
-    background-color: #FF6F42 !important;
-}
-
-.methodologies {
-    background-color: #79AC14 !important;
-}
-
-.other {
-    background-color: #E2386E !important;
-}
-
-.soft-skills {
-    background-color: #42832E !important;
-}
-
 .grid {
     padding:0;
 }
@@ -272,17 +202,23 @@ td.technology {
     overflow: hidden;
     display: block!important;
     box-shadow: 0 0 5px 1px rgba(0,0,0,0.1);
+
+}
+.talk-brick:hover {
+  box-shadow: 0 0 10px 5px rgba(0,0,0,0.1);    
+}
+
+.speaker-name {
+  color: gray;
+  font-size:0.8em;
+  font-weight:bold;
 }
 
 .grid li {
     background-color:#FFF;
     display: inline-block;
     width: 280px;
-    /*height: 100px;*/
-    /*border: solid 1px #ccc;*/
-    /*margin: 0 0 10px 10px;*/
-    /*margin-bottom:50px;*/
-    padding:0;
+    padding:20px;
 }
 
 .grid li h4{
