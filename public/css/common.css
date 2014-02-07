@@ -2,6 +2,14 @@ h1 {
   font-size: 42px; 
 }
 
+.talk-brick .row {
+   margin-bottom:10px;
+}
+
+.talk-brick .top-row{
+  margin-bottom:0;
+}
+
 #landing-page {
   background-color:none !important;
 }
@@ -60,6 +68,18 @@ html {
 .talk-block-title-bar {
     height: 20px;
     margin-bottom: 10px;
+}
+
+.label-info {
+  background-color: #74A0BD;
+}
+
+.label-warning {
+  background-color:#E0AA5C;
+}
+
+.label-danger {
+  background-color:#DB6663;
 }
 
 .btn-label {
@@ -209,9 +229,9 @@ td.talk-title {
 }
 
 .speaker-name {
-  color: gray;
-  font-size:0.8em;
-  font-weight:bold;
+  color: #999;
+  font-size:1em;
+  font-style:italic;
 }
 
 .grid li {
