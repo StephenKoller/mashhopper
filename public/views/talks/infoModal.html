@@ -1,5 +1,6 @@
 <div class="modal-header">
-  <h2 class="modal-title">{{modalTalk.title}}</h2>
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <h3 class="modal-title">{{modalTalk.title}}</h3>
   <h4 ng-repeat="speaker in modalTalk.speakers" class="speaker-name">{{speaker.fullName}}</h4>
   <h5>{{modalTalk.room}}</h5>
       <!--      <a id="twitterBtn" target='_blank'></a> -->
