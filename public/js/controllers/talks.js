@@ -53,9 +53,13 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
             $scope.talks = data;
         });
 
+        $scope.closeModal = function(){
+            $scope.currentModal.close();
+        };
+
         $scope.openDescription = function(talk) {
             $scope.modalTalk = talk;
-            $modal.open({
+            $scope.currentModal = $modal.open({
                 scope: $scope,
                 templateUrl: 'views/talks/infoModal.html'
             });

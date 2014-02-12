@@ -7,6 +7,9 @@ angular.module('mean.articles').factory('User', function($http) {
 				adding: attending,
 				talkId: talkId
 			});
+		},
+		toggleLandingPage: function() {
+			$http.post('/users/toggleLandingPage');
 		}
 	};
 });

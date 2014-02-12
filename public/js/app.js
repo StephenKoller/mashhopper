@@ -11,6 +11,7 @@ angular.module('mean', ['ngCookies',
 	'mean.speakers',
 	'mean.schedule',
     'mean.users',
+    'mean.landing',
 	'codemash.talks',
 	'jquery.masonry',
 	'googlechart',
@@ -28,6 +29,7 @@ angular.module('mean.speakers', []);
 angular.module('mean.schedule', []);
 angular.module('mean.graphs', []);
 angular.module('mean.users', []);
+angular.module('mean.landing', []);
 angular.module('codemash.talks', []);
 angular.module('jquery.masonry', []);
 angular.module('googlechart', []);
