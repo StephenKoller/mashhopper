@@ -32,7 +32,7 @@ var UserSchema = new Schema({
     events: [{}],
     level: Number,
     showLandingPage: {
-        type: Boolean, 
+        type: Boolean,
         default: true
     }
 });

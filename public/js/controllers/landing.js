@@ -5,12 +5,12 @@ angular.module('mean.landing').controller('LandingController', ['$scope', '$loca
         $scope.global = Global;
 
         $scope.update = function() {
-        	$scope.global.user.showLandingPage = !$scope.global.user.showLandingPage;
+            $scope.global.user.showLandingPage = !$scope.global.user.showLandingPage;
             User.toggleLandingPage();
             $location.url('/talks');
         };
-        $scope.getUserBoothQrCodeTarget = function(){
-            return $location.protocol()+'://'+$location.host()+':'+$location.port()+'/event/boothVisit?guid='+$scope.global.user._id;
+        $scope.getUserBoothQrCodeTarget = function() {
+            return $location.protocol() + '://' + $location.host() + ':' + $location.port() + '/event/boothVisit?guid=' + $scope.global.user._id;
         };
     }
 ]);

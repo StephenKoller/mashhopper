@@ -54,17 +54,17 @@ angular.module('mean.schedule').controller('ScheduleController', ['$scope', '$ro
             return !$scope.hideUnattending || $scope.isAttending(talk);
         };
 
-        $scope.friday = function(){
+        $scope.friday = function() {
             return $scope.talks.filter(function(talk) {
-                //return talk >= 10;
+                return talk >= 10;
             });
-        }
+        };
 
         Talks.query(function(data) {
             var user = $scope.global.user;
-            var attending = _.filter(data, function(talk){ 
+            var attending = _.filter(data, function(talk) {
 
-               return _.contains(user.talks, talk._id);
+                return _.contains(user.talks, talk._id);
             });
             console.log(attending);
             $scope.talks = attending;

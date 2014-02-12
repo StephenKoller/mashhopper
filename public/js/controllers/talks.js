@@ -54,16 +54,16 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
             $scope.talks = data;
         });
 
-        $scope.filterAttending = function(){
+        $scope.filterAttending = function() {
             var user = $scope.global.user;
-            if($scope.showingAttending === false){
+            if ($scope.showingAttending === false) {
                 //filter
                 $scope.showingAttending = true;
                 $scope.allTalks = $scope.talks;
-                var attending = _.filter($scope.talks, function(talk){ 
-                   return _.contains(user.talks, talk._id);
+                var attending = _.filter($scope.talks, function(talk) {
+                    return _.contains(user.talks, talk._id);
                 });
-                $scope.talks = attending;    
+                $scope.talks = attending;
             } else {
                 //clear filter
                 $scope.talks = $scope.allTalks;
@@ -71,13 +71,13 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
             }
         };
 
-         $scope.filterStyle = function(format) {
+        $scope.filterStyle = function(format) {
             if (format === $scope.showingAttending) {
                 return ['btn-primary'];
             }
         };
 
-        $scope.closeModal = function(){
+        $scope.closeModal = function() {
             $scope.currentModal.close();
         };
 
@@ -134,7 +134,7 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
             });
         });
 
-        $scope.clearSearchFields = function(){
+        $scope.clearSearchFields = function() {
             $scope.searchTermWithDelay = '';
             $scope.searchTerm = '';
         };

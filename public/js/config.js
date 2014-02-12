@@ -22,7 +22,7 @@ angular.module('mean').config(['$routeProvider',
         when('/talks/:talkId', {
             templateUrl: 'views/talks/view.html'
         }).
-        when('/profile',{
+        when('/profile', {
             templateUrl: 'views/user/profile.html'
         }).
         when('/schedule', {
@@ -38,7 +38,9 @@ angular.module('mean').config(['$routeProvider',
             templateUrl: 'views/landing.html'
         }).
         otherwise({
-            redirectTo: function(){return window.user.showLandingPage ? '/landing' : '/talks'}()
+            redirectTo: function() {
+                return (window.user.showLandingPage ? '/landing' : '/talks');
+            }()
         });
     }
 ]);
