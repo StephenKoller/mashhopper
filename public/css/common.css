@@ -283,8 +283,8 @@ td.talk-title {
 .masonry li { /* apply before masonry add class */
     position: absolute; /* important to add it before enter animation start */
     
-    -webkit-transition-duration: .7s;
-    transition-duration: .7s;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
     
     -webkit-transition-property: all;
     transition-property: all;    
