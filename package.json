@@ -24,13 +24,13 @@
         "connect-mongo": "latest",
         "connect-flash": "latest",
         "crypto": "latest",
-        "passport": "latest",
+        "passport": "0.1.1",
         "passport-local": "latest",
         "passport-facebook": "latest",
         "passport-twitter": "latest",
         "passport-github": "latest",
         "passport-google-oauth": "latest",
-        "passport-linkedin-oauth2":"latest",
+        "passport-linkedin-oauth2": "latest",
         "lodash": "latest",
         "view-helpers": "latest",
         "mean-logger": "latest",
@@ -39,7 +39,7 @@
         "grunt-cli": "latest",
         "grunt-env": "latest",
         "forever": "latest",
-        "socket.io" : "latest"
+        "socket.io": "latest"
     },
     "devDependencies": {
         "proxyquire": "latest",
@@ -62,6 +62,6 @@
         "karma": "~0.10.4",
         "grunt-karma": "~0.6.2",
         "karma-coverage": "~0.1.0",
-        "sinon":"latest"
+        "sinon": "latest"
     }
 }
