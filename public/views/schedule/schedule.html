@@ -3,45 +3,60 @@
 	
 		<input type="checkbox" ng-model="hideUnattending">Hide Unattended Conferences</input>
 		<div class="col-md-12">
-			<ul >
-		        <li ng-repeat="talk in blocks | filter:searchTermWithDelay | orderBy:order" class="talk-brick">
-	        		<div class="row top-row">
-	        			<div class="col-md-12 clickable" data-ng-click="openDescription(talk)">
-			            	<div class='talk-title'>{{talk.title}}</div>
-			            </div>
-		            </div>
-                    <div class="row">
-                        <div class="col-md-12">
-		        		    <span data-ng-class="style(talk)" data-ng-repeat="speaker in talk.speakers">
-						      <span class="speaker-name">{{speaker.fullName}}</span>
-                              <br/>
-                            </span>
-                        </div>
-	        		</div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span ng-if="talk.start">
-                                <span class="date">{{talk.start | date:['EEEE h:mm a']}}</span>
-                            </span>
-                        </div>
-                    </div>
-	        		<div class="row">
-                        <div class="col-md-6">
-                            <span data-ng-class="getDifficultyClasses(talk.difficulty)">{{talk.difficulty}}</span>
-                        </div>
-                        <div class="col-md-6 text-right">
-                            <button data-ng-click="update(talk)" class="btn btn-default btn-labeled btn-xs" data-ng-class="{ 'btn-success' : isAttending(talk) }">
-                                <span class="btn-label">
-                                    <i class="glyphicon glyphicon-ok" data-ng-class="{ 'glyphicon-ok' : isAttending(talk), 'glyphicon-remove' : !isAttending(talk) }"></i>
+		        <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="hidden-sm hidden-xs">Time</th>
+                            <th class="hidden-sm hidden-xs">Title</th>
+                            <th class="hidden-sm hidden-xs">Speakers</th>
+                            <th class="hidden-sm hidden-xs">Room</th>
+                            <th class="hidden-sm hidden-xs">Difficulty</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat-start="talk in talks">
+                            <td class="talk-time hidden-sm hidden-xs">
+                                <span ng-if="talk.start">
+                                    <span class="list-date">{{talk.start | date:['EEEE h:mm a']}}</span>
                                 </span>
-                                <span ng-switch on="isAttending(talk)" class="attending-btn">
-                                    <span ng-switch-when="true">Attending</span>
-                                    <span ng-switch-when="false">Not Attending</span>
+                            </td>
+
+
+                            <td class="talk-title clickable hidden-sm hidden-xs" data-ng-click="openDescription(talk)">
+                                <h4>{{talk.title}}</h4>
+                            </td>
+
+                            
+                            <td class="speaker-name hidden-sm hidden-xs">
+                                <span ng-if="talk.speakers" data-ng-repeat="speaker in talk.speakers">
+                                    <span class="speaker-name">{{speaker.fullName}}</span>
                                 </span>
-                            </button>
-                        </div>
-		            </div>
-		        </li>
-		    </ul>
+                            </td>
+
+                            <td class="talk-room hidden-sm hidden-xs">
+                            	<span ng-if="talk.room">{{talk.room}}</span>
+                            </td>
+
+                            <td class="talk-difficulty hidden-sm hidden-xs">
+                                <span data-ng-class="getDifficultyClasses(talk.difficulty)">{{talk.difficulty}}</span>
+                            </td>
+                        </tr>
+                        <tr ng-repeat-end>
+                            <td class="hidden-md hidden-lg">
+                                <span ng-if="talk.start">
+                                    <span class="list-date">{{talk.start | date:['EEEE h:mm a']}}</span>
+                                </span>
+                            </td>
+                        	<td class="hidden-md hidden-lg">
+                                <span class="talk-title">{{talk.title}}</span>
+                                <div ng-if="talk.speakers" data-ng-repeat="speaker in talk.speakers">
+                                    <div class="speaker-name">{{speaker.fullName}}</div>
+                                </div>
+                                <span ng-if="talk.room">{{talk.room}}</span>
+                                <span data-ng-class="getDifficultyClasses(talk.difficulty)">{{talk.difficulty}}</span>
+                        	</td>
+                        </tr>
+                    </tbody>
+                </table>
 		</div>
 </section>

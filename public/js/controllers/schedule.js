@@ -54,33 +54,20 @@ angular.module('mean.schedule').controller('ScheduleController', ['$scope', '$ro
             return !$scope.hideUnattending || $scope.isAttending(talk);
         };
 
+        $scope.friday = function(){
+            return $scope.talks.filter(function(talk) {
+                //return talk >= 10;
+            });
+        }
+
         Talks.query(function(data) {
-            $scope.talks = data;
-            var timeslots = [];
+            var user = $scope.global.user;
+            var attending = _.filter(data, function(talk){ 
 
-            for (var i = data.length - 1; i >= 0; i--) {
-                if (!_.contains(timeslots, data[i].Start)) {
-                    timeslots.push(data[i].Start);
-                }
-            }
-
-            timeslots.sort();
-
-            for (var ts = 0; ts < timeslots.length; ts++) {
-                $scope.blocks.push({
-                    time: timeslots[ts],
-                    talks: []
-                });
-            }
-
-            console.log($scope.blocks);
-            var filterFunction = function(block) {
-                return block.time === data[t].Start;
-            };
-            for (var t = data.length - 1; t >= 0; t--) {
-                var timeslot = _.find($scope.blocks, filterFunction);
-                timeslot.talks.push(data[t]);
-            }
+               return _.contains(user.talks, talk._id);
+            });
+            console.log(attending);
+            $scope.talks = attending;
         });
 
         $scope.openDescription = function(talk) {

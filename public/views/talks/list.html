@@ -87,7 +87,6 @@
                             <th class="hidden-sm hidden-xs">Speakers</th>
                             <th class="hidden-sm hidden-xs">Room</th>
                             <th class="hidden-sm hidden-xs">Difficulty</th>
-                            <th class="hidden-sm hidden-xs">Attending</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -117,22 +116,6 @@
                             <td class="talk-difficulty hidden-sm hidden-xs">
                                 <span data-ng-class="getDifficultyClasses(talk.difficulty)">{{talk.difficulty}}</span>
                             </td>
-                            
-                            <td class="talk-attending hidden-sm hidden-xs">
-                                <button data-ng-click="update(talk)" class="btn btn-default btn-labeled btn-xs" data-ng-class="{ 'btn-success' : isAttending(talk) }">
-                                    <span class="btn-label">
-                                        <i class="glyphicon glyphicon-ok" data-ng-class="{ 'glyphicon-ok' : isAttending(talk), 'glyphicon-remove' : !isAttending(talk) }"></i>
-                                    </span>
-                                    <span ng-switch on="isAttending(talk)">
-                                        <span ng-switch-when="true">
-                                            Attending
-                                        </span>
-                                        <span ng-switch-when="false">
-                                            Not Attending
-                                        </span>
-                                    </span>
-                                </button>
-                            </td>
                         </tr>
                         <tr ng-repeat-end>
                             <td class="hidden-md hidden-lg">
@@ -147,19 +130,6 @@
                                 </div>
                                 <span ng-if="talk.room">{{talk.room}}</span>
                                 <span data-ng-class="getDifficultyClasses(talk.difficulty)">{{talk.difficulty}}</span>
-                                <button data-ng-click="update(talk)" class="btn btn-default btn-labeled btn-xs" data-ng-class="{ 'btn-success' : isAttending(talk) }">
-                                    <span class="btn-label">
-                                        <i class="glyphicon glyphicon-ok" data-ng-class="{ 'glyphicon-ok' : isAttending(talk), 'glyphicon-remove' : !isAttending(talk) }"></i>
-                                    </span>
-                                    <span ng-switch on="isAttending(talk)">
-                                        <span ng-switch-when="true">
-                                            Attending
-                                        </span>
-                                        <span ng-switch-when="false">
-                                            Not Attending
-                                        </span>
-                                    </span>
-                                </button>
                         	</td>
                         </tr>
                     </tbody>
