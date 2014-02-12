@@ -30,7 +30,11 @@ var UserSchema = new Schema({
     talks: [String],
     xp: Number,
     events: [{}],
-    level: Number
+    level: Number,
+    showLandingPage: {
+        type: Boolean, 
+        default: true
+    }
 });
 
 /**

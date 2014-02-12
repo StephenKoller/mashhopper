@@ -14,7 +14,8 @@ module.exports = function(app, passport, auth) {
     app.get('/users/me', users.me);
 
     //Setting up the users api
-    app.post('/users/toggle', users.toggle)
+    app.post('/users/toggle', users.toggle);
+    app.post('/users/toggleLandingPage', users.toggleLandingPage);
     app.post('/users/contact', users.contact);
     app.post('/users/:userId', auth.requiresLogin, auth.user.hasAuthorization, users.update);
 
