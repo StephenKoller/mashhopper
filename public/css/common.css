@@ -40,12 +40,19 @@ h1 {
 }
 
 html {
-  background: url(../img/conference-room-xl.png) no-repeat center center fixed;
-  height: 100%;
+  background-color: #EEE;
+}
+
+.container {
+  width:100%;
+}
+
+.white{
+  color:#FFF;
 }
 
 #translucent-bg {
-  background-color:rgba(0,0,0,0.2);
+  background-color:rgba(0,0,0,0.3);
   border-radius:5px;
   height:100%;
 }
@@ -128,10 +135,6 @@ html {
   font-size:0.88em;
 }
 
-.oleo{
-    font-family: 'Oleo Script', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
-}
-
 .yellowtail{
   font-family: 'Yellowtail', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
 }
@@ -148,11 +151,6 @@ html {
 
 .content {
     width:100%
-}
-
-.container {
-    width:100%;
-    background-color: #EEE;
 }
 
 .view-controls {
