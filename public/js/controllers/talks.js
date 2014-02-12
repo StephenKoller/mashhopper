@@ -100,7 +100,6 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
         });
 
         $scope.viewTalkDetails = function(talk) {
-            console.log(talk);
             var path = '/talks/' + talk._id;
             $location.path(path);
         };
@@ -110,5 +109,10 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
                 console.log('ack, he tweeted');
             });
         });
+
+        $scope.clearSearchFields = function(){
+            $scope.searchTermWithDelay = '';
+            $scope.searchTerm = '';
+        };
     }
 ]);
