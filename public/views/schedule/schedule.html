@@ -3,41 +3,45 @@
 	
 		<input type="checkbox" ng-model="hideUnattending">Hide Unattended Conferences</input>
 		<div class="col-md-12">
-			<div ng-repeat="block in blocks" class="well">
-				<div class="talk-block-title-bar">
-					<h4>{{block.time | date:['EEEE h:mm a']}}</h4>
-				</div>
-
-		        <div ng-repeat="talk in block.talks" class="talk-div-item" data-ng-class="{ 'talk-attending' : isAttending(talk) }" ng-show="showTalk(talk)">
-		        	<div class="row">
-		        		<div class="col-md-12">
-		        		   	<div data-ng-class="style(talk)" class="technology">{{talk.Technology}}</div>
-		     			</div>
-	        		</div>
-	        		<div class="talk-div-item-title clickable" data-ng-click="openDescription(talk)">
-		            	<h4>{{talk.Title}}</h4>
-		            </div>
-		            <div class="row">
-	        			<div class="col-md-12">
-				            <button data-ng-click="update(talk)" class="btn btn-default btn-labeled btn-xs" data-ng-class="{ 'btn-success' : isAttending(talk) }">
-				            	<span class="btn-label">
-				            		<i class="glyphicon glyphicon-ok" data-ng-class="{ 'glyphicon-ok' : isAttending(talk), 'glyphicon-remove' : !isAttending(talk) }"></i>
-			            		</span>
-			            		<span ng-switch on="isAttending(talk)">
-			            			<span ng-switch-when="true">
-			            				Attending
-			            			</span>
-			            			<span ng-switch-when="false">
-			            				Not Attending
-			            			</span>
-			            		</span>
-				            </button>
+			<ul >
+		        <li ng-repeat="talk in blocks | filter:searchTermWithDelay | orderBy:order" class="talk-brick">
+	        		<div class="row top-row">
+	        			<div class="col-md-12 clickable" data-ng-click="openDescription(talk)">
+			            	<div class='talk-title'>{{talk.title}}</div>
 			            </div>
 		            </div>
-        		</div>
-
-        		<div class="clearfix">
-	            </div>
-			</div>
+                    <div class="row">
+                        <div class="col-md-12">
+		        		    <span data-ng-class="style(talk)" data-ng-repeat="speaker in talk.speakers">
+						      <span class="speaker-name">{{speaker.fullName}}</span>
+                              <br/>
+                            </span>
+                        </div>
+	        		</div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span ng-if="talk.start">
+                                <span class="date">{{talk.start | date:['EEEE h:mm a']}}</span>
+                            </span>
+                        </div>
+                    </div>
+	        		<div class="row">
+                        <div class="col-md-6">
+                            <span data-ng-class="getDifficultyClasses(talk.difficulty)">{{talk.difficulty}}</span>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <button data-ng-click="update(talk)" class="btn btn-default btn-labeled btn-xs" data-ng-class="{ 'btn-success' : isAttending(talk) }">
+                                <span class="btn-label">
+                                    <i class="glyphicon glyphicon-ok" data-ng-class="{ 'glyphicon-ok' : isAttending(talk), 'glyphicon-remove' : !isAttending(talk) }"></i>
+                                </span>
+                                <span ng-switch on="isAttending(talk)" class="attending-btn">
+                                    <span ng-switch-when="true">Attending</span>
+                                    <span ng-switch-when="false">Not Attending</span>
+                                </span>
+                            </button>
+                        </div>
+		            </div>
+		        </li>
+		    </ul>
 		</div>
 </section>

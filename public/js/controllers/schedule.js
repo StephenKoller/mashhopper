@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.schedule').controller('ScheduleController', ['$scope', '$routeParams', '$location', '$modal', 'Global', 'Talks', 'User',
+angular.module('mean.schedule').controller('ScheduleController', ['$scope', '$routeParams', '$location', '$modal', 'Global', 'Talks', 'User', '_',
     function($scope, $routeParams, $location, $modal, Global, Talks, User, _) {
         $scope.global = Global;
         $scope.colors = {
