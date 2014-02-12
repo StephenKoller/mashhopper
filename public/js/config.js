@@ -38,7 +38,7 @@ angular.module('mean').config(['$routeProvider',
             templateUrl: 'views/landing.html'
         }).
         otherwise({
-            redirectTo: '/landing'
+            redirectTo: function(){return window.user.showLandingPage ? '/landing' : '/talks'}()
         });
     }
 ]);

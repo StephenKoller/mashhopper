@@ -127,6 +127,13 @@ exports.toggle = function(req, res, next) {
     });
 };
 
+exports.toggleLandingPage = function(req, res, next) {
+    var user = req.user;
+    user.showLandingPage = !user.showLandingPage;
+    user.save(); 
+    res.send(true);
+};
+
 /**
  * Find user by id
  */

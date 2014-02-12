@@ -3,6 +3,9 @@
   <h3 class="modal-title">{{modalTalk.title}}</h3>
   <h4 ng-repeat="speaker in modalTalk.speakers" class="speaker-name">{{speaker.fullName}}</h4>
   <h5>{{modalTalk.room}}</h5>
+  <span data-ng-class="getDifficultyClasses(modalTalk.difficulty)">{{modalTalk.difficulty}}</span>
+  <br/>
+  <br/>
       <!--      <a id="twitterBtn" target='_blank'></a> -->
   <span id="twitterBtn" data-via="twitterapi" data-lang="en" data-ng-show="userHasAccount('twitter')"></span>
   <span id="googleButton" data-ng-show="userHasAccount('google')">

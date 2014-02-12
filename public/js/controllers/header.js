@@ -10,6 +10,6 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
 			'title': 'Schedule',
 			'link': 'schedule'
 		}];
-		$scope.isCollapsed = false;
+		$scope.isCollapsed = true;
 	}
 ]);
