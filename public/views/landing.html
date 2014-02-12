@@ -9,10 +9,10 @@
 </style>
 <section data-ng-controller="LandingController" >
 	<div id="translucent-bg" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3 text-center">
-		<h1 class="white">Hey there!</h1>
-		<h4 id="one-liner" class="copy">Placeholder text here. We need copy for this section.</h4>
+		<h1 class="white">Your QR code to win!</h1>
+		<h4 id="one-liner" class="copy">Simply stop by the Pillar booth to have your QR code scanned. This enters you into the drawing for a fabulous prize...and we promise it won't be tube socks.</h4>
         <qrcode version="5" error-correction-level="M" size="120" data="{{ getUserBoothQrCodeTarget() }}"></qrcode><br />
 		<img src="../img/icons/pillar-logo-blue.png"/><br/>
-		<button data-ng-click="update()" class="btn btn-primary" data-ng-class="{ 'btn-success' : isAttending(talk) }">Continue</button>
+		<button data-ng-click="update()" class="btn btn-primary">Continue</button>
 	</div>
 </section>
