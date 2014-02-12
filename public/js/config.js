@@ -7,7 +7,6 @@ angular.module('mean').config(['$routeProvider',
         when('/articles', {
             templateUrl: 'views/articles/list.html'
         }).
-       
         when('/speakers', {
             templateUrl: 'views/speakers/list.html'
         }).
@@ -35,8 +34,11 @@ angular.module('mean').config(['$routeProvider',
         when('/leaderboard', {
             templateUrl: 'views/leaderboard/leaderboard.html'
         }).
+        when('/landing', {
+            templateUrl: 'views/landing.html'
+        }).
         otherwise({
-            redirectTo: '/talks'
+            redirectTo: '/landing'
         });
     }
 ]);
