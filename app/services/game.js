@@ -1,6 +1,8 @@
 'use strict';
 
-//var mongoose = require('mongoose');
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
+var _ = require('lodash');
 
 exports.eventTypeXpValues = {
 	signup: 1,
@@ -39,15 +41,31 @@ exports.notify = function(eventObj, user) {
 			});
 			var expectedLevel = possibleThresholds[possibleThresholds.length-1].level;
 			user.level = expectedLevel;
+            user.events.push(eventObj);
 			user.save();
 		}
 	}
 };
 
+exports.userVistsBooth = function(req, res){
+    User.findOne({'_id':mongoose.Types.ObjectId(req.query.guid)}, function(err,user){
+        if(err){
+            // fail (poison)
+            return res.send('boo!');
+        }else{
+            if(! user){
+                // Guid not found (poison)
+                res.send('not found');
+            }else{
+                // Yay! Tasty fish!
+                exports.notify({type:'booth'}, user);
+                res.send('Whooosa');
+            }
+            return true;
+        }
+    });
+};
+
 exports.eventExists = function(newEvent, user) {
-	return user.events.some(function(userEvent) {
-		return Object.keys(userEvent).every(function(key) {
-			return userEvent[key] === newEvent[key];
-		});
-	});
+    return _.some(user.events,function(ne){ return ne.type === newEvent.type; });
 };

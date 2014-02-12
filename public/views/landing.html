@@ -1,4 +1,18 @@
+<style type="text/css">
+	html {
+	  background: url(../img/conference-room-xl.png) no-repeat center center fixed;
+	  height: 100%;
+	}
+	body, section.content > section.container {
+		background-color:rgba(0,0,0,0) !important;
+	}
+</style>
 <section data-ng-controller="LandingController" >
-	<h1>It works</h1>
-	<button data-ng-click="update()" class="btn btn-default btn-labeled btn-xs" data-ng-class="{ 'btn-success' : isAttending(talk) }">Don't show me this</button>
+	<div id="translucent-bg" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3 text-center">
+		<h1 class="white">Hey there!</h1>
+		<h4 id="one-liner" class="copy">Placeholder text here. We need copy for this section.</h4>
+		<img src="../img/icons/qrcode.pillartechnology.png"/><br/>
+		<img src="../img/icons/pillar-logo-blue.png"/><br/>
+		<button data-ng-click="update()" class="btn btn-primary" data-ng-class="{ 'btn-success' : isAttending(talk) }">Continue</button>
+	</div>
 </section>

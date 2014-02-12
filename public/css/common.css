@@ -40,12 +40,19 @@ h1 {
 }
 
 html {
-  background: url(../img/conference-room-xl.png) no-repeat center center fixed;
-  height: 100%;
+  background-color: #EEE;
+}
+
+.container {
+  width:100%;
+}
+
+.white{
+  color:#FFF;
 }
 
 #translucent-bg {
-  background-color:rgba(0,0,0,0.2);
+  background-color:rgba(0,0,0,0.3);
   border-radius:5px;
   height:100%;
 }
@@ -128,10 +135,6 @@ html {
   font-size:0.88em;
 }
 
-.oleo{
-    font-family: 'Oleo Script', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
-}
-
 .yellowtail{
   font-family: 'Yellowtail', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
 }
@@ -148,11 +151,6 @@ html {
 
 .content {
     width:100%
-}
-
-.container {
-    width:100%;
-    background-color: #EEE;
 }
 
 .view-controls {
@@ -283,8 +281,8 @@ td.talk-title {
 .masonry li { /* apply before masonry add class */
     position: absolute; /* important to add it before enter animation start */
     
-    -webkit-transition-duration: .7s;
-    transition-duration: .7s;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
     
     -webkit-transition-property: all;
     transition-property: all;    

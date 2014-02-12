@@ -1,12 +1,10 @@
 extends ../layouts/public
 
 block content
-    .container.text-center#translucent-bg
+    .text-center.col-lg-4.col-lg-offset-4.col-md-6.col-md-offset-3.col-sm-6.col-sm-offset-3.col-xs-12#translucent-bg
       form.form-signin
-        h2.form-signin-heading.yellowtail Sign in
-        small.text-muted Connect EventHopper with your favorite social network
-        br
-        br
+        h1.white.form-signin-heading.yellowtail Sign in
+        h4#one-liner Connect EventHopper with your favorite social network
         p
           a.btn.btn-primary.social-login-btn.social-facebook(href='/auth/facebook')
             i.fa.fa-facebook

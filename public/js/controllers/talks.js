@@ -6,6 +6,7 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
         $scope.radioModel = 'Left';
         $scope.order = 'Start';
         $scope.displayFormat = 'grid';
+        $scope.showingAttending = false;
         $scope.displayFormatStyle = function(format) {
             if (format === $scope.displayFormat) {
                 return ['active'];
@@ -52,6 +53,29 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
         Talks.query(function(data) {
             $scope.talks = data;
         });
+
+        $scope.filterAttending = function(){
+            var user = $scope.global.user;
+            if($scope.showingAttending === false){
+                //filter
+                $scope.showingAttending = true;
+                $scope.allTalks = $scope.talks;
+                var attending = _.filter($scope.talks, function(talk){ 
+                   return _.contains(user.talks, talk._id);
+                });
+                $scope.talks = attending;    
+            } else {
+                //clear filter
+                $scope.talks = $scope.allTalks;
+                $scope.showingAttending = false;
+            }
+        };
+
+         $scope.filterStyle = function(format) {
+            if (format === $scope.showingAttending) {
+                return ['btn-primary'];
+            }
+        };
 
         $scope.closeModal = function(){
             $scope.currentModal.close();
