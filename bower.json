@@ -16,7 +16,7 @@
         "angular-google-chart": "latest",
         "jquery": "latest",
         "jquery-masonry": "v2.1.08",
-        "socket.io-client": "latest"
-        
+        "socket.io-client": "latest",
+        "angular-qrcode": "3.1.0"
     }
 }
