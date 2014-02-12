@@ -1,4 +1,6 @@
 <section data-ng-controller="LandingController" >
 	<h1>It works</h1>
+    <qrcode version="5" error-correction-level="M" size="120" data="{{ getUserBoothQrCodeTarget() }}"></qrcode>
+    <br />
 	<button data-ng-click="update()" class="btn btn-default btn-labeled btn-xs" data-ng-class="{ 'btn-success' : isAttending(talk) }">Don't show me this</button>
 </section>

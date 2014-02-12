@@ -19,7 +19,8 @@ angular.module('mean', ['ngCookies',
 	'mashhopper.graphs',
 	'mashhopper.chat',
 	'mashhopper.leaderboard',
-	'underscore'
+	'underscore',
+    'monospaced.qrcode'
 ]);
 
 angular.module('mean.system', []);

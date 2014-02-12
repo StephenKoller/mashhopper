@@ -9,5 +9,8 @@ angular.module('mean.landing').controller('LandingController', ['$scope', '$loca
             User.toggleLandingPage();
             $location.url('/talks');
         };
+        $scope.getUserBoothQrCodeTarget = function(){
+            return $location.protocol()+'://'+$location.host()+':'+$location.port()+'/event/boothVisit?guid='+$scope.global.user._id;
+        };
     }
 ]);
