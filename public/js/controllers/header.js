@@ -7,6 +7,6 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
 			'title': 'Talks',
 			'link': 'talks'
 		}];
-		$scope.isCollapsed = false;
+		$scope.isCollapsed = true;
 	}
 ]);
