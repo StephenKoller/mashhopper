@@ -2,11 +2,11 @@
     "name": "mean",
     "version": "0.1.2",
     "dependencies": {
-        "angular": "1.2.10",
-        "angular-resource": "1.2.10",
-        "angular-cookies": "1.2.10",
-        "angular-mocks": "1.2.10",
-        "angular-route": "1.2.10",
+        "angular": "latest",
+        "angular-resource": "latest",
+        "angular-cookies": "latest",
+        "angular-mocks": "latest",
+        "angular-route": "latest",
         "bootstrap": "latest",
         "font-awesome": "latest",
         "bootstrap-social-buttons": "latest",
@@ -16,7 +16,7 @@
         "angular-google-chart": "latest",
         "jquery": "latest",
         "jquery-masonry": "v2.1.08",
-        "socket.io-client": "latest",
-        "angular-qrcode": "latest"
+        "socket.io-client": "latest"
+        
     }
 }
