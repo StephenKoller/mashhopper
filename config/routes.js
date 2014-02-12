@@ -3,6 +3,7 @@
 module.exports = function(app, passport, auth) {
     var authService = require('../app/services/authentication');
     var talks = require('../app/controllers/talks');
+    var game = require('../app/services/game');
     app.get('/talks', talks.all);
     app.get('/schedule', talks.all);
 
@@ -78,6 +79,9 @@ module.exports = function(app, passport, auth) {
 
     var graphs = require('../app/controllers/graphs');
     app.get('/graphs', graphs.all);
+    
+    //Users QR code scanned at booth
+    app.get('/event/boothVisit', game.userVistsBooth); 
 
 
 
