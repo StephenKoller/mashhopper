@@ -19,7 +19,7 @@
 				<button class="btn btn-default btn-sm" ng-click="order = sortByAttending"  ng-model="radioModel" btn-radio="'FarRight'">Attending</button>
 			</div>
             <div class="btn-group">
-                <button class="btn btn-default btn-sm" ng-click="filterAttending()" ng-class="filterStyle(true)" btn-radio="'Left'">My Schedule</button>
+                <button class="btn btn-default btn-sm" ng-model="nothing" ng-click="filterAttending()" ng-class="filterStyle(true)" btn-radio="'Left'">My Schedule</button>
             </div>
 
 		</div>
@@ -48,7 +48,7 @@
             </button>
         </div>
         <div class="btn-group">
-            <button class="btn btn-default btn-sm" ng-click="filterAttending()" ng-class="filterStyle(true)" btn-radio="'Left'">My Schedule</button>
+            <button class="btn btn-default btn-sm" ng-model="nothing" ng-click="filterAttending()" ng-class="filterStyle(true)" btn-radio="'Left'">My Schedule</button>
         </div>
     </div>
     <div class="row view-controls">
