@@ -28,10 +28,7 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
             }
         };
 
-        $scope.update = function(talk) {
-            var user = $scope.global.user;
-
-            var adding = !_.contains(user.talks, talk._id);
+        function _update(user, talk, adding){
             if (_.contains(user.talks, talk._id))
                 user.talks = _.without(user.talks, talk._id);
             else
@@ -39,6 +36,23 @@ angular.module('mean.talks').controller('TalksController', ['$scope', '$routePar
 
 
             User.toggleAttending(adding, talk._id);
+        };
+
+        $scope.update = function(talk) {
+            var user = $scope.global.user;
+            var talksInTimeSlot = $scope.talks.filter(function(t){
+                return t.start === talk.start && _.contains(user.talks, t._id);
+            });
+            var adding = !_.contains(user.talks, talk._id);
+            var confirmationMessage = "You are already attending another talk during that time. Would you like to continue adding this talk?";
+
+            if(adding && talksInTimeSlot.length > 0){
+                if(confirm(confirmationMessage)){
+                    _update(user, talk, adding);
+                }
+            }
+            else
+                _update(user, talk, adding);
         };
 
         $scope.isAttending = function(talk) {
